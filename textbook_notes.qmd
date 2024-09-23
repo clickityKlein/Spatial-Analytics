@@ -3,3 +3,92 @@ title: "Textbook Notes"
 ---
 
 Important findings within the textbook.
+
+# Data Models
+
+## General
+
+- entities: features we care about (roads, mountains, accident locations)
+- spatial object: entity-object correspondence
+  - land cover: set of polygons
+- characteristics of spatial detail subjectively chosen based on developer and needs
+- spatial data model: objects in spatial database and their relationships
+  - representing and manipulating spatially referenced information
+- thematic layers are cartographic objects
+- coordinate systems:
+  - y-axis: "northing axis"; increases upward
+  - x-axis: "easting axis"; increases to the right
+- spherical coordinates (non-Cartesian)
+  - larger area calculations on a 2-dimensional map can be distorted due to spherical nature of Earth
+  - spherical coordinate calculations increase accuracy and precision
+  - calculates via formulas using angles of rotation
+  - meridians: lines of equal longitude (east-west); think vertical
+  - parallels; lines of equal latitude; think horizontal
+  - convergence at the poles causes distortion due to the degree of latitude spanning a greater distance near there
+  - latitudes: usually preceded by N or S (based on equator)
+  - longitudes: usually preceded by E or W (based on Prime Meridian / Greenwhich Meridian)
+  - signed coordinates (instead of preceding cardinal direction)
+    - northern latitudes are positive
+    - southern latitudes are negative
+    - eastern longitudes are positive
+    - western longitudes are negative
+  
+## Common Spatial Data Models
+
+- discrete objects defined via **vector data models**
+  - uses discrete elements such as points, lines, and polygons to represent geometry of real-world entities
+  - discrete vector object examples: fields, roads, wetlands, cities
+  - points: small objects such as wells, buildings, ponds (again, what is subjectively chosen based on scale)
+  - lines: network objects such as roads and rivers, or to enclose polygons for are entities
+    - nodes: starting and ending points in a line
+    - vertices: intermediate points in a line or polygon
+- conceptualization via grid cells is a **raster data model**
+  - splitting a map into rows and columns for "wall-to-wall" coverage
+  - depending on resolution, decent for representing continuous changes across a region
+- raster-vector is possible, but can come at the cost of computation or accuracy prices
+- **Triangulated Irregular Network (TIN)**: combination of point, line, and area features (less common than raster and vector data models)
+- attribute data: non-spatial characteristics
+
+### Vector Data Models (Discrete)
+
+- uses groups of coordinates to represent entities
+- lines can be a collection of smaller line segments or mathematical equations to represent geometric shape
+- **multi-part-features**: a many-to-one relationship which is used to describe groupings (island, buildings, etc)
+  - see Forms of Feature Generalization on [Generalization and the MAUP](generalization_maup.qmd)
+- vector data has two common features:
+  - polygon inclusion: 
+    - areas within a polygon that are different but still considered part of it
+    - imagine a polygon just representing a golf course, where the golf course also has fairways, roughs, ponds, pathways, etc.
+    - those other features are "inclusions", but will often not be featured as their own polygon
+    - this is due to some set lower limit, known as a **minimum mapping unit**
+  - boundary generalization: incomplete representation of boundary locations
+    - sampling of the true curve, typically contains some deviation from the "true" curved boundary
+    
+### Raster-Vector Model Conversion
+
+#### Vector to Raster
+
+- assign cell value for each position occupied by vector features
+- points are usually assigned to the cell containing the point coordinate
+- if cell size is too large, two or more points could fall in a single cell, leading to an ambiguous identification
+  - typically, cell size is chosen such that diagonal cell dimension is smaller than the distance between the two closest point features
+- can also be used for lines (versus coordinate points), where a cell-line intersection assigns the cell
+  - can lead to wider approximation in adjacent cells taking on the same value
+  
+#### Raster to Vector
+
+- identify set of continuous connected cells that form lines and apply smoothing algorithm
+
+# Maps, Data Entry, Editiing, and Output
+
+- graticular lines: lines representing constant latitude and longitude
+  - lines may be curved depending on projection and scale
+- accuracy vs. resolution (position accuracy vs. spatial resolution):
+  - accuracy: how close a value is to the truth
+  - resolution: smallest feature is individually resolved
+  - many image data have average resolution smaller than their average accuracy
+- scale: distance on a screen or map to the distance on Earth (reality)
+  - can be unitless
+  - large vs. small:
+    - large scale maps: closer to reality (i.e. zoomed-in); more detailed; larger features; smaller area; trends towards less geometric error
+    - small scale maps: further from reality (i.e. zoomed-out); less detailed; smaller features; larger area; trends towards more geometric error

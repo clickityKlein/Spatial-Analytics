@@ -147,7 +147,22 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-models" id="toc-data-models" class="nav-link active" data-scroll-target="#data-models">Data Models</a>
+  <ul class="collapse">
+  <li><a href="#general" id="toc-general" class="nav-link" data-scroll-target="#general">General</a></li>
+  <li><a href="#common-spatial-data-models" id="toc-common-spatial-data-models" class="nav-link" data-scroll-target="#common-spatial-data-models">Common Spatial Data Models</a>
+  <ul class="collapse">
+  <li><a href="#vector-data-models-discrete" id="toc-vector-data-models-discrete" class="nav-link" data-scroll-target="#vector-data-models-discrete">Vector Data Models (Discrete)</a></li>
+  <li><a href="#raster-vector-model-conversion" id="toc-raster-vector-model-conversion" class="nav-link" data-scroll-target="#raster-vector-model-conversion">Raster-Vector Model Conversion</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#maps-data-entry-editiing-and-output" id="toc-maps-data-entry-editiing-and-output" class="nav-link" data-scroll-target="#maps-data-entry-editiing-and-output">Maps, Data Entry, Editiing, and Output</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -172,8 +187,147 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Important findings within the textbook.</p>
+<section id="data-models" class="level1">
+<h1>Data Models</h1>
+<section id="general" class="level2">
+<h2 class="anchored" data-anchor-id="general">General</h2>
+<ul>
+<li>entities: features we care about (roads, mountains, accident locations)</li>
+<li>spatial object: entity-object correspondence
+<ul>
+<li>land cover: set of polygons</li>
+</ul></li>
+<li>characteristics of spatial detail subjectively chosen based on developer and needs</li>
+<li>spatial data model: objects in spatial database and their relationships
+<ul>
+<li>representing and manipulating spatially referenced information</li>
+</ul></li>
+<li>thematic layers are cartographic objects</li>
+<li>coordinate systems:
+<ul>
+<li>y-axis: “northing axis”; increases upward</li>
+<li>x-axis: “easting axis”; increases to the right</li>
+</ul></li>
+<li>spherical coordinates (non-Cartesian)
+<ul>
+<li>larger area calculations on a 2-dimensional map can be distorted due to spherical nature of Earth</li>
+<li>spherical coordinate calculations increase accuracy and precision</li>
+<li>calculates via formulas using angles of rotation</li>
+<li>meridians: lines of equal longitude (east-west); think vertical</li>
+<li>parallels; lines of equal latitude; think horizontal</li>
+<li>convergence at the poles causes distortion due to the degree of latitude spanning a greater distance near there</li>
+<li>latitudes: usually preceded by N or S (based on equator)</li>
+<li>longitudes: usually preceded by E or W (based on Prime Meridian / Greenwhich Meridian)</li>
+<li>signed coordinates (instead of preceding cardinal direction)
+<ul>
+<li>northern latitudes are positive</li>
+<li>southern latitudes are negative</li>
+<li>eastern longitudes are positive</li>
+<li>western longitudes are negative</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="common-spatial-data-models" class="level2">
+<h2 class="anchored" data-anchor-id="common-spatial-data-models">Common Spatial Data Models</h2>
+<ul>
+<li>discrete objects defined via <strong>vector data models</strong>
+<ul>
+<li>uses discrete elements such as points, lines, and polygons to represent geometry of real-world entities</li>
+<li>discrete vector object examples: fields, roads, wetlands, cities</li>
+<li>points: small objects such as wells, buildings, ponds (again, what is subjectively chosen based on scale)</li>
+<li>lines: network objects such as roads and rivers, or to enclose polygons for are entities
+<ul>
+<li>nodes: starting and ending points in a line</li>
+<li>vertices: intermediate points in a line or polygon</li>
+</ul></li>
+</ul></li>
+<li>conceptualization via grid cells is a <strong>raster data model</strong>
+<ul>
+<li>splitting a map into rows and columns for “wall-to-wall” coverage</li>
+<li>depending on resolution, decent for representing continuous changes across a region</li>
+</ul></li>
+<li>raster-vector is possible, but can come at the cost of computation or accuracy prices</li>
+<li><strong>Triangulated Irregular Network (TIN)</strong>: combination of point, line, and area features (less common than raster and vector data models)</li>
+<li>attribute data: non-spatial characteristics</li>
+</ul>
+<section id="vector-data-models-discrete" class="level3">
+<h3 class="anchored" data-anchor-id="vector-data-models-discrete">Vector Data Models (Discrete)</h3>
+<ul>
+<li>uses groups of coordinates to represent entities</li>
+<li>lines can be a collection of smaller line segments or mathematical equations to represent geometric shape</li>
+<li><strong>multi-part-features</strong>: a many-to-one relationship which is used to describe groupings (island, buildings, etc)
+<ul>
+<li>see Forms of Feature Generalization on <a href="./generalization_maup.html">Generalization and the MAUP</a></li>
+</ul></li>
+<li>vector data has two common features:
+<ul>
+<li>polygon inclusion:
+<ul>
+<li>areas within a polygon that are different but still considered part of it</li>
+<li>imagine a polygon just representing a golf course, where the golf course also has fairways, roughs, ponds, pathways, etc.</li>
+<li>those other features are “inclusions”, but will often not be featured as their own polygon</li>
+<li>this is due to some set lower limit, known as a <strong>minimum mapping unit</strong></li>
+</ul></li>
+<li>boundary generalization: incomplete representation of boundary locations
+<ul>
+<li>sampling of the true curve, typically contains some deviation from the “true” curved boundary</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="raster-vector-model-conversion" class="level3">
+<h3 class="anchored" data-anchor-id="raster-vector-model-conversion">Raster-Vector Model Conversion</h3>
+<section id="vector-to-raster" class="level4">
+<h4 class="anchored" data-anchor-id="vector-to-raster">Vector to Raster</h4>
+<ul>
+<li>assign cell value for each position occupied by vector features</li>
+<li>points are usually assigned to the cell containing the point coordinate</li>
+<li>if cell size is too large, two or more points could fall in a single cell, leading to an ambiguous identification
+<ul>
+<li>typically, cell size is chosen such that diagonal cell dimension is smaller than the distance between the two closest point features</li>
+</ul></li>
+<li>can also be used for lines (versus coordinate points), where a cell-line intersection assigns the cell
+<ul>
+<li>can lead to wider approximation in adjacent cells taking on the same value</li>
+</ul></li>
+</ul>
+</section>
+<section id="raster-to-vector" class="level4">
+<h4 class="anchored" data-anchor-id="raster-to-vector">Raster to Vector</h4>
+<ul>
+<li>identify set of continuous connected cells that form lines and apply smoothing algorithm</li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+<section id="maps-data-entry-editiing-and-output" class="level1">
+<h1>Maps, Data Entry, Editiing, and Output</h1>
+<ul>
+<li>graticular lines: lines representing constant latitude and longitude
+<ul>
+<li>lines may be curved depending on projection and scale</li>
+</ul></li>
+<li>accuracy vs.&nbsp;resolution (position accuracy vs.&nbsp;spatial resolution):
+<ul>
+<li>accuracy: how close a value is to the truth</li>
+<li>resolution: smallest feature is individually resolved</li>
+<li>many image data have average resolution smaller than their average accuracy</li>
+</ul></li>
+<li>scale: distance on a screen or map to the distance on Earth (reality)
+<ul>
+<li>can be unitless</li>
+<li>large vs.&nbsp;small:
+<ul>
+<li>large scale maps: closer to reality (i.e.&nbsp;zoomed-in); more detailed; larger features; smaller area; trends towards less geometric error</li>
+<li>small scale maps: further from reality (i.e.&nbsp;zoomed-out); less detailed; smaller features; larger area; trends towards more geometric error</li>
+</ul></li>
+</ul></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
