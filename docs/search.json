@@ -25,7 +25,49 @@
     "href": "generalization_maup.html",
     "title": "Generalization and the MAUP",
     "section": "",
-    "text": "Essential concepts for generalization and the MAUP."
+    "text": "Essential concepts for generalization and the MAUP. This section builds from Concepts of Scale and Resolution."
+  },
+  {
+    "objectID": "generalization_maup.html#scale-and-map-generalization",
+    "href": "generalization_maup.html#scale-and-map-generalization",
+    "title": "Generalization and the MAUP",
+    "section": "Scale and Map Generalization",
+    "text": "Scale and Map Generalization\nThere are different levels of feature generalization in maps of different scales. This introduces the idea of geometry elimination and geometry smoothing at changing scales. In both cases, we still want to preserve information.\n\nPrincipals of Generalization\n\nSmaller Scales \\(\\rightarrow\\) More Generalized \\(\\rightarrow\\) Shorter Lines\nMachine learning can be used to preserve features during generalization\nSmaller Scales \\(\\rightarrow\\) More Generalized \\(\\rightarrow\\) Less Perimeter\n\n\n\n\n\nForms of Feature Generalization\n\nTruth: entity in reality (example group of islands \\(\\rightarrow\\) multiple polygons with many vertices)\nFused: multiple high resolution polygons into single polygon\nSimplified: multiple polygons with less vertices\nDisplaced: features like roads or streams with a greater null buffer from group of polygons\nOmitted: smaller features (small islands) removed\nExaggerated: features like roads or streams with a greater actual buffer from group of polygons\nPatches: essentially a fuse with the individual entities still present (group of islands called an archipelago while not mentioning the individual islands)\n\n\n\n\n\nCoastline Examples\nThe Florida coastline can be measured at different scales. The larger the scale, the longer the perimeter."
+  },
+  {
+    "objectID": "generalization_maup.html#analytical-scale",
+    "href": "generalization_maup.html#analytical-scale",
+    "title": "Generalization and the MAUP",
+    "section": "Analytical Scale",
+    "text": "Analytical Scale\nWhat is the correct size of analytical scale?\n\nThere are multiple proposed solutions to finding this solution, including sensitivity testing, which checks for robustness or variation at different scales. Spatial auto-correlation is ant"
+  },
+  {
+    "objectID": "generalization_maup.html#scale-effect",
+    "href": "generalization_maup.html#scale-effect",
+    "title": "Generalization and the MAUP",
+    "section": "Scale Effect",
+    "text": "Scale Effect\n\nDifferent analytical results at levels of aggregation: as we increase or decrease resolution, the statistical characteristics change."
+  },
+  {
+    "objectID": "generalization_maup.html#zoning-effect",
+    "href": "generalization_maup.html#zoning-effect",
+    "title": "Generalization and the MAUP",
+    "section": "Zoning Effect",
+    "text": "Zoning Effect\n\nDifferent groupings by various artificial boundaries, each boundary variation yields major analytical differences\nExamples:\n\nhealth spatial statistics to determine spatial factors realted to given disease\ndemography\nlandscape ecology\ngerrymandering"
+  },
+  {
+    "objectID": "generalization_maup.html#solutions",
+    "href": "generalization_maup.html#solutions",
+    "title": "Generalization and the MAUP",
+    "section": "Solutions",
+    "text": "Solutions\nEssentially, a population suffers from MAUP due to the population not being uniformly distributed by density over locations.\n\nspatial autocorrelation (no random distribution)\nacross different scales: check for robustness or variation\nif results are significantly different, reevaluate to find more consistent results\n\nacross-scale relationship evaluation between variables; simulations and spatial models\navoid erroneous conclusions\nprovide guidance to select appropriate aggregation scales"
+  },
+  {
+    "objectID": "generalization_maup.html#further-examples",
+    "href": "generalization_maup.html#further-examples",
+    "title": "Generalization and the MAUP",
+    "section": "Further Examples",
+    "text": "Further Examples\n\nScale and Zoning Effect Together\n\n\n\nGerrymandering"
   },
   {
     "objectID": "about.html",
@@ -60,14 +102,14 @@
     "href": "concepts_scale_resolution.html#tradeoff-between-storage-and-resolution",
     "title": "Concepts of Scale and Resolution",
     "section": "Tradeoff Between Storage and Resolution",
-    "text": "Tradeoff Between Storage and Resolution\nAs the saying goes, easier said than done. Images with finer resolution require more storage and are usually more expensive (technology / equipment).\nIn fact, decreasing the cell size by one half quadruples the resolution, thus storage space is quadrupled."
+    "text": "Tradeoff Between Storage and Resolution\nAs the saying goes, easier said than done. Images with finer resolution require more storage and are usually more expensive (technology / equipment).\nIn fact, decreasing the cell size by one half quadruples the resolution, thus storage space is quadrupled.\n\nNote that in the case of vector data, finer resolution vector data has more points and points closer together. In other words, more vertices!"
   },
   {
     "objectID": "concepts_scale_resolution.html#digital-data-and-scale",
     "href": "concepts_scale_resolution.html#digital-data-and-scale",
     "title": "Concepts of Scale and Resolution",
     "section": "Digital Data and Scale",
-    "text": "Digital Data and Scale\nDIGITAL DATA HAS A SCALE!\nThe input map / data layer had a scale (source scale), but many data today does not come from maps. This allows us to slide through a range of scales on the screen. Think about the increasing detail level while zooming in on Google Maps.\nThis gives us the Display Scale, the ratio between ground and on-screen scale."
+    "text": "Digital Data and Scale\nDIGITAL DATA HAS A SCALE! HOWEVER, CAUTION IS REQUIRED.\nThe input map / data layer had a scale (source scale), but many data today does not come from maps. This allows us to slide through a range of scales on the screen. Think about the increasing detail level while zooming in on Google Maps.\nThis gives us the Display Scale, the ratio between ground and on-screen scale."
   },
   {
     "objectID": "index.html",
