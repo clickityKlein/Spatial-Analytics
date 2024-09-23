@@ -25,7 +25,14 @@
     "href": "research_notes.html",
     "title": "Research Notes",
     "section": "",
-    "text": "Important findings and summaries within the research papers."
+    "text": "Important findings and summaries within the research papers and concurrent discussions."
+  },
+  {
+    "objectID": "research_notes.html#key-notes",
+    "href": "research_notes.html#key-notes",
+    "title": "Research Notes",
+    "section": "Key Notes:",
+    "text": "Key Notes:\nThe paper was written for a conference, the 4th International Symposium on Spatial Data Handling, which took place in 1990. There is some irony in reading this specific conference paper which is over three decades old, due to that fact that the author focuses on the longevity and survival of GIScience as an accepted institutional discipline. They touch on GIS being recongized more as a technology, and presses that GIS itself should be the science, only supported by technology applications rather than GIS as a supporting measure within the sciences. A few pathways Goodchild laid down to accomplish this is by “identifying key scientific questions” in GIScience and expanding on them intellectually. Essentially, they call for three communities specifically, “users, vendors, and researchers” to focus on the foundations of GIScience and then create the tools required to answer critical questions."
   },
   {
     "objectID": "lab_work.html",

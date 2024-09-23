@@ -2,4 +2,132 @@
 title: "Research Notes"
 ---
 
-Important findings and summaries within the research papers.
+Important findings and summaries within the research papers and concurrent discussions.
+
+# Paper: Goodchild - Spatial Information Science
+
+## Key Notes:
+
+The paper was written for a conference, the 4th International Symposium on Spatial Data Handling, which took place in 1990. There is some irony in reading this specific conference paper which is over three decades old, due to that fact that the author focuses on the longevity and survival of GIScience as an accepted institutional discipline. They touch on GIS being recongized more as a technology, and presses that GIS itself should be the science, only supported by technology applications rather than GIS as a supporting measure within the sciences. A few pathways Goodchild laid down to accomplish this is by "identifying key scientific questions" in GIScience and expanding on them intellectually. Essentially, they call for three communities specifically, "users, vendors, and researchers" to focus on the foundations of GIScience and then create the tools required to answer critical questions.
+
+
+# Paper: How Long is the Coast of Britain? Statistical Self-Similarity and Fractional Dimensional - Mandelbrot, Good, & Proctor
+
+This paper explores the concept of measuring complex geographical curves, such as coastlines, using fractal geometry.
+
+- Statistical Self-Similarity:
+  - natural shapes, like coastlines, exhibit self-similarity
+  - this means that each part of the coastline, when magnified, resembles the whole coastline
+- Fractional Dimension:
+  - compared with traditional geometry, which assigns integer dimensions such as
+    - point: 0-dimensional
+    - line: 1-dimensional
+    - polygon: 2-dimensional
+    - coastline: 1-dimensional (vector line / grouping of vector lines and indices)
+  - with fractal dimensions, the coast of Britain has a dimension of approximately 1.25
+- Measurement Challenges:
+  - length of a coastline varies significantly depending on the measurement scale used
+  - as the measurement unit becomes smaller, the total length increases, reflecting the intricate details of the coastline
+    - larger scale $\rightarrow$ greater perimeter
+- Practical Applications:
+  - aside from geography, the concept of understanding the complexity of natural shapes and phenomena is crucial
+  - the paper is foundational in the field of fractal geometry and highlights the limitations of traditional measurement methods for complex natural shapes
+
+# Paper: MAUP and Implications for Landscape Ecology - Jelinski & Wu, Nelson & Brewer
+
+This paper examines the the modifiable areal unit problem (MAUP) in the context of landscape ecology.
+
+- Introduction of MAUP
+  - In order to reduce bias and avoid spurious relationships when dealing with aggregated data and multiscaled spatial phenomena, tow problems must be addressed:
+    - scale problem: same set of areal data is aggregated into several sets of larger areal units, with each combination leading to different data values and inferences
+    - zoning problem: sets recombined into zones that are of the same size but located differently, again resulting in variation in data values and different conclusions
+- Using the imaging data, they addressed scale and zoning effects through several different simulations
+- Spatial Autocorrelation
+  - degree of spatial clustering, or degree to which values at one locality are determined in part by the values at neighboring locations
+- Measure of Spatial Autocorrelation
+  - Moran's I
+  - Geary's c
+- Null Hypothesis
+  - no spatial autocorrelation for a broad range of aggregation and zoning schems
+  - did not use formal testing with p-values for individual hypotheses
+  - still concluded that autocorrelation changes with scale, implying that there is evidence of a scale effect related to the MAUP across different aggregations
+- Approaching for Addressing MAUP
+  - **basic entity approach**: advocates identification of individual entities that are not modifiable (*base unit*)
+    - issues:
+      - difficulty in identifying the base unit
+      - too much detail can lead to overwhelming data collection, analysis, and modelling
+  - **optimal zoning approach**: system that maximizes interzonal variation and minimizes intrazonal variation
+    - issues:
+      - Fothering and Wong (1991) concluded that an optimal zoning system which minimizes spatial autocorrelation of all possible combinations of variables is not possible
+  - **sensitivity analysis approach**: get a sense of magnitude and scope of the varying statistical characteristics through a series of analyses
+    - issues:
+      - again, testing all possible combinations would be computationally and timely impractical
+  - **new / novel methods of analysis**:
+    - suggested methods:
+      - visualization over statsitcal analysis
+  - **emphasis of spatial analysis on the rates of change**: focus on how spatial patterns evolve over time rather than just looking at static snapshots
+    - temporal dynamics: how spatial data changes over time periods to understand trends and patterns of change
+    - rate of change metrics: metrics to quantify speed and direction of changes in spatial phenomena, which can provide more insights into the processes driving these changes
+    - comparative analysis: comparing rates of change across different regions or scales to identify areas of rapid change or stability
+- Summary of Solutions:
+  - **Multi-Scale Analysis**: Conducting analyses at multiple spatial scales to understand how results vary with scale changes. This helps in identifying the scale at which patterns are most pronounced.
+  - **Zoning Sensitivity Analysis**: Testing different zoning schemes to see how changes in the boundaries of spatial units affect the results. This can help in understanding the robustness of the findings.
+  - **Hierarchical Modeling**: Using hierarchical models that account for data at different levels of aggregation. This approach can help in integrating data from various scales and reducing the impact of MAUP.
+  - **Geostatistical Methods**: Applying geostatistical techniques that consider spatial autocorrelation and provide more accurate estimates by accounting for the spatial structure of the data.
+  - **Simulation and Resampling Techniques**: Using simulation and resampling methods to assess the variability of results under different zoning and scaling scenarios. This can provide insights into the stability of the findings.
+  
+Although the MAUP is an integral problem within the geospatial sciences, the authors state that MAUP isn't really a problem, more that it is reflective "of the real systems are hierarchically structured."
+
+# Paper: The Territorial Trap - Agnew
+
+The territorial trap is split into 3 pieces which challenge conventional views in international relations:
+
+- States as Fixed Units of Sovereign Space:
+  - flawed view of states as fixed, unchanging units of territory
+  - overlooks historical and geographical variations in exercising power and control over territories
+- Domestic/Foreign Polarity:
+  - this binary view fails to account for the complex interactions and influences
+- States as *containers of Society*:
+  - the previous / accepted view: states as containers with societies held in by border
+  - author's challenge: dynamic and fluid nature of social, economic, and political processes that transcend boundaries
+  
+While states do have geographical boundaries, the interactions and influences that cross these boundaries make the concept of a state as a rigid, self-contained unit quite limited. Historical relevance, social dynamics, economic exchanges, and political processes often transcend these borders, leading to complex interdependencies and interactions between states.
+
+This perspective encourages a more fluid and interconnected understanding of international relations, recognizing that states are part of a larger, dynamic global system rather than isolated entities.
+
+# Paper: Climate As a Risk Factor For Armed Conflict - Mach
+
+This paper seeks to analyze climate change as a factor for armed conflict. Overall, it ranked low on the list of known drivers of organized armed conflict, at least on a direct basis. However, climate change affects resources, and there has been a general trend of climate change increasing, not decreasing, armed conflict. The authors also do state that in the event of climate-related resource scarcity, this can also **lead to cooperation** between groups.
+
+Takeaways:
+
+- Climate change not a *major* predictor for organized armed conflict, or isn't recognized as such. At the very least, experts disagree, especially when analyzed as a direct contributor of organized armed conflict.
+- Even in the case of resource-management, when climate change threatens or limits resources such as food-yield, cooperation over conflict is expected. Not to say this is true for all climate-related resource scarcity scenarios.
+- Again, experts have some disagreement over the direct contribution of climate change to organized armed conflict.
+
+# Discussion: GIS in the Wild
+
+Roughly draws from *The Territorial Trap* and *Mach - Climate As a Risk Factor For Armed Conflict*.
+
+**In the following notes, state is used as a general term which can be used to identify whole countries or faction-controlled areas.**
+
+- State scale is easier to model, but not always accurate. This can lead to simple stories which can be leaving out complex relationships, and thus be misleading.
+- Armed conflict represented in map, especially constrained to state boundaries, only show part of the story.
+- Political lines / disputed border can change via perspective, which can be illustrated by IP address pings when searching Google Maps.
+- Internal vs. External non-total sovereignty
+  - Internal Sovereignty
+    - Definition: Internal sovereignty refers to the supreme authority within a state. It is about who holds the ultimate power and how this power is exercised over the state’s territory and population.
+    - Focus: It deals with the relationship between the sovereign power and its subjects, ensuring that the state can enforce laws and maintain order within its borders1.
+    - Example: The ability of a government to implement policies, collect taxes, and regulate activities within its territory.
+  - External Sovereignty
+    - Definition: External sovereignty refers to the independence of a state from external control. It is the ability of a state to act autonomously and make decisions without interference from other states or external forces.
+    - Focus: It emphasizes the state’s capacity to engage in international relations, enter treaties, and defend its territorial integrity against external threats2.
+    - Example: A country’s right to determine its foreign policy and engage in diplomatic relations with other nations.
+  - Non-Sovereignty
+    - Internal Non-Sovereignty: This could refer to situations where a state lacks full control over its internal affairs, possibly due to internal conflicts, weak governance, or external influence.
+    - External Non-Sovereignty: This might describe a state that is heavily influenced or controlled by external powers, limiting its ability to act independently on the international stage.
+- However, the domestic/foreign separation doesn't necessarily stop at the border.
+- How to escape the territorial trap (theoretically):
+  - shatterbelts (crush zones, shatter zones)
+  - clash of civilizations (i.e. west vs east, bloody borders)
+- CLIMATE CHANGE AND ITS EFFECT OPERATES THROUGH MECHANISMS
