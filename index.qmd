@@ -3,3 +3,122 @@ title: "Spatial Analytics"
 ---
 
 This is a guide to for the essential concepts of Spatial Analytics.
+
+# Topics
+
+- [Spatial Data Representations](spatial_data_representations.qmd)
+- [Concepts of Scale and Resolution](concepts_scale_resolution.qmd)
+- [Generalization and the MAUP](generalization_maup.qmd)
+- [Projections](projections.qmd)
+
+# Overview
+
+Humans spatial reasoning can be motivated by concepts such as preferences and priorities. Why do humans take the paths they do? Can these mobility patterns be quantified? What implications do paths and representations of real world entities have?
+
+Technical definitions can change by industry or task. While representing real world entities and patterns, biases can be created both purposefully and accidentally. Across any science or field, implied causality can be dangerous. Understanding the tools and concepts is important for properly presenting information and not misusing the tools to imply incorrect phenomenon.
+
+### Defining a GIS
+
+- Spatial Thinking: a collection of cognitive skills
+  - concepts of space
+  - tools of representation
+  - processes of reasoning
+  
+Spatial Knowledge is important for orientation and navigation, map production, measuring the world, and understanding relationships between objects and the implication of such.
+
+A **GIS** is something that helps understand spatial knowledge by quantifying locations. They are computer-based information systems which aid in the collection, maintenance, storage, analysis, output, and distribution of spatial data. They require trained personnel, supporting institutions, have protocols for use, and can be web based.
+
+A simplified function-based definition:
+
+- data input
+- data management (storage/organization/retrieval)
+- data manipulation/analysis
+- data output
+
+### Computational Tools for Spatial Knowledge
+
+Some examples of GIS, spatial analysis, and mapping tools:
+
+- QGIS (open source)
+- ArcGIS (commercial)
+- GeoDa (open, specialized)
+- Google Maps (web)
+- Google Earth (web)
+- VGI (OSM)
+
+### Understanding the Components of a GIS
+
+There are several components each GIS have:
+
+- database: registered map layers
+- analytic base:
+  - software and algorithms
+  - cartometric analysis
+  - statistical analysis
+- management base:
+  - maintenance and update
+  - access and data sharing
+  - documentation
+  
+#### Databases
+
+- Linking Content:
+  - spatial registration (align all layers)
+  - Georeferencing (at least one layer)
+- Establishing Geospatial Relations:
+  - distance and direction
+  - proximity
+  - connectivity
+  - association
+  - containment
+- Supporting Geospatial Analysis
+
+#### Analytical Base
+
+- Manipulating and Analyzing Data:
+  - explore spatial relations
+  - elicit spatial patterns
+  - run GIS analysis
+- Statistical Elements:
+  - (spatial) statistics
+  - classification
+  - descriptive
+- Cartometric Elements
+  - spatial association
+  - spatial arrangement
+  - spatial patterns
+- Cartometric Elements and Geoprocessing: distance and direction measures (primitatives) ot build up higher order patterns
+  - spatial presence: location (x, y, z, t)
+  - spatial order: size and shape
+  - spatial arrangement:
+    - density
+    - dispersion
+    - diffusion
+    - connectivity
+  - spatial association (correspondence)
+    - address matching
+    - buffering
+    - overlay
+    - modeling
+    
+#### Management Base
+
+- Handles data collection and storage
+  - data maintenance and update
+  - documentation, tutorials, online help
+- Provides access and security
+  - multiple analysts working concurrently
+  - protects against db corruption
+  - secures proprietary information
+- Creates and supports metadata
+- Metadata:
+  - data that describes geospatial data
+    - who produced the data, when, and how
+    - what is the quality (truth in advertising)
+    - other measures and information
+
+### GIS in an Instutional and Societal Context
+
+- managing and assessing environmental problems, resource allocation, mapping, etc.
+- linking spatial information with attribute data to better understand lower and higher patterns of spatial distribution
+- from an institutional perspective, trained analysts, decisions and protocols for collection and analylsis are incorporated

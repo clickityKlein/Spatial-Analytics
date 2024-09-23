@@ -147,7 +147,20 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#topics" id="toc-topics" class="nav-link active" data-scroll-target="#topics">Topics</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#defining-a-gis" id="toc-defining-a-gis" class="nav-link" data-scroll-target="#defining-a-gis">Defining a GIS</a></li>
+  <li><a href="#computational-tools-for-spatial-knowledge" id="toc-computational-tools-for-spatial-knowledge" class="nav-link" data-scroll-target="#computational-tools-for-spatial-knowledge">Computational Tools for Spatial Knowledge</a></li>
+  <li><a href="#understanding-the-components-of-a-gis" id="toc-understanding-the-components-of-a-gis" class="nav-link" data-scroll-target="#understanding-the-components-of-a-gis">Understanding the Components of a GIS</a></li>
+  <li><a href="#gis-in-an-instutional-and-societal-context" id="toc-gis-in-an-instutional-and-societal-context" class="nav-link" data-scroll-target="#gis-in-an-instutional-and-societal-context">GIS in an Instutional and Societal Context</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -172,8 +185,168 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>This is a guide to for the essential concepts of Spatial Analytics.</p>
+<section id="topics" class="level1">
+<h1>Topics</h1>
+<ul>
+<li><a href="./spatial_data_representations.html">Spatial Data Representations</a></li>
+<li><a href="./concepts_scale_resolution.html">Concepts of Scale and Resolution</a></li>
+<li><a href="./generalization_maup.html">Generalization and the MAUP</a></li>
+<li><a href="./projections.html">Projections</a></li>
+</ul>
+</section>
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p>Humans spatial reasoning can be motivated by concepts such as preferences and priorities. Why do humans take the paths they do? Can these mobility patterns be quantified? What implications do paths and representations of real world entities have?</p>
+<p>Technical definitions can change by industry or task. While representing real world entities and patterns, biases can be created both purposefully and accidentally. Across any science or field, implied causality can be dangerous. Understanding the tools and concepts is important for properly presenting information and not misusing the tools to imply incorrect phenomenon.</p>
+<section id="defining-a-gis" class="level3">
+<h3 class="anchored" data-anchor-id="defining-a-gis">Defining a GIS</h3>
+<ul>
+<li>Spatial Thinking: a collection of cognitive skills
+<ul>
+<li>concepts of space</li>
+<li>tools of representation</li>
+<li>processes of reasoning</li>
+</ul></li>
+</ul>
+<p>Spatial Knowledge is important for orientation and navigation, map production, measuring the world, and understanding relationships between objects and the implication of such.</p>
+<p>A <strong>GIS</strong> is something that helps understand spatial knowledge by quantifying locations. They are computer-based information systems which aid in the collection, maintenance, storage, analysis, output, and distribution of spatial data. They require trained personnel, supporting institutions, have protocols for use, and can be web based.</p>
+<p>A simplified function-based definition:</p>
+<ul>
+<li>data input</li>
+<li>data management (storage/organization/retrieval)</li>
+<li>data manipulation/analysis</li>
+<li>data output</li>
+</ul>
+</section>
+<section id="computational-tools-for-spatial-knowledge" class="level3">
+<h3 class="anchored" data-anchor-id="computational-tools-for-spatial-knowledge">Computational Tools for Spatial Knowledge</h3>
+<p>Some examples of GIS, spatial analysis, and mapping tools:</p>
+<ul>
+<li>QGIS (open source)</li>
+<li>ArcGIS (commercial)</li>
+<li>GeoDa (open, specialized)</li>
+<li>Google Maps (web)</li>
+<li>Google Earth (web)</li>
+<li>VGI (OSM)</li>
+</ul>
+</section>
+<section id="understanding-the-components-of-a-gis" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-components-of-a-gis">Understanding the Components of a GIS</h3>
+<p>There are several components each GIS have:</p>
+<ul>
+<li>database: registered map layers</li>
+<li>analytic base:
+<ul>
+<li>software and algorithms</li>
+<li>cartometric analysis</li>
+<li>statistical analysis</li>
+</ul></li>
+<li>management base:
+<ul>
+<li>maintenance and update</li>
+<li>access and data sharing</li>
+<li>documentation</li>
+</ul></li>
+</ul>
+<section id="databases" class="level4">
+<h4 class="anchored" data-anchor-id="databases">Databases</h4>
+<ul>
+<li>Linking Content:
+<ul>
+<li>spatial registration (align all layers)</li>
+<li>Georeferencing (at least one layer)</li>
+</ul></li>
+<li>Establishing Geospatial Relations:
+<ul>
+<li>distance and direction</li>
+<li>proximity</li>
+<li>connectivity</li>
+<li>association</li>
+<li>containment</li>
+</ul></li>
+<li>Supporting Geospatial Analysis</li>
+</ul>
+</section>
+<section id="analytical-base" class="level4">
+<h4 class="anchored" data-anchor-id="analytical-base">Analytical Base</h4>
+<ul>
+<li>Manipulating and Analyzing Data:
+<ul>
+<li>explore spatial relations</li>
+<li>elicit spatial patterns</li>
+<li>run GIS analysis</li>
+</ul></li>
+<li>Statistical Elements:
+<ul>
+<li>(spatial) statistics</li>
+<li>classification</li>
+<li>descriptive</li>
+</ul></li>
+<li>Cartometric Elements
+<ul>
+<li>spatial association</li>
+<li>spatial arrangement</li>
+<li>spatial patterns</li>
+</ul></li>
+<li>Cartometric Elements and Geoprocessing: distance and direction measures (primitatives) ot build up higher order patterns
+<ul>
+<li>spatial presence: location (x, y, z, t)</li>
+<li>spatial order: size and shape</li>
+<li>spatial arrangement:
+<ul>
+<li>density</li>
+<li>dispersion</li>
+<li>diffusion</li>
+<li>connectivity</li>
+</ul></li>
+<li>spatial association (correspondence)
+<ul>
+<li>address matching</li>
+<li>buffering</li>
+<li>overlay</li>
+<li>modeling</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="management-base" class="level4">
+<h4 class="anchored" data-anchor-id="management-base">Management Base</h4>
+<ul>
+<li>Handles data collection and storage
+<ul>
+<li>data maintenance and update</li>
+<li>documentation, tutorials, online help</li>
+</ul></li>
+<li>Provides access and security
+<ul>
+<li>multiple analysts working concurrently</li>
+<li>protects against db corruption</li>
+<li>secures proprietary information</li>
+</ul></li>
+<li>Creates and supports metadata</li>
+<li>Metadata:
+<ul>
+<li>data that describes geospatial data
+<ul>
+<li>who produced the data, when, and how</li>
+<li>what is the quality (truth in advertising)</li>
+<li>other measures and information</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="gis-in-an-instutional-and-societal-context" class="level3">
+<h3 class="anchored" data-anchor-id="gis-in-an-instutional-and-societal-context">GIS in an Instutional and Societal Context</h3>
+<ul>
+<li>managing and assessing environmental problems, resource allocation, mapping, etc.</li>
+<li>linking spatial information with attribute data to better understand lower and higher patterns of spatial distribution</li>
+<li>from an institutional perspective, trained analysts, decisions and protocols for collection and analylsis are incorporated</li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
