@@ -42,6 +42,34 @@
     "text": "Essential concepts for scale and resolution."
   },
   {
+    "objectID": "concepts_scale_resolution.html#scale-sizes-large-vs.-small",
+    "href": "concepts_scale_resolution.html#scale-sizes-large-vs.-small",
+    "title": "Concepts of Scale and Resolution",
+    "section": "Scale Sizes (Large vs. Small)",
+    "text": "Scale Sizes (Large vs. Small)\nLarge Scale vs. Small Scale\n\nLarge Scale Maps\n\nlarger features\nmore detail\nless area\ntending towards less geometric error\n\nSmall Scale Maps\n\nsmaller features\nless detail\nmore area\ntending towards more geometric error\n\nExplanation\nComparing Scales:\nMap A Scale: \\(1/a\\)\nMap B Scale: \\(1/b\\)\nLarger the Denominator \\(\\rightarrow\\) Smaller the Scale\nSmaller the Denominator \\(\\rightarrow\\) Larger the Scale\nSo, provided \\(a &gt; b \\rightarrow 1/a &lt; 1/b\\), thus\nMap A has a smaller scale than Map B\nMap B has a larger scale than Map A\nExample: Map A could cover Washington state whereas Map B could cover a city in Washington state\nFurther Explanation: The smaller the relative scale, the closer the map to reality"
+  },
+  {
+    "objectID": "concepts_scale_resolution.html#raster---the-mixed-pixel-problem-effect",
+    "href": "concepts_scale_resolution.html#raster---the-mixed-pixel-problem-effect",
+    "title": "Concepts of Scale and Resolution",
+    "section": "Raster - The Mixed Pixel Problem / Effect",
+    "text": "Raster - The Mixed Pixel Problem / Effect\nHow do we define/classify a cell (i.e. land vs. water)?\nRule of Thumb: the smallest detectable feature is about twice as large as the resolution, or stated in another manner, detection requires resolution at least twice as fine as detectable features.\nSo if we were going to detect a defined bodies of water, the bodies of water we wish to detect were around size \\(x\\), the resolution must be at most \\(x/2\\). This ensures that the features of interest are adequately captured and distinguished from surrounding features."
+  },
+  {
+    "objectID": "concepts_scale_resolution.html#tradeoff-between-storage-and-resolution",
+    "href": "concepts_scale_resolution.html#tradeoff-between-storage-and-resolution",
+    "title": "Concepts of Scale and Resolution",
+    "section": "Tradeoff Between Storage and Resolution",
+    "text": "Tradeoff Between Storage and Resolution\nAs the saying goes, easier said than done. Images with finer resolution require more storage and are usually more expensive (technology / equipment).\nIn fact, decreasing the cell size by one half quadruples the resolution, thus storage space is quadrupled."
+  },
+  {
+    "objectID": "concepts_scale_resolution.html#digital-data-and-scale",
+    "href": "concepts_scale_resolution.html#digital-data-and-scale",
+    "title": "Concepts of Scale and Resolution",
+    "section": "Digital Data and Scale",
+    "text": "Digital Data and Scale\nDIGITAL DATA HAS A SCALE!\nThe input map / data layer had a scale (source scale), but many data today does not come from maps. This allows us to slide through a range of scales on the screen. Think about the increasing detail level while zooming in on Google Maps.\nThis gives us the Display Scale, the ratio between ground and on-screen scale."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Spatial Analytics",

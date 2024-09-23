@@ -125,3 +125,9 @@ Ultimately, how do we define areas in an image:
 - What is the map for? Or, who is it for?
 - The natural instinct is to draw a line, but that can be difficult with things like gradual changes
 - Or even classification challenges like a forest with a bush ground cover
+
+# Raster vs. Vector
+
+- Raster:
+- Vector: 
+
