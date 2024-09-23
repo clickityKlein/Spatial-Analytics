@@ -1,5 +1,26 @@
 [
   {
+    "objectID": "textbook_notes.html",
+    "href": "textbook_notes.html",
+    "title": "Textbook Notes",
+    "section": "",
+    "text": "Important findings within the textbook."
+  },
+  {
+    "objectID": "research_notes.html",
+    "href": "research_notes.html",
+    "title": "Research Notes",
+    "section": "",
+    "text": "Important findings and summaries within the research papers."
+  },
+  {
+    "objectID": "lab_work.html",
+    "href": "lab_work.html",
+    "title": "Lab Work",
+    "section": "",
+    "text": "Concepts and conclusions from the labs."
+  },
+  {
     "objectID": "generalization_maup.html",
     "href": "generalization_maup.html",
     "title": "Generalization and the MAUP",

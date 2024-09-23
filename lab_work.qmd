@@ -1,0 +1,5 @@
+---
+title: "Lab Work"
+---
+
+Concepts and conclusions from the labs.
