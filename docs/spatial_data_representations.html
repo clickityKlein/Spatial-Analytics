@@ -147,7 +147,32 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#map-making" id="toc-map-making" class="nav-link" data-scroll-target="#map-making">Map Making</a>
+  <ul class="collapse">
+  <li><a href="#map-identities" id="toc-map-identities" class="nav-link" data-scroll-target="#map-identities">Map Identities</a></li>
+  <li><a href="#maps-for-representation" id="toc-maps-for-representation" class="nav-link" data-scroll-target="#maps-for-representation">Maps for Representation</a></li>
+  </ul></li>
+  <li><a href="#real-world-abstractions-and-complexity" id="toc-real-world-abstractions-and-complexity" class="nav-link" data-scroll-target="#real-world-abstractions-and-complexity">Real World Abstractions and Complexity</a>
+  <ul class="collapse">
+  <li><a href="#mapping-and-modeling-reality" id="toc-mapping-and-modeling-reality" class="nav-link" data-scroll-target="#mapping-and-modeling-reality">Mapping and Modeling Reality</a></li>
+  </ul></li>
+  <li><a href="#data-model" id="toc-data-model" class="nav-link" data-scroll-target="#data-model">Data Model</a>
+  <ul class="collapse">
+  <li><a href="#spatial-object-types" id="toc-spatial-object-types" class="nav-link" data-scroll-target="#spatial-object-types">Spatial Object Types</a></li>
+  <li><a href="#attribute-data" id="toc-attribute-data" class="nav-link" data-scroll-target="#attribute-data">Attribute Data</a></li>
+  <li><a href="#thematic-layers" id="toc-thematic-layers" class="nav-link" data-scroll-target="#thematic-layers">Thematic Layers</a>
+  <ul class="collapse">
+  <li><a href="#multiple-objects-from-a-single-entity" id="toc-multiple-objects-from-a-single-entity" class="nav-link" data-scroll-target="#multiple-objects-from-a-single-entity">Multiple Objects from a Single Entity</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#conceptualization-of-spatial-phenomenon" id="toc-conceptualization-of-spatial-phenomenon" class="nav-link" data-scroll-target="#conceptualization-of-spatial-phenomenon">Conceptualization of Spatial Phenomenon</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -172,8 +197,159 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Essential concepts for spatial data representations.</p>
+<section id="learning-objectives" class="level1">
+<h1>Learning Objectives</h1>
+<ul>
+<li>Spatial Data Representations</li>
+<li>Conceptualizations of Spatial Entities (Field and Object View)</li>
+<li>Types of Attribute Data</li>
+<li>Common Data Models</li>
+</ul>
+</section>
+<section id="map-making" class="level1">
+<h1>Map Making</h1>
+<section id="map-identities" class="level2">
+<h2 class="anchored" data-anchor-id="map-identities">Map Identities</h2>
+<ul>
+<li>Title: a few words or a single sentence which informs the “where” and the “what” about the map</li>
+<li>Data Pane: map visual</li>
+<li>North Arrow: shows direction</li>
+<li>Neatline: inside media border, encapsulates datapane</li>
+<li>Media Border/Edge: very outside border</li>
+<li>Neatline and media border are not usually required, and are dependent on the publication</li>
+<li>Legend: provides information about what things like colors and boundaries</li>
+<li>Scale / Scale Bar: provides scale of map to reality</li>
+</ul>
+<p><img src="images/map_making_1.png" class="img-fluid"></p>
+</section>
+<section id="maps-for-representation" class="level2">
+<h2 class="anchored" data-anchor-id="maps-for-representation">Maps for Representation</h2>
+<ul>
+<li>Feature Map:
+<ul>
+<li>cities</li>
+<li>highways</li>
+</ul></li>
+<li>Choropleth Map:
+<ul>
+<li>shows density based on specific units</li>
+<li>attribute is shown by a constant value</li>
+<li>boundaries are artificial</li>
+<li>assume the value is the same for an entire spatial boundary, which may not be true for the entire spatial boundary (<em>first glimpse at scale and MAUP</em>)</li>
+</ul></li>
+<li>Dot Density Map
+<ul>
+<li>maps individual points</li>
+<li>more points equals higher density</li>
+</ul></li>
+<li>Contour Map (Isopleth Map)
+<ul>
+<li>line features to represent something (i.e.&nbsp;elevation)</li>
+<li>limitations can be constant or minute changes, which may not be represented</li>
+</ul></li>
+</ul>
+<p><img src="images/representation_maps_1.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="real-world-abstractions-and-complexity" class="level1">
+<h1>Real World Abstractions and Complexity</h1>
+<p>To represent information about this world in maps or digital systems, we need to simplify what we see. This requires <strong>generalized, abstracted, and approximate</strong> information about entities, their location and properties.</p>
+<p>Why is this a requirement:</p>
+<ul>
+<li>Data may not be available</li>
+<li>May have too much data and need to choose the important aspects to simplify</li>
+</ul>
+<section id="mapping-and-modeling-reality" class="level2">
+<h2 class="anchored" data-anchor-id="mapping-and-modeling-reality">Mapping and Modeling Reality</h2>
+<ul>
+<li>Entities: things in the real world which are represented by (cartographic) objects that contain essential characteristics</li>
+<li><em>Can be biased by GIS data developer and purpose of map</em></li>
+<li>Objects: abstract, imperfect representations of reality stored in a spatial database</li>
+<li>Biases can come from:
+<ul>
+<li>time constraints</li>
+<li>design decisions</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="data-model" class="level1">
+<h1>Data Model</h1>
+<p>A consistent way of defining and representing objects in a databse, and of representing the relationships among the objects.</p>
+<p>Spatial Data Models (usually two parts):</p>
+<ul>
+<li>coordinate data: pairs or triplets of numbers defining location</li>
+<li>attribute data: text, numbers, images, etc. (non-spatial data)</li>
+</ul>
+<p>Spatial Data Models Construction:</p>
+<ul>
+<li>representation of objects in a spatial database and spatial relationships among them (topology)</li>
+<li>coordinate data: point of origin + spatial location + extent</li>
+</ul>
+<section id="spatial-object-types" class="level2">
+<h2 class="anchored" data-anchor-id="spatial-object-types">Spatial Object Types</h2>
+<p>Representation of entities graphically as spatial objects:</p>
+<ul>
+<li>points (0-Dimensional)</li>
+<li>lines (1-D)</li>
+<li>areas (2-D)</li>
+<li>surfaces (2.5-D)</li>
+<li>volumes (3-D)</li>
+</ul>
+<p>These can be used concurrently to represent the same thing based on your objective.</p>
+</section>
+<section id="attribute-data" class="level2">
+<h2 class="anchored" data-anchor-id="attribute-data">Attribute Data</h2>
+<ul>
+<li>Non-spatial data for describing the characteristics of objects</li>
+<li>Nominal: descriptive (i.e.&nbsp;land use)</li>
+<li>Ordinal: ranked (city size - small, medium, large)</li>
+<li>Interval / Ratio: ranked and absolute difference
+<ul>
+<li>interval: meaningful differences between values (temperature in Fahrenheit and Celsius, pH)</li>
+<li>ratio: contains a zero point (heat/weight, temperature in Kelvin)</li>
+</ul></li>
+</ul>
+</section>
+<section id="thematic-layers" class="level2">
+<h2 class="anchored" data-anchor-id="thematic-layers">Thematic Layers</h2>
+<ul>
+<li>separate layers for each view</li>
+<li>same spatial locations but represent different thematic entities</li>
+<li>combining information from different spatial datasets</li>
+<li>multiple objects from one entity (or several ones)</li>
+</ul>
+<section id="multiple-objects-from-a-single-entity" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-objects-from-a-single-entity">Multiple Objects from a Single Entity</h3>
+<ul>
+<li>Typically store different object types (even from the same entity) in different layers OR differentiated through attributes</li>
+<li>Lake Example:
+<ul>
+<li>municipal water source</li>
+<li>recreation area</li>
+<li>flood control sink</li>
+<li>wildlife habitat</li>
+</ul></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="conceptualization-of-spatial-phenomenon" class="level1">
+<h1>Conceptualization of Spatial Phenomenon</h1>
+<ul>
+<li>Object View: empty space contains <strong>discrete objects</strong> (lakes, land cover, etc.)</li>
+<li>Field View: phenomena varying over space <strong>continuously</strong> (elevation)</li>
+</ul>
+<p>Ultimately, how do we define areas in an image:</p>
+<ul>
+<li>What is a forest?</li>
+<li>What is the map for? Or, who is it for?</li>
+<li>The natural instinct is to draw a line, but that can be difficult with things like gradual changes</li>
+<li>Or even classification challenges like a forest with a bush ground cover</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

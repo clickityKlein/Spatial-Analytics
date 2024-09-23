@@ -61,5 +61,47 @@
     "title": "Spatial Data Representations",
     "section": "",
     "text": "Essential concepts for spatial data representations."
+  },
+  {
+    "objectID": "spatial_data_representations.html#map-identities",
+    "href": "spatial_data_representations.html#map-identities",
+    "title": "Spatial Data Representations",
+    "section": "Map Identities",
+    "text": "Map Identities\n\nTitle: a few words or a single sentence which informs the “where” and the “what” about the map\nData Pane: map visual\nNorth Arrow: shows direction\nNeatline: inside media border, encapsulates datapane\nMedia Border/Edge: very outside border\nNeatline and media border are not usually required, and are dependent on the publication\nLegend: provides information about what things like colors and boundaries\nScale / Scale Bar: provides scale of map to reality"
+  },
+  {
+    "objectID": "spatial_data_representations.html#maps-for-representation",
+    "href": "spatial_data_representations.html#maps-for-representation",
+    "title": "Spatial Data Representations",
+    "section": "Maps for Representation",
+    "text": "Maps for Representation\n\nFeature Map:\n\ncities\nhighways\n\nChoropleth Map:\n\nshows density based on specific units\nattribute is shown by a constant value\nboundaries are artificial\nassume the value is the same for an entire spatial boundary, which may not be true for the entire spatial boundary (first glimpse at scale and MAUP)\n\nDot Density Map\n\nmaps individual points\nmore points equals higher density\n\nContour Map (Isopleth Map)\n\nline features to represent something (i.e. elevation)\nlimitations can be constant or minute changes, which may not be represented"
+  },
+  {
+    "objectID": "spatial_data_representations.html#mapping-and-modeling-reality",
+    "href": "spatial_data_representations.html#mapping-and-modeling-reality",
+    "title": "Spatial Data Representations",
+    "section": "Mapping and Modeling Reality",
+    "text": "Mapping and Modeling Reality\n\nEntities: things in the real world which are represented by (cartographic) objects that contain essential characteristics\nCan be biased by GIS data developer and purpose of map\nObjects: abstract, imperfect representations of reality stored in a spatial database\nBiases can come from:\n\ntime constraints\ndesign decisions"
+  },
+  {
+    "objectID": "spatial_data_representations.html#spatial-object-types",
+    "href": "spatial_data_representations.html#spatial-object-types",
+    "title": "Spatial Data Representations",
+    "section": "Spatial Object Types",
+    "text": "Spatial Object Types\nRepresentation of entities graphically as spatial objects:\n\npoints (0-Dimensional)\nlines (1-D)\nareas (2-D)\nsurfaces (2.5-D)\nvolumes (3-D)\n\nThese can be used concurrently to represent the same thing based on your objective."
+  },
+  {
+    "objectID": "spatial_data_representations.html#attribute-data",
+    "href": "spatial_data_representations.html#attribute-data",
+    "title": "Spatial Data Representations",
+    "section": "Attribute Data",
+    "text": "Attribute Data\n\nNon-spatial data for describing the characteristics of objects\nNominal: descriptive (i.e. land use)\nOrdinal: ranked (city size - small, medium, large)\nInterval / Ratio: ranked and absolute difference\n\ninterval: meaningful differences between values (temperature in Fahrenheit and Celsius, pH)\nratio: contains a zero point (heat/weight, temperature in Kelvin)"
+  },
+  {
+    "objectID": "spatial_data_representations.html#thematic-layers",
+    "href": "spatial_data_representations.html#thematic-layers",
+    "title": "Spatial Data Representations",
+    "section": "Thematic Layers",
+    "text": "Thematic Layers\n\nseparate layers for each view\nsame spatial locations but represent different thematic entities\ncombining information from different spatial datasets\nmultiple objects from one entity (or several ones)\n\n\nMultiple Objects from a Single Entity\n\nTypically store different object types (even from the same entity) in different layers OR differentiated through attributes\nLake Example:\n\nmunicipal water source\nrecreation area\nflood control sink\nwildlife habitat"
   }
 ]
