@@ -1,0 +1,5 @@
+---
+title: "Generalization and the MAUP"
+---
+
+Essential concepts for generalization and the MAUP.

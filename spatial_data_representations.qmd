@@ -1,0 +1,5 @@
+---
+title: "Spatial Data Representations"
+---
+
+Essential concepts for spatial data representations.

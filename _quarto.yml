@@ -1,0 +1,53 @@
+project:
+  type: website
+
+website:
+  title: "Spatial Analytics"
+  page-footer:
+    center: |
+      <a href="https://clickityklein.github.io/Carl-Klein/">About Carl Klein</a>
+    background: primary
+  
+  navbar:
+    left:
+# index is automatically included under the main title page
+#      - href: index.qmd
+#        text: "About"
+      - href: spatial_data_representations.qmd
+        text: "Spatial Data Representations"
+      - href: concepts_scale_resolution.qmd
+        text: "Concepts of Scale and Resolution"
+      - href: generalization_maup.qmd
+        text: "Generalization and the MAUP"
+      - href: projections.qmd
+        text: "Projections"
+      - href: textbook_notes.qmd
+        text: "Textbook Notes"
+      - href: research_notes.qmd 
+        text: "Research Notes"
+      - href: lab_work.qmd
+        text: "Lab Work"
+        
+    right:
+      - icon: github
+      menu:
+        - text: "Source Code"
+          href: https://github.com/clickityKlein/SQL
+        - text: "Carl Klein's Main Page"
+          href: https://github.com/clickityKlein
+        
+
+format:
+  html:
+    email-obfuscation: javascript
+    grid: 
+      body-width: 2000px
+      sidebar-width: 200px
+      margin-width: 200px
+    citations-hover: true
+    code-link: true
+    code-fold: true
+    theme: flatly
+    css: styles.css
+    code-block-border-left: primary
+    toc: true

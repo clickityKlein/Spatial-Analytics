@@ -1,0 +1,5 @@
+---
+title: "Concepts of Scale and Resolution"
+---
+
+Essential concepts for scale and resolution.

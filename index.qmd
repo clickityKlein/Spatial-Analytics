@@ -1,0 +1,5 @@
+---
+title: "Spatial Analytics"
+---
+
+This is a guide to for the essential concepts of Spatial Analytics.
