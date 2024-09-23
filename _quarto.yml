@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: docs
 
 website:
   title: "Spatial Analytics"
@@ -10,9 +11,6 @@ website:
   
   navbar:
     left:
-# index is automatically included under the main title page
-#      - href: index.qmd
-#        text: "About"
       - href: spatial_data_representations.qmd
         text: "Spatial Data Representations"
       - href: concepts_scale_resolution.qmd
@@ -30,11 +28,11 @@ website:
         
     right:
       - icon: github
-      menu:
-        - text: "Source Code"
-          href: https://github.com/clickityKlein/SQL
-        - text: "Carl Klein's Main Page"
-          href: https://github.com/clickityKlein
+        menu:
+          - text: "Source Code"
+            href: https://github.com/clickityKlein/Spatial-Analytics
+          - text: "Carl Klein's Main Page"
+            href: https://github.com/clickityKlein
         
 
 format:
