@@ -3,3 +3,11 @@ title: "Lab Work"
 ---
 
 Concepts and conclusions from the labs.
+
+# Lab 1 - Timber
+
+- Conceptual Wrap Up: Summarizing Tools:
+  - Extract: Select and extract specific features/attributes from a dataset by querying specific values from a feature/attribute in a dataset.
+  - Overlay: Combine layers into a new layer to represent spatial relationships between input features using UNION.
+  - Buffer: Creates a proximity or perimeter zone (new polygon at a specified distance) around given features like points, polygons, or lines.
+  - Statistics: Calculates different summary statistics like sum, mean, minimum, maximum, etc. for fields in a table.

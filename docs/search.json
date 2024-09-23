@@ -39,7 +39,7 @@
     "href": "lab_work.html",
     "title": "Lab Work",
     "section": "",
-    "text": "Concepts and conclusions from the labs."
+    "text": "Concepts and conclusions from the labs.\n\nLab 1 - Timber\n\nConceptual Wrap Up: Summarizing Tools:\n\nExtract: Select and extract specific features/attributes from a dataset by querying specific values from a feature/attribute in a dataset.\nOverlay: Combine layers into a new layer to represent spatial relationships between input features using UNION.\nBuffer: Creates a proximity or perimeter zone (new polygon at a specified distance) around given features like points, polygons, or lines.\nStatistics: Calculates different summary statistics like sum, mean, minimum, maximum, etc. for fields in a table."
   },
   {
     "objectID": "generalization_maup.html",
