@@ -131,3 +131,110 @@ Roughly draws from *The Territorial Trap* and *Mach - Climate As a Risk Factor F
   - shatterbelts (crush zones, shatter zones)
   - clash of civilizations (i.e. west vs east, bloody borders)
 - CLIMATE CHANGE AND ITS EFFECT OPERATES THROUGH MECHANISMS
+
+# Paper: Scale and Its Histories - Lukinbeal
+
+- **very philosophical paper**
+- The author presents scale as an ambiguous definition, however argues that scale should be considered as a mentifact, or abstract cultural trait
+  - aids our bodies in daily life
+  - basis of exchange, valuation, trade, and transactions that can occur in a moral and ethical way
+- In general, scale has grown to be conceived as
+  - ontology: in the technical sciences, a structured framework that defines the relationships between concepts within a specific domain
+    - primary: references a hierarchy
+    - secondary: means to assess proportion (size)
+  - epistemology: in the social sciences, a nature, origin, and limits of human knowledge
+    - primary: a system for weighing, a means to estimate quantity including distance, assessing proportion
+    - secondary: reference a hierarchy
+- Lam and Quattrochi (1992) give four modalities of scale in the natural sciences and GIScience:
+  - cartographic (distance relations)
+  - geographic (spatial extent)
+  - operational (level at which processes operate)
+    - especially significant for how natural and technical scienctists conduct studies and work
+  - level of resolution (large scale / small scale, pixel quality)
+- scale as a representational analogy and technique
+  - equates things based on similarity while omitting difference for the purpose of clarity
+  - provides the organization structure for showing three-dimensional objects as two-dimensional representations
+  - we have a reliance on scale to make sense of representations such as near/far, small/large, light/heavy, slow/fast
+- A distinguishing feature of geography is that it is dependent on visual images to illustrate knowledge
+- geography is about the science of studying the proportions of the world, chorography is a humanities-approach to understanding the nuances of smaller parts of the world
+
+# Paper: The scale issue in social and natural science - Marceau
+
+- Recognizes the ambiguity of scale's definition, but offers a generally accepted version of it:
+  - a central concept in the description of the hierarchical organization of our world
+- how processes operate and how they can be linked across scales
+- necessity to predict and control scale and aggregation effects on statistical results and modeling is also recognized as major goals to achieve
+- variability in statistical results and conclusions between scales or aggregation levels, meaning that interpretations aren't expected to hold across scales, and leads to the concept of preferred scales
+- **scales can be defined as a continuum through which entities, patterns, and processes can be observed and linked**.
+- the scale problem / scale issue
+  1. what is the appropriate spatial scale for the study of a particular geographical phenomenon?
+  2. how can we adequately transfer information one spatial scale to another?
+- space
+  - absolute: rigid, three-dimensional Euclidean geometry, trigonometric rules can be applied
+  - relative: not immune to influence, space exists only with reference to spatial entities and processes (implication of patterns and processes with specific context)
+  - example: areas may be close in absolute space but distant in relative space when time, rates, and interactions are considered
+  - absolute and relative concepts should be seen as complementary
+- **scale refers to the spatial dimensions at which entities, patterns, and processes can be observed and characterized**.
+- scaling (*generalization?*): upscaling consists of taking information at smaller scales to derive processes at larger scales, downscaling consists of decomposing information at one scale into its constituents at smaller scales
+- ecology fallacy: error resulting from making statistical inferences from aggregate relationships to individual relationships
+- solutions for maup:
+  - clustering: grouping a set of areal units to partition a study area in such a way that their number and configuration reveal as much information as possible about the phenomenon of interest
+    - conventionally represented by a dendogram which shows the stages in grouping and the loss of detail that occurs during the process of aggregation
+  - identification of basic geographical entities (basic spatial units)
+    - however this approach is not always practical in a universal sense
+    - BUT... identification of basic attributes defining the objects under investigation is a fundamental practical exercise that must be done to ensure the validity of any scientific inquiry
+  - systematically perform sensitivity analysis
+  - using principal axis factor analysis (*PCA?*), specific MAUP effects are strongly influenced by the presence of **spatial autocorrelation** in data
+- domain of scale: regions of a scale in which patterns do not change or change monotonically with scale
+- scale threshold: these domains are separated by thresholds, defined by relatively sharp transitions or critical points along the spatial scale continuum
+  - identification of relevant domains of scale and scale thresholds when studying a specific phenomenon
+  - evaluation of scale effect on the explanatory role of sets of variables
+  - determination of scaling laws to adequately link information across scales
+- solutions to the scale problem
+  - autocorrelation functions
+  - correlograms
+  - semivariograms
+  - hierarchical path dynamics paradigm (HPDP)
+    - theory of patch dynamics
+- final step: create a solid unified theoretical framework from which hypotheses can be derived and tested, and generalizations achieved
+
+# Paper: Scale in Geography - Montello
+
+- Concisely defines scale across three conventions:
+  - cartographic scale: depicted feature on a map and its actual size in the world
+  - analysis scale: size of the unit at which some problem is analyzed (county or state level)
+  - phenomenon scale: size at which human or physical earth structures or processes exist, regardless of method of study or representation
+- the scale of the analysis should be the same scale of the phenomenon
+  - inferences across scales can cause a cross-level fallacy
+  
+# Paper: Modifiable Temporal Unit Problem (MTUP) and its Effect on Space-Time Cluster Detection
+
+- spatial aggregation requires consideration of problems such as the MAUP and ecological fallacy
+- analogously, temporal aggregation can lead to the Modifiable Temporal Unit Problem (MTUP), which can be examined across three effects:
+  - aggregation
+  - segmentation
+  - boudnary
+- temporal aggregation effect:
+  - process of converting observations from a fine interval into a coarse interval
+  - can be important for creating meaningful analyses, with conversion of data into measures at regular time intervals (i.e. hourly vs daily vs monthly may make more sense depending on the analysis)
+  - various forms of this, but most common is discretization of a fine interval into a course interval with events summed in bins
+  - transforming from fine intervals to course intervals is also known as transforming to lower scales
+- temporal segmentation effect:
+  - analogous to the zoning effect of MAUP, where spatial statistics vary depending on the adoption of different zoning patterns
+  - a series of segmentations can be generated from a single time frame by simply varying the starting point of the temporal intervals
+- temporal boundary effect
+  - in spatial analysis, a boundary is usually an arbitrary line drawn around a geographical area indicating its extent
+  - extending to temporal analysis, this essentially refers to the starting points and ending points in a time interval
+- analysis via space-time scan statistics (STSS)
+  - investigate whether an observed cluster of events has occurred by chance, assuming that the events are distrusted uniformly across the geographical region with no space-time interaction (i.e. a null hypothesis)
+  - scans an area using a large set of overlapping windows moving across space **and** time
+    - the window has a shape (i.e. cylinder), a base centroid (x, y), a radius (r), and a time length (t)
+    - the size of the shape is increased systematically by space and time, generating a large number of cylinders with all parameters evaluated at each instance
+    - statistical analysis is done on with highest likelihood ratios marked as primary candidates for true clusters (can be tested via Monte Carlo replication)
+
+# Paper: Linear Trends in Seasonal Vegetation Time Series and the MTUP - Jong
+
+- commonly, trends are quantified using linear regression methods, while the effect of serial autocorrelation is remediated by temporal aggregation over bins having fixed widths
+- just as different spatial aggregations can cause spurious results due to MAUP, so can different temporal aggregations can too
+- temporal bins (different time interval aggregation windows) can be regarded as temporal units and are modifiable
+- in their research, they found that coarser aggregation levels tend to overestimate change and result in higher variation in predictions with their OLS models
