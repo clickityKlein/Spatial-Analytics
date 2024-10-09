@@ -67,6 +67,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -147,7 +149,39 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#measuring-the-earth" id="toc-measuring-the-earth" class="nav-link active" data-scroll-target="#measuring-the-earth">Measuring the Earth</a>
+  <ul class="collapse">
+  <li><a href="#definitions" id="toc-definitions" class="nav-link" data-scroll-target="#definitions">Definitions</a></li>
+  <li><a href="#surfaces" id="toc-surfaces" class="nav-link" data-scroll-target="#surfaces">Surfaces</a></li>
+  </ul></li>
+  <li><a href="#horitzontal-datum" id="toc-horitzontal-datum" class="nav-link" data-scroll-target="#horitzontal-datum">Horitzontal Datum</a>
+  <ul class="collapse">
+  <li><a href="#process" id="toc-process" class="nav-link" data-scroll-target="#process">Process</a></li>
+  <li><a href="#ellipsoid-and-datum-summary" id="toc-ellipsoid-and-datum-summary" class="nav-link" data-scroll-target="#ellipsoid-and-datum-summary">Ellipsoid and Datum Summary</a></li>
+  </ul></li>
+  <li><a href="#general-coordinate-systemes" id="toc-general-coordinate-systemes" class="nav-link" data-scroll-target="#general-coordinate-systemes">General Coordinate Systemes</a></li>
+  <li><a href="#map-projection" id="toc-map-projection" class="nav-link" data-scroll-target="#map-projection">Map Projection</a>
+  <ul class="collapse">
+  <li><a href="#distortion-properties" id="toc-distortion-properties" class="nav-link" data-scroll-target="#distortion-properties">Distortion Properties</a></li>
+  <li><a href="#families-of-map-projections" id="toc-families-of-map-projections" class="nav-link" data-scroll-target="#families-of-map-projections">Families of Map Projections</a>
+  <ul class="collapse">
+  <li><a href="#planar-projections" id="toc-planar-projections" class="nav-link" data-scroll-target="#planar-projections">Planar Projections</a></li>
+  </ul></li>
+  <li><a href="#common-map-projections" id="toc-common-map-projections" class="nav-link" data-scroll-target="#common-map-projections">Common Map Projections</a>
+  <ul class="collapse">
+  <li><a href="#lambert-conformal-conic" id="toc-lambert-conformal-conic" class="nav-link" data-scroll-target="#lambert-conformal-conic">Lambert Conformal Conic</a></li>
+  <li><a href="#transverse-mercator" id="toc-transverse-mercator" class="nav-link" data-scroll-target="#transverse-mercator">Transverse Mercator</a></li>
+  <li><a href="#global-utm-system-universal-transverse-mercator-coordinate-system" id="toc-global-utm-system-universal-transverse-mercator-coordinate-system" class="nav-link" data-scroll-target="#global-utm-system-universal-transverse-mercator-coordinate-system">Global UTM System (Universal Transverse Mercator Coordinate System)</a></li>
+  <li><a href="#united-states-plane-coordinate-system-spsc---state-plane-coordinate-system" id="toc-united-states-plane-coordinate-system-spsc---state-plane-coordinate-system" class="nav-link" data-scroll-target="#united-states-plane-coordinate-system-spsc---state-plane-coordinate-system">United States Plane Coordinate System (SPSC - State Plane Coordinate System)</a></li>
+  </ul></li>
+  <li><a href="#miscellaneous-features-and-details-of-projections" id="toc-miscellaneous-features-and-details-of-projections" class="nav-link" data-scroll-target="#miscellaneous-features-and-details-of-projections">Miscellaneous Features and Details of Projections</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -171,9 +205,237 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Essential concepts for projections.</p>
+<p>Projections are ways to visualization our three-dimensional Earth on a two-dimensional plane.</p>
+<p>Key Concepts:</p>
+<ul>
+<li>Measuring the Earth:
+<ul>
+<li>Elipsoid</li>
+<li>Geoid</li>
+<li>Datums</li>
+</ul></li>
+<li>Displaying the Earth
+<ul>
+<li>General Coordinate Systems (i.e.&nbsp;Spherical and Cartesian)</li>
+<li>Projections and Distortion Properties</li>
+<li>Specific Coordinate Systems (i.e.&nbsp;UTM and State Plane)</li>
+</ul></li>
+</ul>
+<section id="measuring-the-earth" class="level1">
+<h1>Measuring the Earth</h1>
+<section id="definitions" class="level2">
+<h2 class="anchored" data-anchor-id="definitions">Definitions</h2>
+<ul>
+<li>Geodesy: science of measuring the size and shape of the Earth</li>
+<li>Datum: a reference surface (i.e.&nbsp;set of known points) relative to an ellipsoid and a geoid
+<ul>
+<li>a site datum: a reference height against which elevations are measured</li>
+<li>example: establish datum as a fixed elevation at the lowest point on the property, all heights are measured relative to the site (or local) datum</li>
+</ul></li>
+</ul>
+<p><strong>The Earth is not a perfect sphere, but better defined by a geoid (hypothetical shape of the Earth). The Earth’s shape can be properly defined by many ellipsoids, as it is flattened and roughly an ellipsoid in general.</strong></p>
+<ul>
+<li>A geoid is an object represented by many ellipsoids.
+<ul>
+<li>ellipsoids are mathematically defined</li>
+<li>geoids are not mathematically defined, but is a measured surface</li>
+<li>proper definition: <strong>a geoid is the measured surface perpendicular to a plumb line determined by the pull of gravity.</strong></li>
+</ul></li>
+</ul>
+<p><img src="images/geoid_1.png" class="img-fluid"></p>
+<p><em>Several experiments, particularly the Gochi Rocket, have shown that gravity does in fact change over different areas of the Earth.</em></p>
+</section>
+<section id="surfaces" class="level2">
+<h2 class="anchored" data-anchor-id="surfaces">Surfaces</h2>
+<p>When creating the geoid, there are three surfaces to keep track of:</p>
+<ul>
+<li>the ellipsoid</li>
+<li>the geoid
+<ul>
+<li>geoid undulation: height of the geoid relative to a given ellipsoid of reference</li>
+</ul></li>
+<li>the physical surface</li>
+</ul>
+</section>
+</section>
+<section id="horitzontal-datum" class="level1">
+<h1>Horitzontal Datum</h1>
+<p>Horizontal Datum: set of carefully surveyed reference points (surface) based on a given ellipsoid (approximating the geoid).</p>
+<section id="process" class="level2">
+<h2 class="anchored" data-anchor-id="process">Process</h2>
+<ol type="1">
+<li>Define the shape of the Earth (ellipsoid)</li>
+<li>Use triangulation surveys to dfine the location of a set of known control points - for which the position on the ellipsoid is precisely known (geodetic datum)</li>
+<li>This is the reference surface and network agaisnt which all other points will be measured</li>
+</ol>
+</section>
+<section id="ellipsoid-and-datum-summary" class="level2">
+<h2 class="anchored" data-anchor-id="ellipsoid-and-datum-summary">Ellipsoid and Datum Summary</h2>
+<ul>
+<li>Ellipsoids: mathematically defined by 2 radii
+<ul>
+<li>Clarke 1866</li>
+<li>World Geodetic System of 1972 (WGS72)</li>
+<li>Geodetic Reference System 1980 (GRS80)</li>
+<li>World Geodetic System of 1984 (WGS84)</li>
+</ul></li>
+<li>Datum: reference points for establishing horizontal position
+<ul>
+<li>NAD27 (uses Clarke 1866)</li>
+<li>NAD83 (uses GRS80)</li>
+<li>Geodetic Datum of Australia (uses GRS80)</li>
+<li>WGS84 “reference ellipsoid” (uses WGS84)</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="general-coordinate-systemes" class="level1">
+<h1>General Coordinate Systemes</h1>
+<p>Spatial referencing system to locate points on the Earth’s surface using pairs/triplets of numbers</p>
+<ul>
+<li><strong>Spherical Coordinates</strong>: geographic / geodetic
+<ul>
+<li>Coordinates that describe locations on a sphere</li>
+<li>Uses angles of rotation to define a directional vector</li>
+</ul></li>
+<li><strong>Planar</strong>: cartesian
+<ul>
+<li>Coordinates that describe locations within a two-dimensional Cartesian space (mostly right angles)</li>
+<li>rectangular grid with X and Y axes
+<ul>
+<li>X: easting axis</li>
+<li>Y: northing axis</li>
+<li>each point is defined by an X, Y coordinate</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><img src="images/gen_coordinates_1.png" class="img-fluid"></p>
+</section>
+<section id="map-projection" class="level1">
+<h1>Map Projection</h1>
+<p>A means of fitting features from the three-dimensional globe to a two-dimensional medium (i.e.&nbsp;map or computer screen), in reference to a datum.</p>
+<ul>
+<li>Necessary to display a spherical object on a flat surface</li>
+<li>Data from difference sources might fail to display if projections are not matching up</li>
+<li>Results in map distortions, which are projection errors
+<ul>
+<li>Distortion properties cannot simultaneously be preserved in two-dimensions
+<ul>
+<li>conformality (<em>a continuous sequence of deposits, typical in parallel strata</em>)</li>
+<li>distance</li>
+<li>direction</li>
+<li>area</li>
+</ul></li>
+</ul></li>
+</ul>
+<section id="distortion-properties" class="level2">
+<h2 class="anchored" data-anchor-id="distortion-properties">Distortion Properties</h2>
+<ul>
+<li>Expansion: projection from ellipsoid surface is closer to <em>light</em> source than map surface</li>
+<li>Compression: projection from map surface is closer to <em>light</em> source than map surface</li>
+</ul>
+<p><img src="images/distortion_1.png" class="img-fluid"></p>
+<ul>
+<li>conformality
+<ul>
+<li><strong>conformal</strong> map projections preserve local shape (meridians and parallels intersect at right angles)</li>
+<li>map scales the same everywhere and in any direction</li>
+</ul></li>
+<li>distance
+<ul>
+<li>distances are true only from the center of the projection to any other place (<strong>equidistance</strong>) but not between these places</li>
+</ul></li>
+<li>direction
+<ul>
+<li>great circle: shortest route between two points on a curved surface</li>
+<li>along the spherical equivalent of a straight line on a flat surface</li>
+<li><strong>true-direction</strong> projections maintain these directions relative to center</li>
+</ul></li>
+<li>area
+<ul>
+<li><strong>equal area projections</strong>: all mapped areas have the same proportional relationship to the areas on the Earth that they represent</li>
+<li>shape, angle, and scale may be distorted</li>
+</ul></li>
+</ul>
+</section>
+<section id="families-of-map-projections" class="level2">
+<h2 class="anchored" data-anchor-id="families-of-map-projections">Families of Map Projections</h2>
+<p>Most common projections are based on developable surfaces, which are geometric shapes onto which Earth locations are projected. Imaging a light source in the center of a globe, there are three main categories:</p>
+<ul>
+<li>planar (plane/azimuthal): projected onto a flat surface</li>
+<li>cylindrical: cylinder wrapped around the globe</li>
+<li>conic: cone wrapped around the globe</li>
+</ul>
+<p><img src="images/projection_family_1.jpg" class="img-fluid"></p>
+<section id="planar-projections" class="level3">
+<h3 class="anchored" data-anchor-id="planar-projections">Planar Projections</h3>
+<ul>
+<li>Gnomonic: center</li>
+<li>Stereographic: antipode</li>
+<li>Orthographic: infinity</li>
+</ul>
+<p><img src="images/planar_projections_1.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="common-map-projections" class="level2">
+<h2 class="anchored" data-anchor-id="common-map-projections">Common Map Projections</h2>
+<section id="lambert-conformal-conic" class="level3">
+<h3 class="anchored" data-anchor-id="lambert-conformal-conic">Lambert Conformal Conic</h3>
+<p><img src="images/lambert_conformal_conic_1.png" class="img-fluid"></p>
+</section>
+<section id="transverse-mercator" class="level3">
+<h3 class="anchored" data-anchor-id="transverse-mercator">Transverse Mercator</h3>
+<p><img src="images/transverse_mercator_1.png" class="img-fluid"></p>
+</section>
+<section id="global-utm-system-universal-transverse-mercator-coordinate-system" class="level3">
+<h3 class="anchored" data-anchor-id="global-utm-system-universal-transverse-mercator-coordinate-system">Global UTM System (Universal Transverse Mercator Coordinate System)</h3>
+<p><img src="images/global_utm_1.png" class="img-fluid"></p>
+<ul>
+<li>Each zone is 6 degrees wide</li>
+<li>Zone location defined by a central meridian</li>
+<li>North Origin (at the equator <span class="math inline">\(rightarrow\)</span> <strong>Northing=0</strong>)</li>
+<li>South Origin (false northing of 10,000km)</li>
+<li>West (False Easting: 500,000km west of the zone’s central Meridian)</li>
+<li>Coordinates are always positive</li>
+<li>Coorindates discontinuous across zone boundaries</li>
+</ul>
+<p><strong>UTM Zones for US are 10-19 (West Coast to East Coast).</strong></p>
+</section>
+<section id="united-states-plane-coordinate-system-spsc---state-plane-coordinate-system" class="level3">
+<h3 class="anchored" data-anchor-id="united-states-plane-coordinate-system-spsc---state-plane-coordinate-system">United States Plane Coordinate System (SPSC - State Plane Coordinate System)</h3>
+<ul>
+<li>States Use Multiple Zones and Projections (some states use multiple within)</li>
+<li>Less distortion than UTM
+<ul>
+<li>high accuracy</li>
+<li>projection distortions are roughly 4x better than UTM</li>
+</ul></li>
+<li>Issues: large metro areas can cover several counties and thus several state plane zones</li>
+</ul>
+<p><img src="images/spsc_1.png" class="img-fluid"></p>
+<section id="applying-projections-to-zones" class="level4">
+<h4 class="anchored" data-anchor-id="applying-projections-to-zones">Applying Projections to Zones</h4>
+<ul>
+<li>Lambert Conformal Conic:
+<ul>
+<li>distortion increases with distance from central meridian</li>
+<li>good for states with long North-South axis</li>
+</ul></li>
+<li>Mercator:
+<ul>
+<li>distortion increases with distance from parallels</li>
+<li>good for states with long East-West axis</li>
+</ul></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="miscellaneous-features-and-details-of-projections" class="level2">
+<h2 class="anchored" data-anchor-id="miscellaneous-features-and-details-of-projections">Miscellaneous Features and Details of Projections</h2>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

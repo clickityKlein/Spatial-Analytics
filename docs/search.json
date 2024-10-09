@@ -144,7 +144,63 @@
     "href": "projections.html",
     "title": "Projections",
     "section": "",
-    "text": "Essential concepts for projections."
+    "text": "Projections are ways to visualization our three-dimensional Earth on a two-dimensional plane.\nKey Concepts:"
+  },
+  {
+    "objectID": "projections.html#definitions",
+    "href": "projections.html#definitions",
+    "title": "Projections",
+    "section": "Definitions",
+    "text": "Definitions\n\nGeodesy: science of measuring the size and shape of the Earth\nDatum: a reference surface (i.e. set of known points) relative to an ellipsoid and a geoid\n\na site datum: a reference height against which elevations are measured\nexample: establish datum as a fixed elevation at the lowest point on the property, all heights are measured relative to the site (or local) datum\n\n\nThe Earth is not a perfect sphere, but better defined by a geoid (hypothetical shape of the Earth). The Earth’s shape can be properly defined by many ellipsoids, as it is flattened and roughly an ellipsoid in general.\n\nA geoid is an object represented by many ellipsoids.\n\nellipsoids are mathematically defined\ngeoids are not mathematically defined, but is a measured surface\nproper definition: a geoid is the measured surface perpendicular to a plumb line determined by the pull of gravity.\n\n\n\nSeveral experiments, particularly the Gochi Rocket, have shown that gravity does in fact change over different areas of the Earth."
+  },
+  {
+    "objectID": "projections.html#surfaces",
+    "href": "projections.html#surfaces",
+    "title": "Projections",
+    "section": "Surfaces",
+    "text": "Surfaces\nWhen creating the geoid, there are three surfaces to keep track of:\n\nthe ellipsoid\nthe geoid\n\ngeoid undulation: height of the geoid relative to a given ellipsoid of reference\n\nthe physical surface"
+  },
+  {
+    "objectID": "projections.html#process",
+    "href": "projections.html#process",
+    "title": "Projections",
+    "section": "Process",
+    "text": "Process\n\nDefine the shape of the Earth (ellipsoid)\nUse triangulation surveys to dfine the location of a set of known control points - for which the position on the ellipsoid is precisely known (geodetic datum)\nThis is the reference surface and network agaisnt which all other points will be measured"
+  },
+  {
+    "objectID": "projections.html#ellipsoid-and-datum-summary",
+    "href": "projections.html#ellipsoid-and-datum-summary",
+    "title": "Projections",
+    "section": "Ellipsoid and Datum Summary",
+    "text": "Ellipsoid and Datum Summary\n\nEllipsoids: mathematically defined by 2 radii\n\nClarke 1866\nWorld Geodetic System of 1972 (WGS72)\nGeodetic Reference System 1980 (GRS80)\nWorld Geodetic System of 1984 (WGS84)\n\nDatum: reference points for establishing horizontal position\n\nNAD27 (uses Clarke 1866)\nNAD83 (uses GRS80)\nGeodetic Datum of Australia (uses GRS80)\nWGS84 “reference ellipsoid” (uses WGS84)"
+  },
+  {
+    "objectID": "projections.html#distortion-properties",
+    "href": "projections.html#distortion-properties",
+    "title": "Projections",
+    "section": "Distortion Properties",
+    "text": "Distortion Properties\n\nExpansion: projection from ellipsoid surface is closer to light source than map surface\nCompression: projection from map surface is closer to light source than map surface\n\n\n\nconformality\n\nconformal map projections preserve local shape (meridians and parallels intersect at right angles)\nmap scales the same everywhere and in any direction\n\ndistance\n\ndistances are true only from the center of the projection to any other place (equidistance) but not between these places\n\ndirection\n\ngreat circle: shortest route between two points on a curved surface\nalong the spherical equivalent of a straight line on a flat surface\ntrue-direction projections maintain these directions relative to center\n\narea\n\nequal area projections: all mapped areas have the same proportional relationship to the areas on the Earth that they represent\nshape, angle, and scale may be distorted"
+  },
+  {
+    "objectID": "projections.html#families-of-map-projections",
+    "href": "projections.html#families-of-map-projections",
+    "title": "Projections",
+    "section": "Families of Map Projections",
+    "text": "Families of Map Projections\nMost common projections are based on developable surfaces, which are geometric shapes onto which Earth locations are projected. Imaging a light source in the center of a globe, there are three main categories:\n\nplanar (plane/azimuthal): projected onto a flat surface\ncylindrical: cylinder wrapped around the globe\nconic: cone wrapped around the globe\n\n\n\nPlanar Projections\n\nGnomonic: center\nStereographic: antipode\nOrthographic: infinity"
+  },
+  {
+    "objectID": "projections.html#common-map-projections",
+    "href": "projections.html#common-map-projections",
+    "title": "Projections",
+    "section": "Common Map Projections",
+    "text": "Common Map Projections\n\nLambert Conformal Conic\n\n\n\nTransverse Mercator\n\n\n\nGlobal UTM System (Universal Transverse Mercator Coordinate System)\n\n\nEach zone is 6 degrees wide\nZone location defined by a central meridian\nNorth Origin (at the equator \\(rightarrow\\) Northing=0)\nSouth Origin (false northing of 10,000km)\nWest (False Easting: 500,000km west of the zone’s central Meridian)\nCoordinates are always positive\nCoorindates discontinuous across zone boundaries\n\nUTM Zones for US are 10-19 (West Coast to East Coast).\n\n\nUnited States Plane Coordinate System (SPSC - State Plane Coordinate System)\n\nStates Use Multiple Zones and Projections (some states use multiple within)\nLess distortion than UTM\n\nhigh accuracy\nprojection distortions are roughly 4x better than UTM\n\nIssues: large metro areas can cover several counties and thus several state plane zones\n\n\n\nApplying Projections to Zones\n\nLambert Conformal Conic:\n\ndistortion increases with distance from central meridian\ngood for states with long North-South axis\n\nMercator:\n\ndistortion increases with distance from parallels\ngood for states with long East-West axis"
+  },
+  {
+    "objectID": "projections.html#miscellaneous-features-and-details-of-projections",
+    "href": "projections.html#miscellaneous-features-and-details-of-projections",
+    "title": "Projections",
+    "section": "Miscellaneous Features and Details of Projections",
+    "text": "Miscellaneous Features and Details of Projections"
   },
   {
     "objectID": "spatial_data_representations.html",
