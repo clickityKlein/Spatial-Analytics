@@ -61,10 +61,6 @@ Snap tolerance must be chosen carefully:
 - overshooting: lines cross over existing nodes or lines
 - rule of thumb: should be smaller than the desired positional accuracy
 
-# Topology Rules (ArcGIS Specific)
-
-![](images/topology_rules_1.pdf)
-
 # Advanced Data Model with Applied Topology
 
 - Network Models
@@ -85,3 +81,11 @@ Snap tolerance must be chosen carefully:
     - adjacency
     - connectivity
     - containment
+    
+# Topology Rules (ArcGIS Specific)
+
+<iframe
+  width="800"
+  height="800"
+  src="images/topology_rules_1.pdf">
+</iframe>
