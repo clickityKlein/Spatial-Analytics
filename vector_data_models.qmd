@@ -1,0 +1,87 @@
+---
+title: "Vector Data Models"
+---
+
+Specifically, this section will cover vector models and their relation to topology.
+
+Recall a vector model is a model made with points, lines, and polygons, representing entities and features. There can also be associated attributes, which are the non-spatial components of a model.
+
+![](images/vector_model_1.png)
+
+Vector models can commonly be represented as:
+
+- non-topological vector models
+- topological vector models
+
+# Non-Topological Vector Data Model
+
+- Advantages
+  - simple (often *open* file standards)
+  - efficient for display and plotting
+- Disadvantages
+  - can contain duplicate common boundaries (increases costs due storage and analysis)
+  - can be inefficient for spatial analysis
+  - editing and querying can be difficult
+  
+*Can be referred to as spaghetti models.*
+  
+# Topological Vector Data Model
+
+**Topology**: geometric properties that do not chance with changes shapes, specifically the following properties:
+
+- adjacency
+- connectivity
+- containment
+
+A topologically defined model can have its shape changed (or **warped**) and still retain its properties.
+
+![](images/vector_model_2.png)
+
+- Advantages
+  - data storage reduced (boundary arcs stored once)
+  - explicit neighbor relations maintained
+    - useful for cleaning, digitizing, analysis, and queries
+- Disadvantages
+  - computational overhead
+  - draws slower
+  
+# Topological versus Non-Topological Editing
+
+![](images/vector_model_3.png)
+
+## Snapping
+
+Given a snap tolerance, points and lines can be combined into shared boundaries. Essentially, points are automatically set to have the same coordinates. *They become magnetic*. Position errors can stem during build processes, especially when digitizing.
+
+![](images/vector_model_4.png)
+
+Snap tolerance must be chosen carefully:
+
+- undershooting: node does not quite reach other node or line
+- overshooting: lines cross over existing nodes or lines
+- rule of thumb: should be smaller than the desired positional accuracy
+
+# Topology Rules (ArcGIS Specific)
+
+![](images/topology_rules_1.pdf)
+
+# Advanced Data Model with Applied Topology
+
+- Network Models
+  - routes
+  - hydrology (i.e. river networks with help in flooding scenarios)
+  - other models with attributes that can affect a **cost**
+  - can get very complex
+  - given a topologically regulated network, can change shape without changing properties, must follow:
+    - adjacency
+    - connectivity
+    - containment
+- Triangular Irregular Networks (TINs)
+  - create a network over a landscape with triangles to represent terrain elevation via a topological network
+  - points (nodes) can be actual measured references
+  - edges are formed between the nodes
+  - the triangular faces are known as facets
+  - adhere to the topological properties:
+    - adjacency
+    - connectivity
+    - containment
