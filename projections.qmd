@@ -172,10 +172,10 @@ Most common projections are based on developable surfaces, which are geometric s
 
 - Lambert Conformal Conic:
   - distortion increases with distance from central meridian
-  - good for states with long North-South axis
+  - good for states with long East-West axis
 - Mercator:
   - distortion increases with distance from parallels
-  - good for states with long East-West axis
+  - good for states with long North-South axis
   
   
 ## Miscellaneous Features and Details of Projections
