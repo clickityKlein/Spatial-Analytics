@@ -10,6 +10,8 @@ This is a guide to for the essential concepts of Spatial Analytics.
 - [Concepts of Scale and Resolution](concepts_scale_resolution.qmd)
 - [Generalization and the MAUP](generalization_maup.qmd)
 - [Projections](projections.qmd)
+- [GPS / GNSS](gps_gnss.qmd)
+- [Vector Data Models](vector_data_models.qmd)
 
 # Overview
 

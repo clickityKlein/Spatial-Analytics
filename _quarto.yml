@@ -19,14 +19,14 @@ website:
         text: "Generalization and the MAUP"
       - href: projections.qmd
         text: "Projections"
-      - href: textbook_notes.qmd
-        text: "Textbook Notes"
       - href: gps_gnss.qmd
         text: "GPS / GNSS"
       - href: vector_data_models.qmd
         text: "Vector Data Models"
       - href: research_notes.qmd 
         text: "Research Notes"
+      - href: textbook_notes.qmd
+        text: "Textbook Notes"
       - href: lab_work.qmd
         text: "Lab Work"
         
