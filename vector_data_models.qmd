@@ -89,3 +89,129 @@ Snap tolerance must be chosen carefully:
   height="800"
   src="images/topology_rules_1.pdf">
 </iframe>
+
+# Vector Operations
+
+Vector operations are used in spatial data analysis on vector data models. Vector operations can be applied with functions and can have **one-to-one** or **many-to-one** type inputs and outputs.
+
+## Common Vector Operations
+
+- Measurements
+  - length (lines): commonly measured via Euclidean distance formula
+  - area (polygons): commonly measured by dividing polygons into triangles, which have easily calculable area, and summing over positive and negative results
+- Selection
+  - Query features (by layer) based on attributes
+  - Query features (by layer) based on spatial criteria such as topology rules (adjacency, connectivity, containment, etc.)
+  - Querying features by multiple layers:
+    - Set algebra: $<, >, =, <>$
+    - Boolean algebra:
+      - disjunction (OR)
+      - conjunction (AND)
+      - complement/negation (NOT)
+- Classification and Re-classification
+  - categorize geographic objects based on a set of conditions
+  - i.e. re-classification could be forest into
+    - deciduous forest
+    - evergreen forest
+    - mixed forest
+  - re-classification based on binary logical results (i.e. "West of the Mississippi")
+  - Classification Schemes
+    - equal-interval
+    - natural breaks
+    - equal-area
+    
+![](images/classification_schemes_1.png)
+    
+- Dissolve
+  - combine like features based on attributes
+  - i.e. combine smaller polygons into larger polygons based on criteria
+  - can be used after reclassification (i.e. states west and east of the Mississippi dissolves into two total polygons)
+  - don't forget about MAUP when performing dissolves
+- Buffer
+  - simple buffer: point layer $\rightarrow$ overlap dissolved
+  - compound buffer: point layer $\rightarrow$ overlap identified
+  - nested buffer (doughnut buffer): nested rings within a simple buffer
+  - variable buffer: buffer changes with relation to attribute (i.e. distance from main branch of river)
+  
+![](images/buffer_types_1.png)
+  
+- Overlay
+  - point in polygon
+  - line in polygon
+  - polygon
+    - intersection
+    - union
+    - clip
+    - erase
+    - identity
+  - spatial analysis within overlay
+    - using a common coordinate system, different layers with spatial and attribute data can be combined into a new layer
+  - vector overlay (point, line, polygon):
+    - intersecting liens are split and a node placed at the intersection point
+    - topology is likely to be different
+    - must be recreated for later processing
+    - output typically takes the lowest dimension of the inputs
+  - can use overlays to combine attributes of layers and create new tables
+    
+### Overlay: Point in Polygon
+
+![](images/point_in_polygon_1.png)
+
+### Line in Polygon
+
+![](images/line_in_polygon_1.png)
+
+### Polygon on Polygon (Boolean Algebra / Clip / Erase)
+
+![](images/polygon_on_polygon_1.png)
+
+### Polygon Overlay: Intersection
+
+::: columns
+::: {.column width="40%"}
+
+![](images/intersection_1.png)
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+![](images/intersection_2.png)
+:::
+:::
+
+### Polygon Overlay: Union
+
+Can be shown similarly to the above with attributes, intermediate, and final output.
+
+### Polygon Overlay: Clip
+
+- Clip feature must be polygons, input can be points, lines or polygons
+- Input attributes retained; clip feature attributes ignored
+- Essentially acts as a **crop** function
+
+### Polygon Overlay: Erase
+
+- Erase and input features of same type
+- Input attributes retained; erase feature attributes ignored
+- Essentially acts as an inverse **crop** function, removing a portion of the map
+
+### Polygon Overlay: Identity
+
+- computes a geometric intersection of the input features and identity features
+- **essentially extends attribute features**
+- the input features or portions thereof that overlap identity features will get the attributes of those identity features
+
+## Importance of Topology in Overlay
+
+**Slivers** or **Sliver Polygons** can occur when polygons with a shared/common boundary overlap or don't match entirely. Topological Data Sets can help fix or prevent this by preventing duplicate shared boundaries or nodes. This can also be fixed via snapping and other ArcGIS tools.
+
+## Selection by Adjacency
+
+**When selecting by adjacency, there are different criteria**:
+
+- shared line requirement
+- share node OR line requirement
+- among other spatial criteria that could define adjacency

@@ -67,6 +67,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -167,6 +169,22 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#advanced-data-model-with-applied-topology" id="toc-advanced-data-model-with-applied-topology" class="nav-link" data-scroll-target="#advanced-data-model-with-applied-topology">Advanced Data Model with Applied Topology</a></li>
   <li><a href="#topology-rules-arcgis-specific" id="toc-topology-rules-arcgis-specific" class="nav-link" data-scroll-target="#topology-rules-arcgis-specific">Topology Rules (ArcGIS Specific)</a></li>
+  <li><a href="#vector-operations" id="toc-vector-operations" class="nav-link" data-scroll-target="#vector-operations">Vector Operations</a>
+  <ul class="collapse">
+  <li><a href="#common-vector-operations" id="toc-common-vector-operations" class="nav-link" data-scroll-target="#common-vector-operations">Common Vector Operations</a>
+  <ul class="collapse">
+  <li><a href="#overlay-point-in-polygon" id="toc-overlay-point-in-polygon" class="nav-link" data-scroll-target="#overlay-point-in-polygon">Overlay: Point in Polygon</a></li>
+  <li><a href="#line-in-polygon" id="toc-line-in-polygon" class="nav-link" data-scroll-target="#line-in-polygon">Line in Polygon</a></li>
+  <li><a href="#polygon-on-polygon-boolean-algebra-clip-erase" id="toc-polygon-on-polygon-boolean-algebra-clip-erase" class="nav-link" data-scroll-target="#polygon-on-polygon-boolean-algebra-clip-erase">Polygon on Polygon (Boolean Algebra / Clip / Erase)</a></li>
+  <li><a href="#polygon-overlay-intersection" id="toc-polygon-overlay-intersection" class="nav-link" data-scroll-target="#polygon-overlay-intersection">Polygon Overlay: Intersection</a></li>
+  <li><a href="#polygon-overlay-union" id="toc-polygon-overlay-union" class="nav-link" data-scroll-target="#polygon-overlay-union">Polygon Overlay: Union</a></li>
+  <li><a href="#polygon-overlay-clip" id="toc-polygon-overlay-clip" class="nav-link" data-scroll-target="#polygon-overlay-clip">Polygon Overlay: Clip</a></li>
+  <li><a href="#polygon-overlay-erase" id="toc-polygon-overlay-erase" class="nav-link" data-scroll-target="#polygon-overlay-erase">Polygon Overlay: Erase</a></li>
+  <li><a href="#polygon-overlay-identity" id="toc-polygon-overlay-identity" class="nav-link" data-scroll-target="#polygon-overlay-identity">Polygon Overlay: Identity</a></li>
+  </ul></li>
+  <li><a href="#importance-of-topology-in-overlay" id="toc-importance-of-topology-in-overlay" class="nav-link" data-scroll-target="#importance-of-topology-in-overlay">Importance of Topology in Overlay</a></li>
+  <li><a href="#selection-by-adjacency" id="toc-selection-by-adjacency" class="nav-link" data-scroll-target="#selection-by-adjacency">Selection by Adjacency</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -293,8 +311,164 @@ ul.task-list li input[type="checkbox"] {
 <h1>Topology Rules (ArcGIS Specific)</h1>
 <iframe width="800" height="800" src="images/topology_rules_1.pdf">
 </iframe>
+</section>
+<section id="vector-operations" class="level1">
+<h1>Vector Operations</h1>
+<p>Vector operations are used in spatial data analysis on vector data models. Vector operations can be applied with functions and can have <strong>one-to-one</strong> or <strong>many-to-one</strong> type inputs and outputs.</p>
+<section id="common-vector-operations" class="level2">
+<h2 class="anchored" data-anchor-id="common-vector-operations">Common Vector Operations</h2>
+<ul>
+<li>Measurements
+<ul>
+<li>length (lines): commonly measured via Euclidean distance formula</li>
+<li>area (polygons): commonly measured by dividing polygons into triangles, which have easily calculable area, and summing over positive and negative results</li>
+</ul></li>
+<li>Selection
+<ul>
+<li>Query features (by layer) based on attributes</li>
+<li>Query features (by layer) based on spatial criteria such as topology rules (adjacency, connectivity, containment, etc.)</li>
+<li>Querying features by multiple layers:
+<ul>
+<li>Set algebra: <span class="math inline">\(&lt;, &gt;, =, &lt;&gt;\)</span></li>
+<li>Boolean algebra:
+<ul>
+<li>disjunction (OR)</li>
+<li>conjunction (AND)</li>
+<li>complement/negation (NOT)</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Classification and Re-classification
+<ul>
+<li>categorize geographic objects based on a set of conditions</li>
+<li>i.e.&nbsp;re-classification could be forest into
+<ul>
+<li>deciduous forest</li>
+<li>evergreen forest</li>
+<li>mixed forest</li>
+</ul></li>
+<li>re-classification based on binary logical results (i.e.&nbsp;“West of the Mississippi”)</li>
+<li>Classification Schemes
+<ul>
+<li>equal-interval</li>
+<li>natural breaks</li>
+<li>equal-area</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><img src="images/classification_schemes_1.png" class="img-fluid"></p>
+<ul>
+<li>Dissolve
+<ul>
+<li>combine like features based on attributes</li>
+<li>i.e.&nbsp;combine smaller polygons into larger polygons based on criteria</li>
+<li>can be used after reclassification (i.e.&nbsp;states west and east of the Mississippi dissolves into two total polygons)</li>
+<li>don’t forget about MAUP when performing dissolves</li>
+</ul></li>
+<li>Buffer
+<ul>
+<li>simple buffer: point layer <span class="math inline">\(\rightarrow\)</span> overlap dissolved</li>
+<li>compound buffer: point layer <span class="math inline">\(\rightarrow\)</span> overlap identified</li>
+<li>nested buffer (doughnut buffer): nested rings within a simple buffer</li>
+<li>variable buffer: buffer changes with relation to attribute (i.e.&nbsp;distance from main branch of river)</li>
+</ul></li>
+</ul>
+<p><img src="images/buffer_types_1.png" class="img-fluid"></p>
+<ul>
+<li>Overlay
+<ul>
+<li>point in polygon</li>
+<li>line in polygon</li>
+<li>polygon
+<ul>
+<li>intersection</li>
+<li>union</li>
+<li>clip</li>
+<li>erase</li>
+<li>identity</li>
+</ul></li>
+<li>spatial analysis within overlay
+<ul>
+<li>using a common coordinate system, different layers with spatial and attribute data can be combined into a new layer</li>
+</ul></li>
+<li>vector overlay (point, line, polygon):
+<ul>
+<li>intersecting liens are split and a node placed at the intersection point</li>
+<li>topology is likely to be different</li>
+<li>must be recreated for later processing</li>
+<li>output typically takes the lowest dimension of the inputs</li>
+</ul></li>
+<li>can use overlays to combine attributes of layers and create new tables</li>
+</ul></li>
+</ul>
+<section id="overlay-point-in-polygon" class="level3">
+<h3 class="anchored" data-anchor-id="overlay-point-in-polygon">Overlay: Point in Polygon</h3>
+<p><img src="images/point_in_polygon_1.png" class="img-fluid"></p>
+</section>
+<section id="line-in-polygon" class="level3">
+<h3 class="anchored" data-anchor-id="line-in-polygon">Line in Polygon</h3>
+<p><img src="images/line_in_polygon_1.png" class="img-fluid"></p>
+</section>
+<section id="polygon-on-polygon-boolean-algebra-clip-erase" class="level3">
+<h3 class="anchored" data-anchor-id="polygon-on-polygon-boolean-algebra-clip-erase">Polygon on Polygon (Boolean Algebra / Clip / Erase)</h3>
+<p><img src="images/polygon_on_polygon_1.png" class="img-fluid"></p>
+</section>
+<section id="polygon-overlay-intersection" class="level3">
+<h3 class="anchored" data-anchor-id="polygon-overlay-intersection">Polygon Overlay: Intersection</h3>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img src="images/intersection_1.png" class="img-fluid"></p>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:40%;">
+<p><img src="images/intersection_2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="polygon-overlay-union" class="level3">
+<h3 class="anchored" data-anchor-id="polygon-overlay-union">Polygon Overlay: Union</h3>
+<p>Can be shown similarly to the above with attributes, intermediate, and final output.</p>
+</section>
+<section id="polygon-overlay-clip" class="level3">
+<h3 class="anchored" data-anchor-id="polygon-overlay-clip">Polygon Overlay: Clip</h3>
+<ul>
+<li>Clip feature must be polygons, input can be points, lines or polygons</li>
+<li>Input attributes retained; clip feature attributes ignored</li>
+<li>Essentially acts as a <strong>crop</strong> function</li>
+</ul>
+</section>
+<section id="polygon-overlay-erase" class="level3">
+<h3 class="anchored" data-anchor-id="polygon-overlay-erase">Polygon Overlay: Erase</h3>
+<ul>
+<li>Erase and input features of same type</li>
+<li>Input attributes retained; erase feature attributes ignored</li>
+<li>Essentially acts as an inverse <strong>crop</strong> function, removing a portion of the map</li>
+</ul>
+</section>
+<section id="polygon-overlay-identity" class="level3">
+<h3 class="anchored" data-anchor-id="polygon-overlay-identity">Polygon Overlay: Identity</h3>
+<ul>
+<li>computes a geometric intersection of the input features and identity features</li>
+<li><strong>essentially extends attribute features</strong></li>
+<li>the input features or portions thereof that overlap identity features will get the attributes of those identity features</li>
+</ul>
+</section>
+</section>
+<section id="importance-of-topology-in-overlay" class="level2">
+<h2 class="anchored" data-anchor-id="importance-of-topology-in-overlay">Importance of Topology in Overlay</h2>
+<p><strong>Slivers</strong> or <strong>Sliver Polygons</strong> can occur when polygons with a shared/common boundary overlap or don’t match entirely. Topological Data Sets can help fix or prevent this by preventing duplicate shared boundaries or nodes. This can also be fixed via snapping and other ArcGIS tools.</p>
+</section>
+<section id="selection-by-adjacency" class="level2">
+<h2 class="anchored" data-anchor-id="selection-by-adjacency">Selection by Adjacency</h2>
+<p><strong>When selecting by adjacency, there are different criteria</strong>:</p>
+<ul>
+<li>shared line requirement</li>
+<li>share node OR line requirement</li>
+<li>among other spatial criteria that could define adjacency</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

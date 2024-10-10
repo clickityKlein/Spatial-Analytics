@@ -14,6 +14,27 @@
     "text": "Snapping\nGiven a snap tolerance, points and lines can be combined into shared boundaries. Essentially, points are automatically set to have the same coordinates. They become magnetic. Position errors can stem during build processes, especially when digitizing.\n\nSnap tolerance must be chosen carefully:\n\nundershooting: node does not quite reach other node or line\novershooting: lines cross over existing nodes or lines\nrule of thumb: should be smaller than the desired positional accuracy"
   },
   {
+    "objectID": "vector_data_models.html#common-vector-operations",
+    "href": "vector_data_models.html#common-vector-operations",
+    "title": "Vector Data Models",
+    "section": "Common Vector Operations",
+    "text": "Common Vector Operations\n\nMeasurements\n\nlength (lines): commonly measured via Euclidean distance formula\narea (polygons): commonly measured by dividing polygons into triangles, which have easily calculable area, and summing over positive and negative results\n\nSelection\n\nQuery features (by layer) based on attributes\nQuery features (by layer) based on spatial criteria such as topology rules (adjacency, connectivity, containment, etc.)\nQuerying features by multiple layers:\n\nSet algebra: \\(&lt;, &gt;, =, &lt;&gt;\\)\nBoolean algebra:\n\ndisjunction (OR)\nconjunction (AND)\ncomplement/negation (NOT)\n\n\n\nClassification and Re-classification\n\ncategorize geographic objects based on a set of conditions\ni.e. re-classification could be forest into\n\ndeciduous forest\nevergreen forest\nmixed forest\n\nre-classification based on binary logical results (i.e. “West of the Mississippi”)\nClassification Schemes\n\nequal-interval\nnatural breaks\nequal-area\n\n\n\n\n\nDissolve\n\ncombine like features based on attributes\ni.e. combine smaller polygons into larger polygons based on criteria\ncan be used after reclassification (i.e. states west and east of the Mississippi dissolves into two total polygons)\ndon’t forget about MAUP when performing dissolves\n\nBuffer\n\nsimple buffer: point layer \\(\\rightarrow\\) overlap dissolved\ncompound buffer: point layer \\(\\rightarrow\\) overlap identified\nnested buffer (doughnut buffer): nested rings within a simple buffer\nvariable buffer: buffer changes with relation to attribute (i.e. distance from main branch of river)\n\n\n\n\nOverlay\n\npoint in polygon\nline in polygon\npolygon\n\nintersection\nunion\nclip\nerase\nidentity\n\nspatial analysis within overlay\n\nusing a common coordinate system, different layers with spatial and attribute data can be combined into a new layer\n\nvector overlay (point, line, polygon):\n\nintersecting liens are split and a node placed at the intersection point\ntopology is likely to be different\nmust be recreated for later processing\noutput typically takes the lowest dimension of the inputs\n\ncan use overlays to combine attributes of layers and create new tables\n\n\n\nOverlay: Point in Polygon\n\n\n\nLine in Polygon\n\n\n\nPolygon on Polygon (Boolean Algebra / Clip / Erase)\n\n\n\nPolygon Overlay: Intersection\n\n\n\n\n\n\n\n\n\n\n\nPolygon Overlay: Union\nCan be shown similarly to the above with attributes, intermediate, and final output.\n\n\nPolygon Overlay: Clip\n\nClip feature must be polygons, input can be points, lines or polygons\nInput attributes retained; clip feature attributes ignored\nEssentially acts as a crop function\n\n\n\nPolygon Overlay: Erase\n\nErase and input features of same type\nInput attributes retained; erase feature attributes ignored\nEssentially acts as an inverse crop function, removing a portion of the map\n\n\n\nPolygon Overlay: Identity\n\ncomputes a geometric intersection of the input features and identity features\nessentially extends attribute features\nthe input features or portions thereof that overlap identity features will get the attributes of those identity features"
+  },
+  {
+    "objectID": "vector_data_models.html#importance-of-topology-in-overlay",
+    "href": "vector_data_models.html#importance-of-topology-in-overlay",
+    "title": "Vector Data Models",
+    "section": "Importance of Topology in Overlay",
+    "text": "Importance of Topology in Overlay\nSlivers or Sliver Polygons can occur when polygons with a shared/common boundary overlap or don’t match entirely. Topological Data Sets can help fix or prevent this by preventing duplicate shared boundaries or nodes. This can also be fixed via snapping and other ArcGIS tools."
+  },
+  {
+    "objectID": "vector_data_models.html#selection-by-adjacency",
+    "href": "vector_data_models.html#selection-by-adjacency",
+    "title": "Vector Data Models",
+    "section": "Selection by Adjacency",
+    "text": "Selection by Adjacency\nWhen selecting by adjacency, there are different criteria:\n\nshared line requirement\nshare node OR line requirement\namong other spatial criteria that could define adjacency"
+  },
+  {
     "objectID": "spatial_data_representations.html",
     "href": "spatial_data_representations.html",
     "title": "Spatial Data Representations",
