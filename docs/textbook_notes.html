@@ -169,6 +169,15 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   </ul></li>
   <li><a href="#maps-data-entry-editiing-and-output" id="toc-maps-data-entry-editiing-and-output" class="nav-link" data-scroll-target="#maps-data-entry-editiing-and-output">Maps, Data Entry, Editiing, and Output</a></li>
+  <li><a href="#more-on-data-models" id="toc-more-on-data-models" class="nav-link" data-scroll-target="#more-on-data-models">More on Data Models</a>
+  <ul class="collapse">
+  <li><a href="#triangulated-irregular-networks-tins" id="toc-triangulated-irregular-networks-tins" class="nav-link" data-scroll-target="#triangulated-irregular-networks-tins">Triangulated Irregular Networks (TINs)</a></li>
+  <li><a href="#object-data-model" id="toc-object-data-model" class="nav-link" data-scroll-target="#object-data-model">Object Data Model</a></li>
+  <li><a href="#d-data-models" id="toc-d-data-models" class="nav-link" data-scroll-target="#d-data-models">3-D Data Models</a></li>
+  <li><a href="#multiple-models" id="toc-multiple-models" class="nav-link" data-scroll-target="#multiple-models">Multiple Models</a></li>
+  </ul></li>
+  <li><a href="#projections" id="toc-projections" class="nav-link" data-scroll-target="#projections">Projections</a></li>
+  <li><a href="#topology" id="toc-topology" class="nav-link" data-scroll-target="#topology">Topology</a></li>
   </ul>
 </nav>
     </div>
@@ -330,6 +339,153 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>large scale maps: closer to reality (i.e.&nbsp;zoomed-in); more detailed; larger features; smaller area; trends towards less geometric error</li>
 <li>small scale maps: further from reality (i.e.&nbsp;zoomed-out); less detailed; smaller features; larger area; trends towards more geometric error</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="more-on-data-models" class="level1">
+<h1>More on Data Models</h1>
+<section id="triangulated-irregular-networks-tins" class="level2">
+<h2 class="anchored" data-anchor-id="triangulated-irregular-networks-tins">Triangulated Irregular Networks (TINs)</h2>
+<ul>
+<li>commonly used to represent terrain heights</li>
+<li>can be more complex than raster models, but often more efficient at storing terrain data</li>
+<li>higher variable terrain requires more points</li>
+</ul>
+</section>
+<section id="object-data-model" class="level2">
+<h2 class="anchored" data-anchor-id="object-data-model">Object Data Model</h2>
+<ul>
+<li>often more logical: portrays a user’s view of the real world, entities of interest, and relationships between them</li>
+<li>example: pipe models
+<ul>
+<li>a pipe model could contain a valve class with child classes of valves which inherit the valve attributes, but have unique attributes themselves</li>
+</ul></li>
+<li>there is no widely accepted definition of what constitutes an object model</li>
+</ul>
+</section>
+<section id="d-data-models" class="level2">
+<h2 class="anchored" data-anchor-id="d-data-models">3-D Data Models</h2>
+<ul>
+<li>attribute data of heights (i.e.&nbsp;buildings)</li>
+<li>can use a voxel (volume element) which is essentially a cube version of a raster model</li>
+<li>reality mesh: 3-D TIN with image based texture surface</li>
+</ul>
+</section>
+<section id="multiple-models" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-models">Multiple Models</h2>
+<ul>
+<li>model decision comes down to choosing the best model for the task</li>
+<li>raster and TIN models are often called:
+<ul>
+<li>DEMs: digital elevation models</li>
+<li>DTMs: digital terrain models</li>
+<li>analyzes are often more difficult using contour lines, thus are stored as raster or TIN models</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="projections" class="level1">
+<h1>Projections</h1>
+<ul>
+<li>standard sets of projections have been developed from:
+<ul>
+<li>lambert conformal conic</li>
+<li>transverse mercator</li>
+</ul></li>
+<li>state plane coordinate system (SPCS)
+<ul>
+<li>states can contain multiple zones, and different projection parameters to limit distortion</li>
+<li>most states have adopted zones such that distortion is less than a single part per 10,000</li>
+<li>application from lambert conformal conic and transverse mercator
+<ul>
+<li>the transverse mercator’s distortion increases with distance from a central meridian: good for states with long North-South axis</li>
+<li>the lambert conformal conic’s distortion increases with distance from a middle parallel: good for states with long East-West axis</li>
+</ul></li>
+</ul></li>
+<li>Universal Transverse Mercator Coordinate System (UTM)
+<ul>
+<li>divides the Earth into zones which are 6 degree wide</li>
+<li>common for data or study areas spanning large regions</li>
+</ul></li>
+<li>Other common projections:
+<ul>
+<li>maps good for visualization but not great for spatial analysis: tradeoff between continuous map surface and distortion</li>
+<li>distortion can be reduced via cutting / interrupting, depending on study area
+<ul>
+<li>homosoline projections are useful when studying area breaks such as continents or oceans</li>
+</ul></li>
+</ul></li>
+<li>conversion between coordinate systems:
+<ul>
+<li>inverse and forward projection equations</li>
+<li>careful when converting projections using different datums
+<ul>
+<li>requires a datum transformation (a change in geographic coordinates)
+<ul>
+<li>may not be an automatic change in GIS software</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>coordinate system identifiers
+<ul>
+<li>many societies/industries share specific coordinate systems (datums)
+<ul>
+<li>oil</li>
+<li>standardized for north american GIS systems</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="topology" class="level1">
+<h1>Topology</h1>
+<ul>
+<li>node and line snapping:
+<ul>
+<li>positional errors are inevitable when data are manually digitized
+<ul>
+<li>undershoots: nodes and lines don’t quite reach line / other node</li>
+<li>overshoots: lines cross over existing nodes or lines</li>
+</ul></li>
+</ul></li>
+<li>node / line snapping:
+<ul>
+<li>automatically setting nearby points to have the same coordinates (becomes “magnetic”)
+<ul>
+<li>based on snap tolerance or snap distance</li>
+</ul></li>
+<li>snap tolerance needs to be set carefully (<em>should be smaller than the desired positional accuracy</em>)</li>
+</ul></li>
+<li>line smoothing and thinning:
+<ul>
+<li>smooth via spline functions to interpolate curves, which can also densify the set</li>
+<li>data can also be digitized with too many points, and using functions, redundant vertices can be removed without sacrificing spatial accuracy
+<ul>
+<li>many methods use a perpendicular <em>weed</em> distance to accomplish this
+<ul>
+<li>Lang Method: spanning line connects two nonadjacent vertices in a line, and any points closer than the “weed” distance are marked for removal</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>scan digitizing: skeletonizing lines which are thick on the scan, and then are thinned (think raster square de-buffer)</li>
+<li>slivers: small gaps or overlaps along shared polygon boundaries
+<ul>
+<li>creates spurious data nd doesn’t accurately represent adjacency</li>
+<li>slivers result in an additional entry in the attribute table, thus adds storage and processing overhead without increasing the value of the dataset
+<ul>
+<li><strong>if this is numerous, it can be a problem</strong></li>
+</ul></li>
+<li>can be created while digitizing with too small of a tolerance, but topological digitizing accounts for this by building from an existing edge, thus no line is repeated twice</li>
+</ul></li>
+<li>features common to several layers:
+<ul>
+<li>given multiple layers or images, the layers rarely line up precisely
+<ul>
+<li>can be solved via redrafting, which is time and processing expensive</li>
+<li>preferably, a “master” boundary can be used via the highest accuracy composite of the avilable data sets
+<ul>
+<li>might lead to only cosmic improvements, however</li>
+</ul></li>
 </ul></li>
 </ul></li>
 </ul>

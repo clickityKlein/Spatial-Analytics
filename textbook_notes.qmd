@@ -92,3 +92,87 @@ Important findings within the textbook.
   - large vs. small:
     - large scale maps: closer to reality (i.e. zoomed-in); more detailed; larger features; smaller area; trends towards less geometric error
     - small scale maps: further from reality (i.e. zoomed-out); less detailed; smaller features; larger area; trends towards more geometric error
+    
+# More on Data Models
+
+## Triangulated Irregular Networks (TINs)
+
+- commonly used to represent terrain heights
+- can be more complex than raster models, but often more efficient at storing terrain data
+- higher variable terrain requires more points
+
+## Object Data Model
+
+- often more logical: portrays a user's view of the real world, entities of interest, and relationships between them
+- example: pipe models
+  - a pipe model could contain a valve class with child classes of valves which inherit the valve attributes, but have unique attributes themselves
+- there is no widely accepted definition of what constitutes an object model
+
+## 3-D Data Models
+
+- attribute data of heights (i.e. buildings)
+- can use a voxel (volume element) which is essentially a cube version of a raster model
+- reality mesh: 3-D TIN with image based texture surface
+
+## Multiple Models
+
+- model decision comes down to choosing the best model for the task
+- raster and TIN models are often called:
+  - DEMs: digital elevation models
+  - DTMs: digital terrain models
+  - analyzes are often more difficult using contour lines, thus are stored as raster or TIN models
+  
+# Projections
+
+- standard sets of projections have been developed from:
+  - lambert conformal conic
+  - transverse mercator
+- state plane coordinate system (SPCS)
+  - states can contain multiple zones, and different projection parameters to limit distortion
+  - most states have adopted zones such that distortion is less than a single part per 10,000
+  - application from lambert conformal conic and transverse mercator
+    - the transverse mercator's distortion increases with distance from a central meridian: good for states with long North-South axis
+    - the lambert conformal conic's distortion increases with distance from a middle parallel: good for states with long East-West axis
+- Universal Transverse Mercator Coordinate System (UTM)
+  - divides the Earth into zones which are 6 degree wide
+  - common for data or study areas spanning large regions
+- Other common projections:
+  - maps good for visualization but not great for spatial analysis: tradeoff between continuous map surface and distortion
+  - distortion can be reduced via cutting / interrupting, depending on study area
+    - homosoline projections are useful when studying area breaks such as continents or oceans
+- conversion between coordinate systems:
+  - inverse and forward projection equations
+  - careful when converting projections using different datums
+    - requires a datum transformation (a change in geographic coordinates)
+      - may not be an automatic change in GIS software
+- coordinate system identifiers
+  - many societies/industries share specific coordinate systems (datums)
+    - oil
+    - standardized for north american GIS systems
+    
+# Topology
+
+- node and line snapping:
+  - positional errors are inevitable when data are manually digitized
+    - undershoots: nodes and lines don't quite reach line / other node
+    - overshoots: lines cross over existing nodes or lines
+- node / line snapping:
+  - automatically setting nearby points to have the same coordinates (becomes "magnetic")
+    - based on snap tolerance or snap distance
+  - snap tolerance needs to be set carefully (*should be smaller than the desired positional accuracy*)
+- line smoothing and thinning:
+  - smooth via spline functions to interpolate curves, which can also densify the set
+  - data can also be digitized with too many points, and using functions, redundant vertices can be removed without sacrificing spatial accuracy
+    - many methods use a perpendicular *weed* distance to accomplish this
+      - Lang Method: spanning line connects two nonadjacent vertices in a line, and any points closer than the "weed" distance are marked for removal
+- scan digitizing: skeletonizing lines which are thick on the scan, and then are thinned (think raster square de-buffer)
+- slivers: small gaps or overlaps along shared polygon boundaries
+  - creates spurious data nd doesn't accurately represent adjacency
+  - slivers result in an additional entry in the attribute table, thus adds storage and processing overhead without increasing the value of the dataset
+    - **if this is numerous, it can be a problem**
+  - can be created while digitizing with too small of a tolerance, but topological digitizing accounts for this by building from an existing edge, thus no line is repeated twice
+- features common to several layers:
+  - given multiple layers or images, the layers rarely line up precisely
+    - can be solved via redrafting, which is time and processing expensive
+    - preferably, a "master" boundary can be used via the highest accuracy composite of the avilable data sets
+      - might lead to only cosmic improvements, however

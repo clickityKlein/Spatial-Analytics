@@ -306,5 +306,33 @@
     "title": "Textbook Notes",
     "section": "Common Spatial Data Models",
     "text": "Common Spatial Data Models\n\ndiscrete objects defined via vector data models\n\nuses discrete elements such as points, lines, and polygons to represent geometry of real-world entities\ndiscrete vector object examples: fields, roads, wetlands, cities\npoints: small objects such as wells, buildings, ponds (again, what is subjectively chosen based on scale)\nlines: network objects such as roads and rivers, or to enclose polygons for are entities\n\nnodes: starting and ending points in a line\nvertices: intermediate points in a line or polygon\n\n\nconceptualization via grid cells is a raster data model\n\nsplitting a map into rows and columns for “wall-to-wall” coverage\ndepending on resolution, decent for representing continuous changes across a region\n\nraster-vector is possible, but can come at the cost of computation or accuracy prices\nTriangulated Irregular Network (TIN): combination of point, line, and area features (less common than raster and vector data models)\nattribute data: non-spatial characteristics\n\n\nVector Data Models (Discrete)\n\nuses groups of coordinates to represent entities\nlines can be a collection of smaller line segments or mathematical equations to represent geometric shape\nmulti-part-features: a many-to-one relationship which is used to describe groupings (island, buildings, etc)\n\nsee Forms of Feature Generalization on Generalization and the MAUP\n\nvector data has two common features:\n\npolygon inclusion:\n\nareas within a polygon that are different but still considered part of it\nimagine a polygon just representing a golf course, where the golf course also has fairways, roughs, ponds, pathways, etc.\nthose other features are “inclusions”, but will often not be featured as their own polygon\nthis is due to some set lower limit, known as a minimum mapping unit\n\nboundary generalization: incomplete representation of boundary locations\n\nsampling of the true curve, typically contains some deviation from the “true” curved boundary\n\n\n\n\n\nRaster-Vector Model Conversion\n\nVector to Raster\n\nassign cell value for each position occupied by vector features\npoints are usually assigned to the cell containing the point coordinate\nif cell size is too large, two or more points could fall in a single cell, leading to an ambiguous identification\n\ntypically, cell size is chosen such that diagonal cell dimension is smaller than the distance between the two closest point features\n\ncan also be used for lines (versus coordinate points), where a cell-line intersection assigns the cell\n\ncan lead to wider approximation in adjacent cells taking on the same value\n\n\n\n\nRaster to Vector\n\nidentify set of continuous connected cells that form lines and apply smoothing algorithm"
+  },
+  {
+    "objectID": "textbook_notes.html#triangulated-irregular-networks-tins",
+    "href": "textbook_notes.html#triangulated-irregular-networks-tins",
+    "title": "Textbook Notes",
+    "section": "Triangulated Irregular Networks (TINs)",
+    "text": "Triangulated Irregular Networks (TINs)\n\ncommonly used to represent terrain heights\ncan be more complex than raster models, but often more efficient at storing terrain data\nhigher variable terrain requires more points"
+  },
+  {
+    "objectID": "textbook_notes.html#object-data-model",
+    "href": "textbook_notes.html#object-data-model",
+    "title": "Textbook Notes",
+    "section": "Object Data Model",
+    "text": "Object Data Model\n\noften more logical: portrays a user’s view of the real world, entities of interest, and relationships between them\nexample: pipe models\n\na pipe model could contain a valve class with child classes of valves which inherit the valve attributes, but have unique attributes themselves\n\nthere is no widely accepted definition of what constitutes an object model"
+  },
+  {
+    "objectID": "textbook_notes.html#d-data-models",
+    "href": "textbook_notes.html#d-data-models",
+    "title": "Textbook Notes",
+    "section": "3-D Data Models",
+    "text": "3-D Data Models\n\nattribute data of heights (i.e. buildings)\ncan use a voxel (volume element) which is essentially a cube version of a raster model\nreality mesh: 3-D TIN with image based texture surface"
+  },
+  {
+    "objectID": "textbook_notes.html#multiple-models",
+    "href": "textbook_notes.html#multiple-models",
+    "title": "Textbook Notes",
+    "section": "Multiple Models",
+    "text": "Multiple Models\n\nmodel decision comes down to choosing the best model for the task\nraster and TIN models are often called:\n\nDEMs: digital elevation models\nDTMs: digital terrain models\nanalyzes are often more difficult using contour lines, thus are stored as raster or TIN models"
   }
 ]
