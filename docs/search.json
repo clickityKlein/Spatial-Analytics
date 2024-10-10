@@ -42,6 +42,69 @@
     "text": "Concepts and conclusions from the labs.\n\nLab 1 - Timber\n\nConceptual Wrap Up: Summarizing Tools:\n\nExtract: Select and extract specific features/attributes from a dataset by querying specific values from a feature/attribute in a dataset.\nOverlay: Combine layers into a new layer to represent spatial relationships between input features using UNION.\nBuffer: Creates a proximity or perimeter zone (new polygon at a specified distance) around given features like points, polygons, or lines.\nStatistics: Calculates different summary statistics like sum, mean, minimum, maximum, etc. for fields in a table."
   },
   {
+    "objectID": "gps_gnss.html",
+    "href": "gps_gnss.html",
+    "title": "GPS / GNSS",
+    "section": "",
+    "text": "The well known GPS, or Global Positioning System, is actually a specific version under the more general GNSS, or Global Navigation Satellite System. These systems use satellites for navigation, tracking, and measuring positional information.\nThere are four main GPS / GNSS systems:"
+  },
+  {
+    "objectID": "gps_gnss.html#specificiations",
+    "href": "gps_gnss.html#specificiations",
+    "title": "GPS / GNSS",
+    "section": "Specificiations",
+    "text": "Specificiations\n\nSatellites circle the Earth twice daily\nFour to eight satellites should be visible from any unobstructed location\nEach satellite continuously broadcasts signals on two carrier frequencies\n\nL1 and L2 (carrier signals)\n\nModulated to produce coded signals for easier and quicker posiitioning\n\nC/A (course acquisition) code (L1) for quicker processing\nP (precision; military signal on L1 and L2)"
+  },
+  {
+    "objectID": "gps_gnss.html#how-it-works",
+    "href": "gps_gnss.html#how-it-works",
+    "title": "GPS / GNSS",
+    "section": "How it Works",
+    "text": "How it Works\n\nRange by Speed of Light\n\nPosition is estimated based on range distances and travel time\n\ntravel time: difference between transmission time and reception time\nrange: speed of light * travel time (\\(range=c(t_1 - t_0)\\))\n\n\n\n\nTrilateration\n2-Dimensions\n\nGiven three pinged satellites, circles are drawn with center radii from the satellites\nThe intersection of the circles is the coordinate position\n\n3-Dimensions\n\nGiven four pinged satellites, spheres are drawn with center radii from hte satellites\nThe intersection of the spheres is the coordinate position\n\nNote that given three satellites in three-dimensions, there will be two points of intersection, which can be decent for stationary objects.\n\n\nRelativity\n\nSpecial Relativity: an observer on the ground sees satellites in motion relative to them, special relativity predicts we should see their clocks ticking more slowly (7 ms)\nGeneral Relativity: clocks closer to a massive object will seem to tick more slowly than those located further away, thus when viewed from the surface of the Earth, clocks on the satellites appear to be ticking faster (45 ms)\n\nClocks need to be adjusted by \\(45-7=38\\) ms per day. This is built into the satellites’ clocks.\n\n\nUncertainty\nErrors in range measurements and satellite location (ephermeris) introduces uncertainty, which can be a range for the GPS receiver position.\nMitigation using postion fixes for stationary receiver is possible, but does not work for moving receivers.\nSome Sources of Error:\n\nSatellite Clock Error\nSatellite Position Error - Positional Dilution of Precision (PDOP)\nReceiver Error\nAtmospheric / Ionospheric Effects\nMultipath Error: additional potential error due to reflectance (i.e. obstructions)\n\nErrors are dependent on quality of equipment and environmental conditions.\n\nReflectance Error\n\n\n\nPDOP Uncertainty\nGeneral Idea of PDOP Range Uncertainty:\n\nPositional Dilution of Precision (high versus low PDOP depends on satellite spacing):\n\nLower PDOP results in a lower volume of a tetrahedron, thus lower uncertainty from PDOP.\n\n\n\nDifferential Correction\nBy using a base station, accuracy is increased by reducing range errors via estimating timing errors.\nGeneral Idea:\n\nRange Error versus Range Correction:\n\n\n\nTypes of Differential GPS\n\nPost Processed\n\nHigher accuracy\nHowever, done a posteriori\n\nReal-time\n\nLower accuracy\nBetter navigation\nrequires a transmitting base station\nrequires common link (FM radio or internet/cell phone)\n\n\n\n\nWide Area Augmentation System (WAAS)\nReal-time differential GPS developed for aircraft navigation. Based on a network of ground reference stations. Accuracy improves from ~13km to under 2m.\n\n\n\nOther Applications of GPS\n\nTracking\nNavigation\nField Digitizing\n\nGPS receiver\nrange pole\nlaser rangefinder\nelectronic compass\n\nHuman Mobility\nAutonomous Vehicles\nIndoor Mapping\n\nBluetooth\nRadio Frequency (RFID)\n\n\n\n\nOther Methods for Positioning\n\nSound Range\nCellular Positioning\nGPS Alternatives:\n\nGround Based GPS\nStarlink (prevents navigation jamming)"
+  },
+  {
+    "objectID": "concepts_scale_resolution.html",
+    "href": "concepts_scale_resolution.html",
+    "title": "Concepts of Scale and Resolution",
+    "section": "",
+    "text": "Essential concepts for scale and resolution."
+  },
+  {
+    "objectID": "concepts_scale_resolution.html#scale-sizes-large-vs.-small",
+    "href": "concepts_scale_resolution.html#scale-sizes-large-vs.-small",
+    "title": "Concepts of Scale and Resolution",
+    "section": "Scale Sizes (Large vs. Small)",
+    "text": "Scale Sizes (Large vs. Small)\nLarge Scale vs. Small Scale\n\nLarge Scale Maps\n\nlarger features\nmore detail\nless area\ntending towards less geometric error\n\nSmall Scale Maps\n\nsmaller features\nless detail\nmore area\ntending towards more geometric error\n\nExplanation\nComparing Scales:\nMap A Scale: \\(1/a\\)\nMap B Scale: \\(1/b\\)\nLarger the Denominator \\(\\rightarrow\\) Smaller the Scale\nSmaller the Denominator \\(\\rightarrow\\) Larger the Scale\nSo, provided \\(a &gt; b \\rightarrow 1/a &lt; 1/b\\), thus\nMap A has a smaller scale than Map B\nMap B has a larger scale than Map A\nExample: Map A could cover Washington state whereas Map B could cover a city in Washington state\nFurther Explanation: The smaller the relative scale, the closer the map to reality"
+  },
+  {
+    "objectID": "concepts_scale_resolution.html#raster---the-mixed-pixel-problem-effect",
+    "href": "concepts_scale_resolution.html#raster---the-mixed-pixel-problem-effect",
+    "title": "Concepts of Scale and Resolution",
+    "section": "Raster - The Mixed Pixel Problem / Effect",
+    "text": "Raster - The Mixed Pixel Problem / Effect\nHow do we define/classify a cell (i.e. land vs. water)?\nRule of Thumb: the smallest detectable feature is about twice as large as the resolution, or stated in another manner, detection requires resolution at least twice as fine as detectable features.\nSo if we were going to detect a defined bodies of water, the bodies of water we wish to detect were around size \\(x\\), the resolution must be at most \\(x/2\\). This ensures that the features of interest are adequately captured and distinguished from surrounding features."
+  },
+  {
+    "objectID": "concepts_scale_resolution.html#tradeoff-between-storage-and-resolution",
+    "href": "concepts_scale_resolution.html#tradeoff-between-storage-and-resolution",
+    "title": "Concepts of Scale and Resolution",
+    "section": "Tradeoff Between Storage and Resolution",
+    "text": "Tradeoff Between Storage and Resolution\nAs the saying goes, easier said than done. Images with finer resolution require more storage and are usually more expensive (technology / equipment).\nIn fact, decreasing the cell size by one half quadruples the resolution, thus storage space is quadrupled.\n\nNote that in the case of vector data, finer resolution vector data has more points and points closer together. In other words, more vertices!"
+  },
+  {
+    "objectID": "concepts_scale_resolution.html#digital-data-and-scale",
+    "href": "concepts_scale_resolution.html#digital-data-and-scale",
+    "title": "Concepts of Scale and Resolution",
+    "section": "Digital Data and Scale",
+    "text": "Digital Data and Scale\nDIGITAL DATA HAS A SCALE! HOWEVER, CAUTION IS REQUIRED.\nThe input map / data layer had a scale (source scale), but many data today does not come from maps. This allows us to slide through a range of scales on the screen. Think about the increasing detail level while zooming in on Google Maps.\nThis gives us the Display Scale, the ratio between ground and on-screen scale."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\nCode1 + 1\n\n[1] 2"
+  },
+  {
     "objectID": "generalization_maup.html",
     "href": "generalization_maup.html",
     "title": "Generalization and the MAUP",
@@ -89,48 +152,6 @@
     "title": "Generalization and the MAUP",
     "section": "Further Examples",
     "text": "Further Examples\n\nScale and Zoning Effect Together\n\n\n\nGerrymandering"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\nCode1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "concepts_scale_resolution.html",
-    "href": "concepts_scale_resolution.html",
-    "title": "Concepts of Scale and Resolution",
-    "section": "",
-    "text": "Essential concepts for scale and resolution."
-  },
-  {
-    "objectID": "concepts_scale_resolution.html#scale-sizes-large-vs.-small",
-    "href": "concepts_scale_resolution.html#scale-sizes-large-vs.-small",
-    "title": "Concepts of Scale and Resolution",
-    "section": "Scale Sizes (Large vs. Small)",
-    "text": "Scale Sizes (Large vs. Small)\nLarge Scale vs. Small Scale\n\nLarge Scale Maps\n\nlarger features\nmore detail\nless area\ntending towards less geometric error\n\nSmall Scale Maps\n\nsmaller features\nless detail\nmore area\ntending towards more geometric error\n\nExplanation\nComparing Scales:\nMap A Scale: \\(1/a\\)\nMap B Scale: \\(1/b\\)\nLarger the Denominator \\(\\rightarrow\\) Smaller the Scale\nSmaller the Denominator \\(\\rightarrow\\) Larger the Scale\nSo, provided \\(a &gt; b \\rightarrow 1/a &lt; 1/b\\), thus\nMap A has a smaller scale than Map B\nMap B has a larger scale than Map A\nExample: Map A could cover Washington state whereas Map B could cover a city in Washington state\nFurther Explanation: The smaller the relative scale, the closer the map to reality"
-  },
-  {
-    "objectID": "concepts_scale_resolution.html#raster---the-mixed-pixel-problem-effect",
-    "href": "concepts_scale_resolution.html#raster---the-mixed-pixel-problem-effect",
-    "title": "Concepts of Scale and Resolution",
-    "section": "Raster - The Mixed Pixel Problem / Effect",
-    "text": "Raster - The Mixed Pixel Problem / Effect\nHow do we define/classify a cell (i.e. land vs. water)?\nRule of Thumb: the smallest detectable feature is about twice as large as the resolution, or stated in another manner, detection requires resolution at least twice as fine as detectable features.\nSo if we were going to detect a defined bodies of water, the bodies of water we wish to detect were around size \\(x\\), the resolution must be at most \\(x/2\\). This ensures that the features of interest are adequately captured and distinguished from surrounding features."
-  },
-  {
-    "objectID": "concepts_scale_resolution.html#tradeoff-between-storage-and-resolution",
-    "href": "concepts_scale_resolution.html#tradeoff-between-storage-and-resolution",
-    "title": "Concepts of Scale and Resolution",
-    "section": "Tradeoff Between Storage and Resolution",
-    "text": "Tradeoff Between Storage and Resolution\nAs the saying goes, easier said than done. Images with finer resolution require more storage and are usually more expensive (technology / equipment).\nIn fact, decreasing the cell size by one half quadruples the resolution, thus storage space is quadrupled.\n\nNote that in the case of vector data, finer resolution vector data has more points and points closer together. In other words, more vertices!"
-  },
-  {
-    "objectID": "concepts_scale_resolution.html#digital-data-and-scale",
-    "href": "concepts_scale_resolution.html#digital-data-and-scale",
-    "title": "Concepts of Scale and Resolution",
-    "section": "Digital Data and Scale",
-    "text": "Digital Data and Scale\nDIGITAL DATA HAS A SCALE! HOWEVER, CAUTION IS REQUIRED.\nThe input map / data layer had a scale (source scale), but many data today does not come from maps. This allows us to slide through a range of scales on the screen. Think about the increasing detail level while zooming in on Google Maps.\nThis gives us the Display Scale, the ratio between ground and on-screen scale."
   },
   {
     "objectID": "index.html",

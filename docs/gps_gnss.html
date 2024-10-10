@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Spatial Analytics - Generalization and the MAUP</title>
+<title>Spatial Analytics - GPS / GNSS</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,7 +99,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Concepts of Scale and Resolution</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./generalization_maup.html" aria-current="page"> 
+    <a class="nav-link" href="./generalization_maup.html"> 
 <span class="menu-text">Generalization and the MAUP</span></a>
   </li>  
   <li class="nav-item">
@@ -111,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Textbook Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./gps_gnss.html"> 
+    <a class="nav-link active" href="./gps_gnss.html" aria-current="page"> 
 <span class="menu-text">GPS / GNSS</span></a>
   </li>  
   <li class="nav-item">
@@ -157,26 +157,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#generalization" id="toc-generalization" class="nav-link" data-scroll-target="#generalization">Generalization</a>
+  <li><a href="#gps-segments" id="toc-gps-segments" class="nav-link active" data-scroll-target="#gps-segments">GPS Segments</a></li>
+  <li><a href="#gps" id="toc-gps" class="nav-link" data-scroll-target="#gps">GPS</a>
   <ul class="collapse">
-  <li><a href="#scale-and-map-generalization" id="toc-scale-and-map-generalization" class="nav-link" data-scroll-target="#scale-and-map-generalization">Scale and Map Generalization</a>
+  <li><a href="#specificiations" id="toc-specificiations" class="nav-link" data-scroll-target="#specificiations">Specificiations</a></li>
+  <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link" data-scroll-target="#how-it-works">How it Works</a>
   <ul class="collapse">
-  <li><a href="#principals-of-generalization" id="toc-principals-of-generalization" class="nav-link" data-scroll-target="#principals-of-generalization">Principals of Generalization</a></li>
-  <li><a href="#forms-of-feature-generalization" id="toc-forms-of-feature-generalization" class="nav-link" data-scroll-target="#forms-of-feature-generalization">Forms of Feature Generalization</a></li>
-  <li><a href="#coastline-examples" id="toc-coastline-examples" class="nav-link" data-scroll-target="#coastline-examples">Coastline Examples</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#the-modifiable-areal-unit-problem-maup" id="toc-the-modifiable-areal-unit-problem-maup" class="nav-link" data-scroll-target="#the-modifiable-areal-unit-problem-maup">The Modifiable Areal Unit Problem (MAUP)</a>
-  <ul class="collapse">
-  <li><a href="#analytical-scale" id="toc-analytical-scale" class="nav-link" data-scroll-target="#analytical-scale">Analytical Scale</a></li>
-  <li><a href="#scale-effect" id="toc-scale-effect" class="nav-link" data-scroll-target="#scale-effect">Scale Effect</a></li>
-  <li><a href="#zoning-effect" id="toc-zoning-effect" class="nav-link" data-scroll-target="#zoning-effect">Zoning Effect</a></li>
-  <li><a href="#solutions" id="toc-solutions" class="nav-link" data-scroll-target="#solutions">Solutions</a></li>
-  <li><a href="#further-examples" id="toc-further-examples" class="nav-link" data-scroll-target="#further-examples">Further Examples</a>
-  <ul class="collapse">
-  <li><a href="#scale-and-zoning-effect-together" id="toc-scale-and-zoning-effect-together" class="nav-link" data-scroll-target="#scale-and-zoning-effect-together">Scale and Zoning Effect Together</a></li>
-  <li><a href="#gerrymandering" id="toc-gerrymandering" class="nav-link" data-scroll-target="#gerrymandering">Gerrymandering</a></li>
+  <li><a href="#range-by-speed-of-light" id="toc-range-by-speed-of-light" class="nav-link" data-scroll-target="#range-by-speed-of-light">Range by Speed of Light</a></li>
+  <li><a href="#trilateration" id="toc-trilateration" class="nav-link" data-scroll-target="#trilateration">Trilateration</a></li>
+  <li><a href="#relativity" id="toc-relativity" class="nav-link" data-scroll-target="#relativity">Relativity</a></li>
+  <li><a href="#uncertainty" id="toc-uncertainty" class="nav-link" data-scroll-target="#uncertainty">Uncertainty</a></li>
+  <li><a href="#differential-correction" id="toc-differential-correction" class="nav-link" data-scroll-target="#differential-correction">Differential Correction</a></li>
+  <li><a href="#types-of-differential-gps" id="toc-types-of-differential-gps" class="nav-link" data-scroll-target="#types-of-differential-gps">Types of Differential GPS</a></li>
+  <li><a href="#other-applications-of-gps" id="toc-other-applications-of-gps" class="nav-link" data-scroll-target="#other-applications-of-gps">Other Applications of GPS</a></li>
+  <li><a href="#other-methods-for-positioning" id="toc-other-methods-for-positioning" class="nav-link" data-scroll-target="#other-methods-for-positioning">Other Methods for Positioning</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -187,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Generalization and the MAUP</h1>
+<h1 class="title">GPS / GNSS</h1>
 </div>
 
 
@@ -204,127 +198,175 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Essential concepts for generalization and the MAUP. This section builds from <a href="./concepts_scale_resolution.html">Concepts of Scale and Resolution</a>.</p>
-<section id="learning-objectives" class="level1">
-<h1>Learning Objectives</h1>
+<p>The well known GPS, or Global Positioning System, is actually a specific version under the more general GNSS, or Global Navigation Satellite System. These systems use satellites for navigation, tracking, and measuring positional information.</p>
+<p>There are four main GPS / GNSS systems:</p>
 <ul>
-<li>Understand Generalization</li>
-<li>Understand MAUP</li>
-<li>Understand how these are unavoidable scenarios</li>
-</ul>
-</section>
-<section id="generalization" class="level1">
-<h1>Generalization</h1>
-<p><strong>Map Generalization</strong>:</p>
+<li>US DoD NAVSTAR
 <ul>
-<li>Unavoidable approximation of real entities represented on a map, which increases with smaller-scale maps.</li>
-<li>Geometric and attribute details needed has to be defined.</li>
-<li>Decisions, methods (and data) for collection and representation of shapes and locations define the limits of what can be seen on a map.</li>
-</ul>
-<p><strong>Generalization</strong> is a consequence of decreasing scale of a map ude to time, budget, and methods constraints.</p>
-<p><strong>Aggregating / Disaggregating</strong>:</p>
-<ul>
-<li>When zooming out, or decreasing resolution, aggregation occurs.</li>
-<li>When zooming in, or increasing resolution, disaggregation occurs.</li>
-</ul>
-<section id="scale-and-map-generalization" class="level2">
-<h2 class="anchored" data-anchor-id="scale-and-map-generalization">Scale and Map Generalization</h2>
-<p>There are different levels of feature generalization in maps of different scales. This introduces the idea of <strong>geometry elimination</strong> and <strong>geometry smoothing</strong> at changing scales. In both cases, we still want to preserve information.</p>
-<section id="principals-of-generalization" class="level3">
-<h3 class="anchored" data-anchor-id="principals-of-generalization">Principals of Generalization</h3>
-<ul>
-<li>Smaller Scales <span class="math inline">\(\rightarrow\)</span> More Generalized <span class="math inline">\(\rightarrow\)</span> Shorter Lines</li>
-<li>Machine learning can be used to preserve features during generalization</li>
-<li>Smaller Scales <span class="math inline">\(\rightarrow\)</span> More Generalized <span class="math inline">\(\rightarrow\)</span> Less Perimeter</li>
-</ul>
-<p><img src="images/principals_of_generalization_1.png" class="img-fluid"></p>
-<p><img src="images/principals_of_generalization_2.png" class="img-fluid"></p>
-</section>
-<section id="forms-of-feature-generalization" class="level3">
-<h3 class="anchored" data-anchor-id="forms-of-feature-generalization">Forms of Feature Generalization</h3>
-<ul>
-<li>Truth: entity in reality (example group of islands <span class="math inline">\(\rightarrow\)</span> multiple polygons with many vertices)</li>
-<li>Fused: multiple high resolution polygons into single polygon</li>
-<li>Simplified: multiple polygons with less vertices</li>
-<li>Displaced: features like roads or streams with a greater null buffer from group of polygons</li>
-<li>Omitted: smaller features (small islands) removed</li>
-<li>Exaggerated: features like roads or streams with a greater actual buffer from group of polygons</li>
-<li>Patches: essentially a fuse with the individual entities still present (group of islands called an archipelago while not mentioning the individual islands)</li>
-</ul>
-<p><img src="images/feature_generalization_1.png" class="img-fluid"></p>
-<p><img src="images/feature_generalization_2.png" class="img-fluid"></p>
-</section>
-<section id="coastline-examples" class="level3">
-<h3 class="anchored" data-anchor-id="coastline-examples">Coastline Examples</h3>
-<p>The Florida coastline can be measured at different scales. The larger the scale, the longer the perimeter.</p>
-<p><img src="images/florida_example_1.png" class="img-fluid"></p>
-</section>
-</section>
-</section>
-<section id="the-modifiable-areal-unit-problem-maup" class="level1">
-<h1>The Modifiable Areal Unit Problem (MAUP)</h1>
-<p>The <strong>MAUP</strong> is a central problem in geographical data that needs to be understood.</p>
-<p>The problem can be summarized by two effects:</p>
-<ul>
-<li>size effect</li>
-<li>zoning effect</li>
-</ul>
-<p>Aggregate values from groups of polygons depend on size (<em>size effect</em>) and shape (<em>zoning effect</em>) of the aggregated polygons and can suffer from <strong>statistical bias</strong>.</p>
-<ul>
-<li>Aggregation changes statistical characteristics</li>
-<li>Study by Openshaw and Taylor (1979) found the percentage of elderly voters and the number of Republican voters in counties of Iowa correlations between 0.98 and -0.81 with varying aggregation levels of counties.</li>
-</ul>
-<section id="analytical-scale" class="level2">
-<h2 class="anchored" data-anchor-id="analytical-scale">Analytical Scale</h2>
-<p><strong>What is the correct size of analytical scale?</strong></p>
-<p><img src="images/analytical_scale_1.png" class="img-fluid"></p>
-<p>There are multiple proposed solutions to finding this solution, including <em>sensitivity testing</em>, which checks for robustness or variation at different scales. Spatial auto-correlation is ant</p>
-</section>
-<section id="scale-effect" class="level2">
-<h2 class="anchored" data-anchor-id="scale-effect">Scale Effect</h2>
-<ul>
-<li>Different analytical results at levels of aggregation: as we increase or decrease resolution, the statistical characteristics change.</li>
-</ul>
-<p><img src="images/scale_effect_1.png" class="img-fluid"></p>
-</section>
-<section id="zoning-effect" class="level2">
-<h2 class="anchored" data-anchor-id="zoning-effect">Zoning Effect</h2>
-<ul>
-<li>Different groupings by various artificial boundaries, each boundary variation yields major analytical differences</li>
-<li>Examples:
-<ul>
-<li>health spatial statistics to determine spatial factors realted to given disease</li>
-<li>demography</li>
-<li>landscape ecology</li>
-<li>gerrymandering</li>
+<li>this is the GPS we know</li>
+<li>~32 satellites in 6 orbits</li>
 </ul></li>
+<li>Russian GLONASS GNSS</li>
+<li>EU’s Galileo Project
+<ul>
+<li>22 / 26 satllites usable</li>
+<li>better coverage in high northern latitudes than NAVSTAR</li>
+</ul></li>
+<li>China’s BeiDou (formerly known as COMPASS)
+<ul>
+<li>28+ satellites</li>
+</ul></li>
+<li>Japan and India have GNSS’s in place as well</li>
 </ul>
-<p><img src="images/zoning_effect_1.png" class="img-fluid"></p>
-<p><img src="images/zoning_effect_2.png" class="img-fluid"></p>
+<section id="gps-segments" class="level1">
+<h1>GPS Segments</h1>
+<ul>
+<li>User Segment: receiver to record transmitted satellite data and processes 3D coordinates</li>
+<li>Control Segment: facilities for tracking, communication, gather, analysis, etc.</li>
+<li><em>coming from a constellation of orbiting satellites</em></li>
+</ul>
 </section>
-<section id="solutions" class="level2">
-<h2 class="anchored" data-anchor-id="solutions">Solutions</h2>
-<p>Essentially, a population suffers from MAUP due to the population not being uniformly distributed by density over locations.</p>
+<section id="gps" class="level1">
+<h1>GPS</h1>
+<p>With 21+ satellites, in 6 orbital planes, and 12 hour return interval for each satellite, this provides unobstructed worldwide coverage.</p>
+<section id="specificiations" class="level2">
+<h2 class="anchored" data-anchor-id="specificiations">Specificiations</h2>
 <ul>
-<li>spatial autocorrelation (no random distribution)</li>
-<li>across different scales: check for robustness or variation</li>
-<li>if results are significantly different, reevaluate to find more consistent results
+<li>Satellites circle the Earth twice daily</li>
+<li>Four to eight satellites should be visible from any unobstructed location</li>
+<li>Each satellite continuously broadcasts signals on two carrier frequencies
 <ul>
-<li>across-scale relationship evaluation between variables; simulations and spatial models</li>
-<li>avoid erroneous conclusions</li>
-<li>provide guidance to select appropriate aggregation scales</li>
+<li>L1 and L2 (carrier signals)</li>
+</ul></li>
+<li>Modulated to produce <strong>coded signals</strong> for easier and quicker posiitioning
+<ul>
+<li>C/A (course acquisition) code (L1) for quicker processing</li>
+<li>P (precision; military signal on L1 and L2)</li>
 </ul></li>
 </ul>
 </section>
-<section id="further-examples" class="level2">
-<h2 class="anchored" data-anchor-id="further-examples">Further Examples</h2>
-<section id="scale-and-zoning-effect-together" class="level3">
-<h3 class="anchored" data-anchor-id="scale-and-zoning-effect-together">Scale and Zoning Effect Together</h3>
-<p><img src="images/scale_zoning_effect_1.png" class="img-fluid"></p>
+<section id="how-it-works" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-works">How it Works</h2>
+<section id="range-by-speed-of-light" class="level3">
+<h3 class="anchored" data-anchor-id="range-by-speed-of-light">Range by Speed of Light</h3>
+<ul>
+<li>Position is estimated based on range distances and travel time
+<ul>
+<li>travel time: difference between transmission time and reception time</li>
+<li>range: speed of light * travel time (<span class="math inline">\(range=c(t_1 - t_0)\)</span>)</li>
+</ul></li>
+</ul>
 </section>
-<section id="gerrymandering" class="level3">
-<h3 class="anchored" data-anchor-id="gerrymandering">Gerrymandering</h3>
-<p><img src="images/gerrymandering_1.png" class="img-fluid"></p>
+<section id="trilateration" class="level3">
+<h3 class="anchored" data-anchor-id="trilateration">Trilateration</h3>
+<p><strong>2-Dimensions</strong></p>
+<ul>
+<li>Given three pinged satellites, circles are drawn with center radii from the satellites</li>
+<li>The intersection of the circles is the coordinate position</li>
+</ul>
+<p><strong>3-Dimensions</strong></p>
+<ul>
+<li>Given four pinged satellites, spheres are drawn with center radii from hte satellites</li>
+<li>The intersection of the spheres is the coordinate position</li>
+</ul>
+<p><em>Note that given three satellites in three-dimensions, there will be two points of intersection, which can be decent for stationary objects.</em></p>
+</section>
+<section id="relativity" class="level3">
+<h3 class="anchored" data-anchor-id="relativity">Relativity</h3>
+<ul>
+<li><strong>Special Relativity</strong>: an observer on the ground sees satellites in motion relative to them, special relativity predicts we should see their clocks ticking more slowly (7 ms)</li>
+<li><strong>General Relativity</strong>: clocks closer to a massive object will seem to tick more slowly than those located further away, thus when viewed from the surface of the Earth, clocks on the satellites appear to be ticking faster (45 ms)</li>
+</ul>
+<p><strong>Clocks need to be adjusted by <span class="math inline">\(45-7=38\)</span> ms per day. This is built into the satellites’ clocks.</strong></p>
+</section>
+<section id="uncertainty" class="level3">
+<h3 class="anchored" data-anchor-id="uncertainty">Uncertainty</h3>
+<p>Errors in range measurements and satellite location (ephermeris) introduces uncertainty, which can be a range for the GPS receiver position.</p>
+<p><em>Mitigation using postion fixes for stationary receiver is possible, but does not work for moving receivers.</em></p>
+<p>Some Sources of Error:</p>
+<ul>
+<li>Satellite Clock Error</li>
+<li>Satellite Position Error - Positional Dilution of Precision (PDOP)</li>
+<li>Receiver Error</li>
+<li>Atmospheric / Ionospheric Effects</li>
+<li>Multipath Error: additional potential error due to reflectance (i.e.&nbsp;obstructions)</li>
+</ul>
+<p><strong>Errors are dependent on quality of equipment and environmental conditions.</strong></p>
+<section id="reflectance-error" class="level4">
+<h4 class="anchored" data-anchor-id="reflectance-error">Reflectance Error</h4>
+<p><img src="images/reflectance_error_1.png" class="img-fluid"></p>
+</section>
+<section id="pdop-uncertainty" class="level4">
+<h4 class="anchored" data-anchor-id="pdop-uncertainty">PDOP Uncertainty</h4>
+<p><strong>General Idea of PDOP Range Uncertainty:</strong></p>
+<p><img src="images/pdop_uncertainty_1.png" class="img-fluid"></p>
+<p><strong>Positional Dilution of Precision (high versus low PDOP depends on satellite spacing):</strong></p>
+<p><img src="images/pdop_uncertainty_2.png" class="img-fluid"></p>
+<p><em>Lower PDOP results in a lower volume of a tetrahedron, thus lower uncertainty from PDOP.</em></p>
+</section>
+</section>
+<section id="differential-correction" class="level3">
+<h3 class="anchored" data-anchor-id="differential-correction">Differential Correction</h3>
+<p>By using a base station, accuracy is increased by reducing range errors via estimating timing errors.</p>
+<p><strong>General Idea:</strong></p>
+<p><img src="images/differential_correction_1.png" class="img-fluid"></p>
+<p><strong>Range Error versus Range Correction:</strong></p>
+<p><img src="images/differential_correction_2.png" class="img-fluid"></p>
+</section>
+<section id="types-of-differential-gps" class="level3">
+<h3 class="anchored" data-anchor-id="types-of-differential-gps">Types of Differential GPS</h3>
+<ul>
+<li>Post Processed
+<ul>
+<li>Higher accuracy</li>
+<li>However, done a posteriori</li>
+</ul></li>
+<li>Real-time
+<ul>
+<li>Lower accuracy</li>
+<li>Better navigation</li>
+<li>requires a transmitting base station</li>
+<li>requires common link (FM radio or internet/cell phone)</li>
+</ul></li>
+</ul>
+<p><img src="images/differential_correction_3.png" class="img-fluid"></p>
+<section id="wide-area-augmentation-system-waas" class="level4">
+<h4 class="anchored" data-anchor-id="wide-area-augmentation-system-waas">Wide Area Augmentation System (WAAS)</h4>
+<p>Real-time differential GPS developed for aircraft navigation. Based on a network of ground reference stations. Accuracy improves from ~13km to under 2m.</p>
+</section>
+</section>
+<section id="other-applications-of-gps" class="level3">
+<h3 class="anchored" data-anchor-id="other-applications-of-gps">Other Applications of GPS</h3>
+<ul>
+<li>Tracking</li>
+<li>Navigation</li>
+<li>Field Digitizing
+<ul>
+<li>GPS receiver</li>
+<li>range pole</li>
+<li>laser rangefinder</li>
+<li>electronic compass</li>
+</ul></li>
+<li>Human Mobility</li>
+<li>Autonomous Vehicles</li>
+<li>Indoor Mapping
+<ul>
+<li>Bluetooth</li>
+<li>Radio Frequency (RFID)</li>
+</ul></li>
+</ul>
+</section>
+<section id="other-methods-for-positioning" class="level3">
+<h3 class="anchored" data-anchor-id="other-methods-for-positioning">Other Methods for Positioning</h3>
+<ul>
+<li>Sound Range</li>
+<li>Cellular Positioning</li>
+<li>GPS Alternatives:
+<ul>
+<li>Ground Based GPS</li>
+<li>Starlink (prevents navigation jamming)</li>
+</ul></li>
+</ul>
 
 
 </section>
