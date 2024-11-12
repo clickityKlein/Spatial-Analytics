@@ -11,3 +11,38 @@ Concepts and conclusions from the labs.
   - Overlay: Combine layers into a new layer to represent spatial relationships between input features using UNION.
   - Buffer: Creates a proximity or perimeter zone (new polygon at a specified distance) around given features like points, polygons, or lines.
   - Statistics: Calculates different summary statistics like sum, mean, minimum, maximum, etc. for fields in a table.
+
+# Lab 2 - Projections
+
+- Tissot Ellipses visually show much distortion there is a projection by size and shape at different coordinates.
+
+## Conformal Projection Question
+
+- Conformal projections preserve local shape, and map scales the same everywhere and in any direction, thus if ellipse sizes vary in size as well as shape, the properties of the projection are likely to be conformal.
+
+## Asia South Albers Equal Area Conic
+
+![](images/asia_south_albers_equal_area_conic.jpeg)
+
+- latitude lines: curved
+- longitude lines: straight
+
+## North Pole Azimuthal Equidistant
+
+![](images/north_pole_azimuthal_equidistant.png)
+
+- latitude: curved
+- longitude: straight
+
+## Mercator
+
+## Robinson
+
+Known as a compromise projection (nearly equal area and nearly conformal).
+
+
+
+
+
+
+

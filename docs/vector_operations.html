@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Spatial Analytics</title>
+<title>Spatial Analytics - Vector Operations</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -113,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Vector Data Models</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./vector_operations.html"> 
+    <a class="nav-link active" href="./vector_operations.html" aria-current="page"> 
 <span class="menu-text">Vector Operations</span></a>
   </li>  
   <li class="nav-item">
@@ -167,13 +167,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#topics" id="toc-topics" class="nav-link active" data-scroll-target="#topics">Topics</a></li>
-  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a>
+  <li><a href="#selection-query" id="toc-selection-query" class="nav-link active" data-scroll-target="#selection-query">Selection (Query)</a></li>
+  <li><a href="#re-classification" id="toc-re-classification" class="nav-link" data-scroll-target="#re-classification">Re-Classification</a>
   <ul class="collapse">
-  <li><a href="#defining-a-gis" id="toc-defining-a-gis" class="nav-link" data-scroll-target="#defining-a-gis">Defining a GIS</a></li>
-  <li><a href="#computational-tools-for-spatial-knowledge" id="toc-computational-tools-for-spatial-knowledge" class="nav-link" data-scroll-target="#computational-tools-for-spatial-knowledge">Computational Tools for Spatial Knowledge</a></li>
-  <li><a href="#understanding-the-components-of-a-gis" id="toc-understanding-the-components-of-a-gis" class="nav-link" data-scroll-target="#understanding-the-components-of-a-gis">Understanding the Components of a GIS</a></li>
-  <li><a href="#gis-in-an-instutional-and-societal-context" id="toc-gis-in-an-instutional-and-societal-context" class="nav-link" data-scroll-target="#gis-in-an-instutional-and-societal-context">GIS in an Instutional and Societal Context</a></li>
+  <li><a href="#binary-classification" id="toc-binary-classification" class="nav-link" data-scroll-target="#binary-classification">Binary Classification</a></li>
+  <li><a href="#classification-schemes" id="toc-classification-schemes" class="nav-link" data-scroll-target="#classification-schemes">Classification Schemes</a></li>
+  <li><a href="#dissolve-based-on-attributes-and-re-classification" id="toc-dissolve-based-on-attributes-and-re-classification" class="nav-link" data-scroll-target="#dissolve-based-on-attributes-and-re-classification">Dissolve Based on Attributes and Re-Classification</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -183,7 +182,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Spatial Analytics</h1>
+<h1 class="title">Vector Operations</h1>
 </div>
 
 
@@ -200,167 +199,90 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a guide to for the essential concepts of Spatial Analytics.</p>
-<section id="topics" class="level1">
-<h1>Topics</h1>
+<p>Vector Operations involve querying data into a temporary layer, which can then be utilized.</p>
 <ul>
-<li><a href="./spatial_data_representations.html">Spatial Data Representations</a></li>
-<li><a href="./concepts_scale_resolution.html">Concepts of Scale and Resolution</a></li>
-<li><a href="./generalization_maup.html">Generalization and the MAUP</a></li>
-<li><a href="./projections.html">Projections</a></li>
-<li><a href="./gps_gnss.html">GPS / GNSS</a></li>
-<li><a href="./vector_data_models.html">Vector Data Models</a></li>
+<li>Spatial Data Analysis: input -&gt; spatial operation -&gt; output</li>
+<li>Sequence of spatial operations to form a complex analysis</li>
+<li>These can have one or many inputs and one or many outputs</li>
 </ul>
-</section>
-<section id="overview" class="level1">
-<h1>Overview</h1>
-<p>Humans spatial reasoning can be motivated by concepts such as preferences and priorities. Why do humans take the paths they do? Can these mobility patterns be quantified? What implications do paths and representations of real world entities have?</p>
-<p>Technical definitions can change by industry or task. While representing real world entities and patterns, biases can be created both purposefully and accidentally. Across any science or field, implied causality can be dangerous. Understanding the tools and concepts is important for properly presenting information and not misusing the tools to imply incorrect phenomenon.</p>
-<section id="defining-a-gis" class="level3">
-<h3 class="anchored" data-anchor-id="defining-a-gis">Defining a GIS</h3>
+<section id="selection-query" class="level1">
+<h1>Selection (Query)</h1>
 <ul>
-<li>Spatial Thinking: a collection of cognitive skills
+<li>single layer selection: select features based attributes or on spatial criteria such as:
 <ul>
-<li>concepts of space</li>
-<li>tools of representation</li>
-<li>processes of reasoning</li>
+<li>adjacency
+<ul>
+<li>can be shared line required</li>
+<li>can be shared line OR node required</li>
 </ul></li>
-</ul>
-<p>Spatial Knowledge is important for orientation and navigation, map production, measuring the world, and understanding relationships between objects and the implication of such.</p>
-<p>A <strong>GIS</strong> is something that helps understand spatial knowledge by quantifying locations. They are computer-based information systems which aid in the collection, maintenance, storage, analysis, output, and distribution of spatial data. They require trained personnel, supporting institutions, have protocols for use, and can be web based.</p>
-<p>A simplified function-based definition:</p>
-<ul>
-<li>data input</li>
-<li>data management (storage/organization/retrieval)</li>
-<li>data manipulation/analysis</li>
-<li>data output</li>
-</ul>
-</section>
-<section id="computational-tools-for-spatial-knowledge" class="level3">
-<h3 class="anchored" data-anchor-id="computational-tools-for-spatial-knowledge">Computational Tools for Spatial Knowledge</h3>
-<p>Some examples of GIS, spatial analysis, and mapping tools:</p>
-<ul>
-<li>QGIS (open source)</li>
-<li>ArcGIS (commercial)</li>
-<li>GeoDa (open, specialized)</li>
-<li>Google Maps (web)</li>
-<li>Google Earth (web)</li>
-<li>VGI (OSM)</li>
-</ul>
-</section>
-<section id="understanding-the-components-of-a-gis" class="level3">
-<h3 class="anchored" data-anchor-id="understanding-the-components-of-a-gis">Understanding the Components of a GIS</h3>
-<p>There are several components each GIS have:</p>
-<ul>
-<li>database: registered map layers</li>
-<li>analytic base:
-<ul>
-<li>software and algorithms</li>
-<li>cartometric analysis</li>
-<li>statistical analysis</li>
-</ul></li>
-<li>management base:
-<ul>
-<li>maintenance and update</li>
-<li>access and data sharing</li>
-<li>documentation</li>
-</ul></li>
-</ul>
-<section id="databases" class="level4">
-<h4 class="anchored" data-anchor-id="databases">Databases</h4>
-<ul>
-<li>Linking Content:
-<ul>
-<li>spatial registration (align all layers)</li>
-<li>Georeferencing (at least one layer)</li>
-</ul></li>
-<li>Establishing Geospatial Relations:
-<ul>
-<li>distance and direction</li>
-<li>proximity</li>
-<li>connectivity</li>
-<li>association</li>
+<li>overlap</li>
 <li>containment</li>
 </ul></li>
-<li>Supporting Geospatial Analysis</li>
-</ul>
-</section>
-<section id="analytical-base" class="level4">
-<h4 class="anchored" data-anchor-id="analytical-base">Analytical Base</h4>
+<li>multilayer selection:
 <ul>
-<li>Manipulating and Analyzing Data:
+<li>set algebra</li>
+<li>boolean algebra</li>
+<li>examples:
 <ul>
-<li>explore spatial relations</li>
-<li>elicit spatial patterns</li>
-<li>run GIS analysis</li>
-</ul></li>
-<li>Statistical Elements:
-<ul>
-<li>(spatial) statistics</li>
-<li>classification</li>
-<li>descriptive</li>
-</ul></li>
-<li>Cartometric Elements
-<ul>
-<li>spatial association</li>
-<li>spatial arrangement</li>
-<li>spatial patterns</li>
-</ul></li>
-<li>Cartometric Elements and Geoprocessing: distance and direction measures (primitatives) ot build up higher order patterns
-<ul>
-<li>spatial presence: location (x, y, z, t)</li>
-<li>spatial order: size and shape</li>
-<li>spatial arrangement:
-<ul>
-<li>density</li>
-<li>dispersion</li>
-<li>diffusion</li>
-<li>connectivity</li>
-</ul></li>
-<li>spatial association (correspondence)
-<ul>
-<li>address matching</li>
-<li>buffering</li>
-<li>overlay</li>
-<li>modeling</li>
+<li>states north of Arkansas</li>
+<li>states larger than 84k sq km</li>
+<li>state both entirely north of Arkansas and larger than 84k sq km</li>
 </ul></li>
 </ul></li>
 </ul>
 </section>
-<section id="management-base" class="level4">
-<h4 class="anchored" data-anchor-id="management-base">Management Base</h4>
+<section id="re-classification" class="level1">
+<h1>Re-Classification</h1>
+<section id="binary-classification" class="level2">
+<h2 class="anchored" data-anchor-id="binary-classification">Binary Classification</h2>
+<p>If entities within a layer are either True or False (1 or 0)</p>
+</section>
+<section id="classification-schemes" class="level2">
+<h2 class="anchored" data-anchor-id="classification-schemes">Classification Schemes</h2>
+<p>Use the best classification scheme to illustrate the data.</p>
 <ul>
-<li>Handles data collection and storage
+<li>equal interval</li>
+<li>natural breaks</li>
+<li>quantile</li>
+</ul>
+</section>
+<section id="dissolve-based-on-attributes-and-re-classification" class="level2">
+<h2 class="anchored" data-anchor-id="dissolve-based-on-attributes-and-re-classification">Dissolve Based on Attributes and Re-Classification</h2>
+<p>Combine like features on attributes.</p>
 <ul>
-<li>data maintenance and update</li>
-<li>documentation, tutorials, online help</li>
+<li>Example 1:
+<ul>
+<li>Initial layer:
+<ul>
+<li>grain crops</li>
+<li>orchards</li>
+<li>residential</li>
+<li>commercial</li>
 </ul></li>
-<li>Provides access and security
+<li>New Layer:
 <ul>
-<li>multiple analysts working concurrently</li>
-<li>protects against db corruption</li>
-<li>secures proprietary information</li>
+<li>agricultural</li>
+<li>non-agricultural</li>
 </ul></li>
-<li>Creates and supports metadata</li>
-<li>Metadata:
+</ul></li>
+<li>Example 2:
 <ul>
-<li>data that describes geospatial data
+<li>Initial layer:
 <ul>
-<li>who produced the data, when, and how</li>
-<li>what is the quality (truth in advertising)</li>
-<li>other measures and information</li>
+<li>states</li>
+</ul></li>
+<li>Reclassificiation:
+<ul>
+<li>Binary into West or East of the Mississippi</li>
+</ul></li>
+<li>New Layer:
+<ul>
+<li>E</li>
+<li>W</li>
 </ul></li>
 </ul></li>
 </ul>
-</section>
-</section>
-<section id="gis-in-an-instutional-and-societal-context" class="level3">
-<h3 class="anchored" data-anchor-id="gis-in-an-instutional-and-societal-context">GIS in an Instutional and Societal Context</h3>
-<ul>
-<li>managing and assessing environmental problems, resource allocation, mapping, etc.</li>
-<li>linking spatial information with attribute data to better understand lower and higher patterns of spatial distribution</li>
-<li>from an institutional perspective, trained analysts, decisions and protocols for collection and analylsis are incorporated</li>
-</ul>
+<p>MAUP and Dasymetric Mapping Example: use aggregation to examine different statistical distributions of</p>
 
 
 </section>

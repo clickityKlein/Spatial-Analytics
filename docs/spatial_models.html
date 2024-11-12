@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Spatial Analytics</title>
+<title>Spatial Analytics - Spatial Modeling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Vector Operations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./spatial_models.html"> 
+    <a class="nav-link active" href="./spatial_models.html" aria-current="page"> 
 <span class="menu-text">Spatial Models</span></a>
   </li>  
   <li class="nav-item">
@@ -167,14 +167,32 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#topics" id="toc-topics" class="nav-link active" data-scroll-target="#topics">Topics</a></li>
-  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a>
+  <li><a href="#modeling-as-a-process" id="toc-modeling-as-a-process" class="nav-link active" data-scroll-target="#modeling-as-a-process">Modeling as a Process</a></li>
+  <li><a href="#validation-and-verification" id="toc-validation-and-verification" class="nav-link" data-scroll-target="#validation-and-verification">Validation and Verification</a></li>
+  <li><a href="#thinking-spatially" id="toc-thinking-spatially" class="nav-link" data-scroll-target="#thinking-spatially">Thinking Spatially</a></li>
+  <li><a href="#types-of-models" id="toc-types-of-models" class="nav-link" data-scroll-target="#types-of-models">Types of Models</a>
   <ul class="collapse">
-  <li><a href="#defining-a-gis" id="toc-defining-a-gis" class="nav-link" data-scroll-target="#defining-a-gis">Defining a GIS</a></li>
-  <li><a href="#computational-tools-for-spatial-knowledge" id="toc-computational-tools-for-spatial-knowledge" class="nav-link" data-scroll-target="#computational-tools-for-spatial-knowledge">Computational Tools for Spatial Knowledge</a></li>
-  <li><a href="#understanding-the-components-of-a-gis" id="toc-understanding-the-components-of-a-gis" class="nav-link" data-scroll-target="#understanding-the-components-of-a-gis">Understanding the Components of a GIS</a></li>
-  <li><a href="#gis-in-an-instutional-and-societal-context" id="toc-gis-in-an-instutional-and-societal-context" class="nav-link" data-scroll-target="#gis-in-an-instutional-and-societal-context">GIS in an Instutional and Societal Context</a></li>
+  <li><a href="#cartographic-model" id="toc-cartographic-model" class="nav-link" data-scroll-target="#cartographic-model">Cartographic Model</a></li>
+  <li><a href="#spatio-temporal-model" id="toc-spatio-temporal-model" class="nav-link" data-scroll-target="#spatio-temporal-model">Spatio-temporal Model</a></li>
+  <li><a href="#network-models" id="toc-network-models" class="nav-link" data-scroll-target="#network-models">Network Models</a></li>
+  <li><a href="#data-models" id="toc-data-models" class="nav-link" data-scroll-target="#data-models">Data Models</a></li>
+  <li><a href="#static-modeling" id="toc-static-modeling" class="nav-link" data-scroll-target="#static-modeling">Static Modeling</a></li>
+  <li><a href="#dynamic-modeling" id="toc-dynamic-modeling" class="nav-link" data-scroll-target="#dynamic-modeling">Dynamic Modeling</a></li>
+  <li><a href="#based-on-purpose" id="toc-based-on-purpose" class="nav-link" data-scroll-target="#based-on-purpose">Based on Purpose</a></li>
+  <li><a href="#based-on-methodology" id="toc-based-on-methodology" class="nav-link" data-scroll-target="#based-on-methodology">Based on Methodology</a></li>
+  <li><a href="#based-on-logic" id="toc-based-on-logic" class="nav-link" data-scroll-target="#based-on-logic">Based on Logic</a></li>
   </ul></li>
+  <li><a href="#cartographic-modeling-main-focus" id="toc-cartographic-modeling-main-focus" class="nav-link" data-scroll-target="#cartographic-modeling-main-focus">Cartographic Modeling (Main Focus)</a>
+  <ul class="collapse">
+  <li><a href="#suitability-analysis" id="toc-suitability-analysis" class="nav-link" data-scroll-target="#suitability-analysis">Suitability Analysis</a></li>
+  </ul></li>
+  <li><a href="#criteria-design" id="toc-criteria-design" class="nav-link" data-scroll-target="#criteria-design">Criteria Design</a>
+  <ul class="collapse">
+  <li><a href="#rankings" id="toc-rankings" class="nav-link" data-scroll-target="#rankings">Rankings</a></li>
+  <li><a href="#weightings" id="toc-weightings" class="nav-link" data-scroll-target="#weightings">Weightings</a></li>
+  </ul></li>
+  <li><a href="#model-building-tools" id="toc-model-building-tools" class="nav-link" data-scroll-target="#model-building-tools">Model-Building Tools</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -183,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Spatial Analytics</h1>
+<h1 class="title">Spatial Modeling</h1>
 </div>
 
 
@@ -200,170 +218,170 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a guide to for the essential concepts of Spatial Analytics.</p>
-<section id="topics" class="level1">
-<h1>Topics</h1>
+<p>Modeling is an overloading term. In general, a model is a simplified description of reality and can also be considered a process.</p>
+<section id="modeling-as-a-process" class="level1">
+<h1>Modeling as a Process</h1>
 <ul>
-<li><a href="./spatial_data_representations.html">Spatial Data Representations</a></li>
-<li><a href="./concepts_scale_resolution.html">Concepts of Scale and Resolution</a></li>
-<li><a href="./generalization_maup.html">Generalization and the MAUP</a></li>
-<li><a href="./projections.html">Projections</a></li>
-<li><a href="./gps_gnss.html">GPS / GNSS</a></li>
-<li><a href="./vector_data_models.html">Vector Data Models</a></li>
+<li>What is the model to tell us? We need to understand the problem’s significance.</li>
+<li>What type of data is needed? Does the data reflect the requirements and precision?</li>
+<li>How to create a design to put the model together?</li>
+<li>how to apply existing tools to derive meaningful models?</li>
 </ul>
 </section>
-<section id="overview" class="level1">
-<h1>Overview</h1>
-<p>Humans spatial reasoning can be motivated by concepts such as preferences and priorities. Why do humans take the paths they do? Can these mobility patterns be quantified? What implications do paths and representations of real world entities have?</p>
-<p>Technical definitions can change by industry or task. While representing real world entities and patterns, biases can be created both purposefully and accidentally. Across any science or field, implied causality can be dangerous. Understanding the tools and concepts is important for properly presenting information and not misusing the tools to imply incorrect phenomenon.</p>
-<section id="defining-a-gis" class="level3">
-<h3 class="anchored" data-anchor-id="defining-a-gis">Defining a GIS</h3>
+<section id="validation-and-verification" class="level1">
+<h1>Validation and Verification</h1>
+<p>How well does the model actually reflect reality? This can be verified via groundtruth model data.</p>
+</section>
+<section id="thinking-spatially" class="level1">
+<h1>Thinking Spatially</h1>
 <ul>
-<li>Spatial Thinking: a collection of cognitive skills
-<ul>
-<li>concepts of space</li>
-<li>tools of representation</li>
-<li>processes of reasoning</li>
-</ul></li>
-</ul>
-<p>Spatial Knowledge is important for orientation and navigation, map production, measuring the world, and understanding relationships between objects and the implication of such.</p>
-<p>A <strong>GIS</strong> is something that helps understand spatial knowledge by quantifying locations. They are computer-based information systems which aid in the collection, maintenance, storage, analysis, output, and distribution of spatial data. They require trained personnel, supporting institutions, have protocols for use, and can be web based.</p>
-<p>A simplified function-based definition:</p>
-<ul>
-<li>data input</li>
-<li>data management (storage/organization/retrieval)</li>
-<li>data manipulation/analysis</li>
-<li>data output</li>
+<li>Visible / Functional Patterns</li>
+<li>Spatial Correlation: closer events are more similar</li>
 </ul>
 </section>
-<section id="computational-tools-for-spatial-knowledge" class="level3">
-<h3 class="anchored" data-anchor-id="computational-tools-for-spatial-knowledge">Computational Tools for Spatial Knowledge</h3>
-<p>Some examples of GIS, spatial analysis, and mapping tools:</p>
-<ul>
-<li>QGIS (open source)</li>
-<li>ArcGIS (commercial)</li>
-<li>GeoDa (open, specialized)</li>
-<li>Google Maps (web)</li>
-<li>Google Earth (web)</li>
-<li>VGI (OSM)</li>
-</ul>
+<section id="types-of-models" class="level1">
+<h1>Types of Models</h1>
+<p>There are different definitions and methods of thinking for how models can be described.</p>
+<section id="cartographic-model" class="level2">
+<h2 class="anchored" data-anchor-id="cartographic-model">Cartographic Model</h2>
+<p>A cartographic model is a temporally static interpretation of combined spatial datasets, containing operations and functions for problem solving.</p>
 </section>
-<section id="understanding-the-components-of-a-gis" class="level3">
-<h3 class="anchored" data-anchor-id="understanding-the-components-of-a-gis">Understanding the Components of a GIS</h3>
-<p>There are several components each GIS have:</p>
-<ul>
-<li>database: registered map layers</li>
-<li>analytic base:
-<ul>
-<li>software and algorithms</li>
-<li>cartometric analysis</li>
-<li>statistical analysis</li>
-</ul></li>
-<li>management base:
-<ul>
-<li>maintenance and update</li>
-<li>access and data sharing</li>
-<li>documentation</li>
-</ul></li>
-</ul>
-<section id="databases" class="level4">
-<h4 class="anchored" data-anchor-id="databases">Databases</h4>
-<ul>
-<li>Linking Content:
-<ul>
-<li>spatial registration (align all layers)</li>
-<li>Georeferencing (at least one layer)</li>
-</ul></li>
-<li>Establishing Geospatial Relations:
-<ul>
-<li>distance and direction</li>
-<li>proximity</li>
-<li>connectivity</li>
-<li>association</li>
-<li>containment</li>
-</ul></li>
-<li>Supporting Geospatial Analysis</li>
-</ul>
+<section id="spatio-temporal-model" class="level2">
+<h2 class="anchored" data-anchor-id="spatio-temporal-model">Spatio-temporal Model</h2>
+<p>Dynamics in space and time, time-driven processes.</p>
 </section>
-<section id="analytical-base" class="level4">
-<h4 class="anchored" data-anchor-id="analytical-base">Analytical Base</h4>
+<section id="network-models" class="level2">
+<h2 class="anchored" data-anchor-id="network-models">Network Models</h2>
+<p>Modeling of resources (flow, accumulation) as limited to networks.</p>
 <ul>
-<li>Manipulating and Analyzing Data:
+<li>A set of connected features (centers of demand and/or supply)</li>
+<li>Centers connected to at least one network link</li>
+<li>Links form a network and may attributes that affect the flow (i.e.&nbsp;transit cost)</li>
+<li>Examples:
 <ul>
-<li>explore spatial relations</li>
-<li>elicit spatial patterns</li>
-<li>run GIS analysis</li>
-</ul></li>
-<li>Statistical Elements:
-<ul>
-<li>(spatial) statistics</li>
-<li>classification</li>
-<li>descriptive</li>
-</ul></li>
-<li>Cartometric Elements
-<ul>
-<li>spatial association</li>
-<li>spatial arrangement</li>
-<li>spatial patterns</li>
-</ul></li>
-<li>Cartometric Elements and Geoprocessing: distance and direction measures (primitatives) ot build up higher order patterns
-<ul>
-<li>spatial presence: location (x, y, z, t)</li>
-<li>spatial order: size and shape</li>
-<li>spatial arrangement:
-<ul>
-<li>density</li>
-<li>dispersion</li>
-<li>diffusion</li>
-<li>connectivity</li>
-</ul></li>
-<li>spatial association (correspondence)
-<ul>
-<li>address matching</li>
-<li>buffering</li>
-<li>overlay</li>
-<li>modeling</li>
-</ul></li>
+<li>route selection</li>
+<li>resource allocation</li>
+<li>traffic modeling</li>
+<li>hydrology</li>
 </ul></li>
 </ul>
 </section>
-<section id="management-base" class="level4">
-<h4 class="anchored" data-anchor-id="management-base">Management Base</h4>
+<section id="data-models" class="level2">
+<h2 class="anchored" data-anchor-id="data-models">Data Models</h2>
+<p>Entities and fields as conceptual models.</p>
+</section>
+<section id="static-modeling" class="level2">
+<h2 class="anchored" data-anchor-id="static-modeling">Static Modeling</h2>
+<p>Taking inputs to transform and then into outputs using sets of tools and functions, its a generally defined model.</p>
+</section>
+<section id="dynamic-modeling" class="level2">
+<h2 class="anchored" data-anchor-id="dynamic-modeling">Dynamic Modeling</h2>
+<p>Iterative, sets of initial conditions, apply transformations to obtain a series of predictions at time intervals.</p>
+</section>
+<section id="based-on-purpose" class="level2">
+<h2 class="anchored" data-anchor-id="based-on-purpose">Based on Purpose</h2>
 <ul>
-<li>Handles data collection and storage
+<li>Descriptive: passive, description of the study area</li>
+<li>Prescriptive: active, imposing best solution</li>
+</ul>
+</section>
+<section id="based-on-methodology" class="level2">
+<h2 class="anchored" data-anchor-id="based-on-methodology">Based on Methodology</h2>
 <ul>
-<li>data maintenance and update</li>
-<li>documentation, tutorials, online help</li>
-</ul></li>
-<li>Provides access and security
+<li>Stochastic: based on statistical properties</li>
+<li>Deterministic: based on known functional linkages and interactions</li>
+</ul>
+</section>
+<section id="based-on-logic" class="level2">
+<h2 class="anchored" data-anchor-id="based-on-logic">Based on Logic</h2>
 <ul>
-<li>multiple analysts working concurrently</li>
-<li>protects against db corruption</li>
-<li>secures proprietary information</li>
-</ul></li>
-<li>Creates and supports metadata</li>
-<li>Metadata:
-<ul>
-<li>data that describes geospatial data
-<ul>
-<li>who produced the data, when, and how</li>
-<li>what is the quality (truth in advertising)</li>
-<li>other measures and information</li>
-</ul></li>
-</ul></li>
+<li>Inductive: specific premises to form general conclusions</li>
+<li>Deductive: form general to specific using known factors and relationships</li>
 </ul>
 </section>
 </section>
-<section id="gis-in-an-instutional-and-societal-context" class="level3">
-<h3 class="anchored" data-anchor-id="gis-in-an-instutional-and-societal-context">GIS in an Instutional and Societal Context</h3>
+<section id="cartographic-modeling-main-focus" class="level1">
+<h1>Cartographic Modeling (Main Focus)</h1>
 <ul>
-<li>managing and assessing environmental problems, resource allocation, mapping, etc.</li>
-<li>linking spatial information with attribute data to better understand lower and higher patterns of spatial distribution</li>
-<li>from an institutional perspective, trained analysts, decisions and protocols for collection and analylsis are incorporated</li>
+<li>Combine data sets and operations in a sequence to answer questions, typically producing an output map from various input maps</li>
+<li>Based on “criteria”; often as a suitability analysiss</li>
+<li>Examples:
+<ul>
+<li>distribution of suitable habitats, viable populations</li>
+<li>migration route/corridor studies</li>
+<li>water distribution systems, natural and constructed</li>
+<li>species invasions</li>
+<li>mill site selection</li>
+<li>harvest scheduling</li>
+<li>pollution response planning</li>
+</ul></li>
+</ul>
+<section id="suitability-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="suitability-analysis">Suitability Analysis</h2>
+<ul>
+<li>Classification of land according to its utility for a specific use</li>
+<li>Often temporally static (spatial features fixed over time)</li>
+<li>Change models may include a temporal component</li>
+<li>Uses Operational Sequencing in workflows, including:
+<ul>
+<li>buffers</li>
+<li>overlays (intersections, unions, etc.)</li>
+<li>reclassifications</li>
+</ul></li>
+<li>Overall, uses intermediate data creation in a decision-making process</li>
+</ul>
+</section>
+</section>
+<section id="criteria-design" class="level1">
+<h1>Criteria Design</h1>
+<ul>
+<li>conversion of qualitative terms into quantitative measures
+<ul>
+<li>i.e.&nbsp;not too steep into slopes less than a certain degree</li>
+<li>requires checking with the planning committee to specify these terms and measures</li>
+</ul></li>
+<li>different combined criteria could have varying relative importance</li>
+<li>require an explicitly weights of relative importance (ranking and weighting) of layers and criteria
+<ul>
+<li>Weighting and Ranking is the name of the qualitative to quantitative process</li>
+</ul></li>
+</ul>
+<section id="rankings" class="level2">
+<h2 class="anchored" data-anchor-id="rankings">Rankings</h2>
+<ul>
+<li>Assignment of relative values within the same layer (discrete or continuous)</li>
+<li>Relationships can be complex and should be justified</li>
+<li>Suitability assignment function</li>
+</ul>
+</section>
+<section id="weightings" class="level2">
+<h2 class="anchored" data-anchor-id="weightings">Weightings</h2>
+<ul>
+<li>assignment of relative values to different layers</li>
+<li>difficulties in deciding weights from non-quantitative criteria</li>
+</ul>
+</section>
+</section>
+<section id="model-building-tools" class="level1">
+<h1>Model-Building Tools</h1>
+<ul>
+<li>connectivity: input data-processes-output data</li>
+<li>specification: parameters, variables</li>
+<li>accessibility of input data and data organization</li>
+<li>automation, portability, extensibility, reusability, documentation</li>
+<li>sensitivity and scenario testing (iterations)</li>
+</ul>
+</section>
+<section id="summary" class="level1">
+<h1>Summary</h1>
+<ul>
+<li>Many different definitions and taxonomies of modeling</li>
+<li>Understanding the methods (exploring / explaining) and the problem that is faced (modeling)</li>
+<li>The aim of spatial modeling is to derive a meaningful representation of events, occurrences or processes by making use of the power of spatial analysis</li>
+<li>Modelbuilder is a good example of how to combine functionalities for creating cartographic models.</li>
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

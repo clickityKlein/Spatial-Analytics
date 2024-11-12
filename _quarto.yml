@@ -23,6 +23,10 @@ website:
         text: "GPS / GNSS"
       - href: vector_data_models.qmd
         text: "Vector Data Models"
+      - href: vector_operations.qmd
+        text: "Vector Operations"
+      - href: spatial_models.qmd
+        text: "Spatial Models"
       - href: research_notes.qmd 
         text: "Research Notes"
       - href: textbook_notes.qmd

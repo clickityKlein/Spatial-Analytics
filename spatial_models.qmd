@@ -1,0 +1,132 @@
+---
+title: "Spatial Modeling"
+---
+
+Modeling is an overloading term. In general, a model is a simplified description of reality and can also be considered a process.
+
+# Modeling as a Process
+
+- What is the model to tell us? We need to understand the problem's significance.
+- What type of data is needed? Does the data reflect the requirements and precision?
+- How to create a design to put the model together?
+- how to apply existing tools to derive meaningful models?
+
+# Validation and Verification
+
+How well does the model actually reflect reality? This can be verified via groundtruth model data.
+
+# Thinking Spatially
+
+- Visible / Functional Patterns
+- Spatial Correlation: closer events are more similar
+
+# Types of Models
+
+There are different definitions and methods of thinking for how models can be described.
+
+## Cartographic Model
+
+A cartographic model is a temporally static interpretation of combined spatial datasets, containing operations and functions for problem solving.
+
+## Spatio-temporal Model
+
+Dynamics in space and time, time-driven processes.
+
+## Network Models
+
+Modeling of resources (flow, accumulation) as limited to networks.
+
+- A set of connected features (centers of demand and/or supply)
+- Centers connected to at least one network link
+- Links form a network and may attributes that affect the flow (i.e. transit cost)
+- Examples:
+  - route selection
+  - resource allocation
+  - traffic modeling
+  - hydrology
+
+## Data Models
+
+Entities and fields as conceptual models.
+
+## Static Modeling
+
+Taking inputs to transform and then into outputs using sets of tools and functions, its a generally defined model.
+
+## Dynamic Modeling
+
+Iterative, sets of initial conditions, apply transformations to obtain a series of predictions at time intervals.
+
+## Based on Purpose
+
+- Descriptive: passive, description of the study area
+- Prescriptive: active, imposing best solution
+
+## Based on Methodology
+
+- Stochastic: based on statistical properties
+- Deterministic: based on known functional linkages and interactions
+
+## Based on Logic
+
+- Inductive: specific premises to form general conclusions
+- Deductive: form general to specific using known factors and relationships
+
+# Cartographic Modeling (Main Focus)
+
+- Combine data sets and operations in a sequence to answer questions, typically producing an output map from various input maps
+- Based on "criteria"; often as a suitability analysiss
+- Examples:
+  - distribution of suitable habitats, viable populations
+  - migration route/corridor studies
+  - water distribution systems, natural and constructed
+  - species invasions
+  - mill site selection
+  - harvest scheduling
+  - pollution response planning
+  
+## Suitability Analysis
+
+- Classification of land according to its utility for a specific use
+- Often temporally static (spatial features fixed over time)
+- Change models may include a temporal component
+- Uses Operational Sequencing in workflows, including:
+  - buffers
+  - overlays (intersections, unions, etc.)
+  - reclassifications
+- Overall, uses intermediate data creation in a decision-making process
+
+# Criteria Design
+
+- conversion of qualitative terms into quantitative measures
+  - i.e. not too steep into slopes less than a certain degree
+  - requires checking with the planning committee to specify these terms and measures
+- different combined criteria could have varying relative importance
+- require an explicitly weights of relative importance (ranking and weighting) of layers and criteria
+  - Weighting and Ranking is the name of the qualitative to quantitative process
+  
+## Rankings
+
+- Assignment of relative values within the same layer (discrete or continuous)
+- Relationships can be complex and should be justified
+- Suitability assignment function
+
+## Weightings
+
+- assignment of relative values to different layers
+- difficulties in deciding weights from non-quantitative criteria
+
+# Model-Building Tools
+
+- connectivity: input data-processes-output data
+- specification: parameters, variables
+- accessibility of input data and data organization
+- automation, portability, extensibility, reusability, documentation
+- sensitivity and scenario testing (iterations)
+
+# Summary
+
+- Many different definitions and taxonomies of modeling
+- Understanding the methods (exploring / explaining) and the problem that is faced (modeling)
+- The aim of spatial modeling is to derive a meaningful representation of events, occurrences or processes by making use of the power of spatial analysis
+- Modelbuilder is a good example of how to combine functionalities for creating cartographic models.

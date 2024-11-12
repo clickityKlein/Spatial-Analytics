@@ -113,6 +113,14 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Vector Data Models</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./vector_operations.html"> 
+<span class="menu-text">Vector Operations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./spatial_models.html"> 
+<span class="menu-text">Spatial Models</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./research_notes.html"> 
 <span class="menu-text">Research Notes</span></a>
   </li>  
@@ -160,6 +168,14 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#lab-1---timber" id="toc-lab-1---timber" class="nav-link active" data-scroll-target="#lab-1---timber">Lab 1 - Timber</a></li>
+  <li><a href="#lab-2---projections" id="toc-lab-2---projections" class="nav-link" data-scroll-target="#lab-2---projections">Lab 2 - Projections</a>
+  <ul class="collapse">
+  <li><a href="#conformal-projection-question" id="toc-conformal-projection-question" class="nav-link" data-scroll-target="#conformal-projection-question">Conformal Projection Question</a></li>
+  <li><a href="#asia-south-albers-equal-area-conic" id="toc-asia-south-albers-equal-area-conic" class="nav-link" data-scroll-target="#asia-south-albers-equal-area-conic">Asia South Albers Equal Area Conic</a></li>
+  <li><a href="#north-pole-azimuthal-equidistant" id="toc-north-pole-azimuthal-equidistant" class="nav-link" data-scroll-target="#north-pole-azimuthal-equidistant">North Pole Azimuthal Equidistant</a></li>
+  <li><a href="#mercator" id="toc-mercator" class="nav-link" data-scroll-target="#mercator">Mercator</a></li>
+  <li><a href="#robinson" id="toc-robinson" class="nav-link" data-scroll-target="#robinson">Robinson</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -197,8 +213,43 @@ ul.task-list li input[type="checkbox"] {
 <li>Statistics: Calculates different summary statistics like sum, mean, minimum, maximum, etc. for fields in a table.</li>
 </ul></li>
 </ul>
+</section>
+<section id="lab-2---projections" class="level1">
+<h1>Lab 2 - Projections</h1>
+<ul>
+<li>Tissot Ellipses visually show much distortion there is a projection by size and shape at different coordinates.</li>
+</ul>
+<section id="conformal-projection-question" class="level2">
+<h2 class="anchored" data-anchor-id="conformal-projection-question">Conformal Projection Question</h2>
+<ul>
+<li>Conformal projections preserve local shape, and map scales the same everywhere and in any direction, thus if ellipse sizes vary in size as well as shape, the properties of the projection are likely to be conformal.</li>
+</ul>
+</section>
+<section id="asia-south-albers-equal-area-conic" class="level2">
+<h2 class="anchored" data-anchor-id="asia-south-albers-equal-area-conic">Asia South Albers Equal Area Conic</h2>
+<p><img src="images/asia_south_albers_equal_area_conic.jpeg" class="img-fluid"></p>
+<ul>
+<li>latitude lines: curved</li>
+<li>longitude lines: straight</li>
+</ul>
+</section>
+<section id="north-pole-azimuthal-equidistant" class="level2">
+<h2 class="anchored" data-anchor-id="north-pole-azimuthal-equidistant">North Pole Azimuthal Equidistant</h2>
+<p><img src="images/north_pole_azimuthal_equidistant.png" class="img-fluid"></p>
+<ul>
+<li>latitude: curved</li>
+<li>longitude: straight</li>
+</ul>
+</section>
+<section id="mercator" class="level2">
+<h2 class="anchored" data-anchor-id="mercator">Mercator</h2>
+</section>
+<section id="robinson" class="level2">
+<h2 class="anchored" data-anchor-id="robinson">Robinson</h2>
+<p>Known as a compromise projection (nearly equal area and nearly conformal).</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

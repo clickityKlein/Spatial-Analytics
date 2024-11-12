@@ -94,6 +94,46 @@ Snap tolerance must be chosen carefully:
 
 Vector operations are used in spatial data analysis on vector data models. Vector operations can be applied with functions and can have **one-to-one** or **many-to-one** type inputs and outputs.
 
+# Simpson's Rule
+
+Calculate the geometry or area from coordinates.
+
+$$A=\frac{1}{2}\sum\limits_{i=1}^{n-1}(x_{i+1} - x_i)(y_i + y_{i+1})$$
+
+To perform the operation, we want to "close the loop".
+
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+x = [2, 3, 5, 6, 2]
+y = [4, 6, 6, 4, 4]
+
+# Create the plot
+plt.figure()
+plt.plot(x, y, marker='o')  # Plot the trapezoid with markers at vertices
+plt.fill(x, y, 'skyblue', alpha=0.5)  # Fill the trapezoid with color
+
+# Set plot attributes
+plt.title('Trapezoid Plot')
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
+plt.grid(True)
+
+# Show the plot
+plt.show()
+```
+
+- $(x_0, y_0): (2, 4)$
+- $(x_1, y_1): (3, 6)$
+- $(x_2, y_2): (5, 6)$
+- $(x_3, y_3): (6, 4)$
+- $(x_4, y_4): (2, 4)$
+
+$$A = \frac{1}{2}[(3-2)(4+6) + (5-3)(6+6) + (6-5)(6+4) + (2-6)(4+4)] = 6$$
+
+
 ## Common Vector Operations
 
 - Measurements
@@ -119,6 +159,10 @@ Vector operations are used in spatial data analysis on vector data models. Vecto
     - equal-interval
     - natural breaks
     - equal-area
+  - Classification Schemes Further Explained
+    - Population is assumed to normally follow a uniform distribution, which can skew how a visulation looks
+    - Classification schemes are important in terms of misuse
+    
     
 ![](images/classification_schemes_1.png)
     
@@ -127,23 +171,53 @@ Vector operations are used in spatial data analysis on vector data models. Vecto
   - i.e. combine smaller polygons into larger polygons based on criteria
   - can be used after reclassification (i.e. states west and east of the Mississippi dissolves into two total polygons)
   - don't forget about MAUP when performing dissolves
+    - note on maup: when disaggregating, this can be done with higher accuracy when using ancillary data of the smaller scale.
+  - neighboring boundary shares attributes, this is the dissolve boundary
+  - able to bring over summary statistics (i.e. sum of population OR different statistical characteristics)
+  - population density can be tricky to dissolve.
 - Buffer
   - simple buffer: point layer $\rightarrow$ overlap dissolved
   - compound buffer: point layer $\rightarrow$ overlap identified
   - nested buffer (doughnut buffer): nested rings within a simple buffer
   - variable buffer: buffer changes with relation to attribute (i.e. distance from main branch of river)
+  - other examples where buffer can be important:
+    - combine different layers
+    
   
 ![](images/buffer_types_1.png)
   
 - Overlay
+  - combine different layers
+  - requires common coordinate system
+  - creates a new layer
   - point in polygon
+    - creates a new layer with an additional attribute of the polygon which contains the point
   - line in polygon
+    - additional attribute of split between polygons
+    - note that the new layer has an additional attribute and an additional row in the attribute table
   - polygon
     - intersection
+      - new nodes are created in this process
+      - example: residential area which intersects protected land
     - union
+      - at least one of the combined conditions must be true
+      - think of this as creating a Ven Diagram (i.e. the union of 2 shapes creates 3 shapes - left, intersection, right)
     - clip
+      - direction matters: input attributes retained; clip feature attributes ignored
+      - example: residential area which intersects protected land:
+        - clip: protected
+        - input: residential
     - erase
+      - direction matters: input attributes retained; erase feature attributes ignored
+      - example: residential area which intersects protected land:
+        - erase: protected
+        - input: residential
     - identity
+      - one of the more "abstract" polygon operations
+      - extends the identity attribute
+      - note that the resulting layer (final attribute table) has null values
+      - be careful in analyzing the example, as A & B are used three times in slightly different contexts
+        - ultimately creates a subset
   - spatial analysis within overlay
     - using a common coordinate system, different layers with spatial and attribute data can be combined into a new layer
   - vector overlay (point, line, polygon):
@@ -206,7 +280,7 @@ Can be shown similarly to the above with attributes, intermediate, and final out
 
 ## Importance of Topology in Overlay
 
-**Slivers** or **Sliver Polygons** can occur when polygons with a shared/common boundary overlap or don't match entirely. Topological Data Sets can help fix or prevent this by preventing duplicate shared boundaries or nodes. This can also be fixed via snapping and other ArcGIS tools.
+**Slivers** or **Sliver Polygons** can occur when polygons with a shared/common boundary overlap or don't match entirely. Topological Data Sets can help fix or prevent this by preventing duplicate shared boundaries or nodes. This can also be fixed via snapping and other ArcGIS tools. **Important to Note that data is changing with each operation and new layer.**
 
 ## Selection by Adjacency
 

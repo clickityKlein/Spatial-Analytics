@@ -1,0 +1,63 @@
+---
+title: "Vector Operations"
+---
+
+Vector Operations involve querying data into a temporary layer, which can then be utilized.
+
+- Spatial Data Analysis: input -> spatial operation -> output
+- Sequence of spatial operations to form a complex analysis
+- These can have one or many inputs and one or many outputs
+
+# Selection (Query)
+
+- single layer selection: select features based attributes or on spatial criteria such as:
+  - adjacency
+    - can be shared line required
+    - can be shared line OR node required
+  - overlap
+  - containment
+- multilayer selection:
+  - set algebra
+  - boolean algebra
+  - examples:
+    - states north of Arkansas
+    - states larger than 84k sq km
+    - state both entirely north of Arkansas and larger than 84k sq km
+
+# Re-Classification
+
+## Binary Classification
+
+If entities within a layer are either True or False (1 or 0)
+
+## Classification Schemes
+
+Use the best classification scheme to illustrate the data.
+
+- equal interval
+- natural breaks
+- quantile
+
+## Dissolve Based on Attributes and Re-Classification
+
+Combine like features on attributes.
+
+- Example 1:
+  - Initial layer:
+    - grain crops
+    - orchards
+    - residential
+    - commercial
+  - New Layer:
+    - agricultural
+    - non-agricultural
+- Example 2:
+  - Initial layer:
+    - states
+  - Reclassificiation:
+    - Binary into West or East of the Mississippi
+  - New Layer:
+    - E
+    - W
+    
+MAUP and Dasymetric Mapping Example: use aggregation to examine different statistical distributions of 
