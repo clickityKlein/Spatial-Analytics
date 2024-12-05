@@ -1,0 +1,196 @@
+---
+title: "Raster Data"
+---
+
+This section deals with raster data and its operations.
+
+# Raster Data Introduction
+
+Raster data is composed of squares, called grid cells. These are analogous to to pixels in remote sensing images and computer graphics.
+
+## Resolution
+
+The distance that one side of a grid cell represents on the ground.
+
+> Fine vs. Coarse <-> High vs. Low: finer resolution data have smaller grid cells and high precision with greater cost in data storage than coarser data.
+
+## The Mixed Pixel Problem and Storage / Resolution Tradeoff
+
+- Want the smallest detectable feature (i.e. phenomenon of interest) to be twice as large as the resolution in areal units.
+- Finer resolution requires more data storage: decreasing the cell size by one half quadruples the resolution, thus directly quadruples the storage space required.
+
+## Continuous vs. Discrete Features
+
+- Continuous Features: numerical study value in each cell
+- Discrete Features: single number representation in each cell
+
+## Data Type and Bit Depth
+
+Integers, floating points, binary, etc. require different storage. The values are then assigned to each grid cell.
+
+## Bit Basics
+
+- 1 bit: 2 values: [0: 1]: $2^1$
+- 2 bit: 4 values: [0: 3]: $2^2$
+- 4 bit: 16 values: [0: 15]: $2^4$
+- n bit: $2^n$ values
+
+## Signed and Unsigned Values
+
+- Unsigned 8-bit: [0, 255]
+- Signed 8-bit: [-128, 127]
+
+## Floating Point Values
+
+Uses large number values ranges!
+
+## No Data Values
+
+2-bits aren't exactly used in GIS, as the NO DATA type has a reserved value, usually a large number.
+
+## Converting Between Bits
+
+Converting between bit-types doesn't have a direct estimate like the storage / resolution tradeoff does.
+
+# Encoding and Conversion Effects
+
+Encoding real world entities in a raster data model has implications. And converting between vector to raster and vice-versa does as well.
+
+## Presence / Absence Coding Method
+
+- 1: object is present
+- 0: object is not present
+- Uses the **anywhere** rule, which has an implication of the mixed pixel problem
+
+## Any Cell vs. Near Cell Rules
+
+- Generalization and approximation with implications of thickness and connectivity.
+
+## Vector Lines to Raster
+
+- Should be done in different layers (i.e. different road types)
+
+## Vector Polygons to Raster
+
+- Boundaries: can lose precision
+- Efficiency: can have inefficient data storage
+
+## Attribute Tables
+
+- each cell will have a count / frequency
+- "carefully" produce estimates, *such as area*, due to the implications!
+
+### Attribute Tables for Discrete vs. Continuous
+
+- Discrete: example is landcover where a cell value has a direct analogy
+- Continuous: example is elevation layer, where each value has a direct analogy, **WHICH DOESN'T MAKE SENSE!**
+
+## Vector Point Values to Raster
+
+- Interpolation: measured points of continuous phenomenon to make estimates at non-measured location through interpolation.
+
+## Raster to Vector
+
+- Essentially does cell-center point and apply smoothing and connectivity rules
+- Have to consider precision and shape implications.
+
+# Raster Processing
+
+Registration, snapping, and resampling are considered in this subsection.
+
+- Geo-registration and co-registration is problematic when pixels don't line up, thus the data structure needs to be changed when comparing raster layers through resampling.
+
+## Resampling - Nearest Neighbors
+
+Takes the cell value of the nearest neighbor.
+
+## Resampling - Bilinear Interpolation
+
+- Distance weighted averaging
+- Two-directional
+- Simplest way to estimate heights
+
+## Resampling - Majority Rule
+
+- gives majority of label cells as the new aggregation
+
+
+## Resampling Implications
+
+- larger jumps should use careful consideration
+- think about generalization (over-generalization) during the process
+- DISCRETE VS CONTINUOUS:
+  - bilinear resampling is better for continuous data
+  - don't use bilinear resampling for discrete / categorical data
+  - will just create classes that don't exist
+  
+# Data Compression
+
+The goal of data compression to reduce storage size on disk with **lossless** methods. Efficient for homogenous data, i.e. discrete or categorical. Will actually increase storage size on disk if used on continuous data.
+
+## Run Length Encoding
+
+- dictionary type encoding which produces {value: count} combinations for each row
+
+## Value Point Encoding
+
+- Initial Table: Scans rows for number of values
+- Secondary Table: Sums the total number of values for each unique discrete value
+
+
+## Quadtree Encoding
+
+- Partitioning of heterogeneous space into quarter sections that are homogeneous, repeated until homogeneity of a quarter is reached.
+- Decent for zooming properties
+- Complex, not efficient for higher heteorogenous data
+
+# Raster Analysis
+
+## Map Algebra
+
+- Cell-by-cell combination of raster data (i.e. addition, subtraction, multiplication, and logical operators)
+- Normally, resolutions are aligned before applying functions
+- Objects: datasets, layers, values
+- Actions: performed on objects (operators and functions)
+- Qualifiers: parameters determining the conduction of a function
+- *Mimics functions from vector operations*
+
+## Function Types in Map Algebra
+
+- Local: cell-by-cell
+- Neighborhood (focal): neighborhood analysis
+- Block: whole block of cells
+- Zonal: within homogeneous areas, uses zonal analysis/statistics
+- Global: incorporation of the full dataset
+- Creates uniform definition of entitites in raster data
+
+## Moving Windows
+
+- Positioned over input raster
+- Defines the input for an operation to be applied
+- Result associated with center and written to the output
+- Focal: overlapping
+- Block: jumping
+- Kernel: constraints for a window size, shape, and function
+
+> Slope is a focal function because it is inherently a difference function (requires difference between two cell values).
+
+## Margin Erosion
+
+- Loss of margins in the original raster dataset (width of cells from the center cell away)
+- Solutions are to enlarge the study area or use kernel modifications at the corners.
+
+## Applications
+
+- Edge Detection (i.e. concentration changes, discover contrasts and differences)
+- Noise Filtering (smoothing): can remove spikes or outliers
+
+> Careful with smoothing! This removes variations, creating highly autocorrelated data.
+
+## Zonal and Block Function Information
+
+- stats retained for every cell within the region dependent on stat used
+- concept of homogeneity
+- Still creates a new raster layer!
+- always creating a rectangle with raster data and applying no data case
+- Size of cell is retained, as compared to resampling!

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Spatial Analytics - GPS / GNSS</title>
+<title>Spatial Analytics - Raster Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Projections</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./gps_gnss.html" aria-current="page"> 
+    <a class="nav-link" href="./gps_gnss.html"> 
 <span class="menu-text">GPS / GNSS</span></a>
   </li>  
   <li class="nav-item">
@@ -127,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Database Management</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./raster_data.html"> 
+    <a class="nav-link active" href="./raster_data.html" aria-current="page"> 
 <span class="menu-text">Raster Data</span></a>
   </li>  
   <li class="nav-item">
@@ -177,21 +177,52 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#gps-segments" id="toc-gps-segments" class="nav-link active" data-scroll-target="#gps-segments">GPS Segments</a></li>
-  <li><a href="#gps" id="toc-gps" class="nav-link" data-scroll-target="#gps">GPS</a>
+  <li><a href="#raster-data-introduction" id="toc-raster-data-introduction" class="nav-link active" data-scroll-target="#raster-data-introduction">Raster Data Introduction</a>
   <ul class="collapse">
-  <li><a href="#specificiations" id="toc-specificiations" class="nav-link" data-scroll-target="#specificiations">Specificiations</a></li>
-  <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link" data-scroll-target="#how-it-works">How it Works</a>
-  <ul class="collapse">
-  <li><a href="#range-by-speed-of-light" id="toc-range-by-speed-of-light" class="nav-link" data-scroll-target="#range-by-speed-of-light">Range by Speed of Light</a></li>
-  <li><a href="#trilateration" id="toc-trilateration" class="nav-link" data-scroll-target="#trilateration">Trilateration</a></li>
-  <li><a href="#relativity" id="toc-relativity" class="nav-link" data-scroll-target="#relativity">Relativity</a></li>
-  <li><a href="#uncertainty" id="toc-uncertainty" class="nav-link" data-scroll-target="#uncertainty">Uncertainty</a></li>
-  <li><a href="#differential-correction" id="toc-differential-correction" class="nav-link" data-scroll-target="#differential-correction">Differential Correction</a></li>
-  <li><a href="#types-of-differential-gps" id="toc-types-of-differential-gps" class="nav-link" data-scroll-target="#types-of-differential-gps">Types of Differential GPS</a></li>
-  <li><a href="#other-applications-of-gps" id="toc-other-applications-of-gps" class="nav-link" data-scroll-target="#other-applications-of-gps">Other Applications of GPS</a></li>
-  <li><a href="#other-methods-for-positioning" id="toc-other-methods-for-positioning" class="nav-link" data-scroll-target="#other-methods-for-positioning">Other Methods for Positioning</a></li>
+  <li><a href="#resolution" id="toc-resolution" class="nav-link" data-scroll-target="#resolution">Resolution</a></li>
+  <li><a href="#the-mixed-pixel-problem-and-storage-resolution-tradeoff" id="toc-the-mixed-pixel-problem-and-storage-resolution-tradeoff" class="nav-link" data-scroll-target="#the-mixed-pixel-problem-and-storage-resolution-tradeoff">The Mixed Pixel Problem and Storage / Resolution Tradeoff</a></li>
+  <li><a href="#continuous-vs.-discrete-features" id="toc-continuous-vs.-discrete-features" class="nav-link" data-scroll-target="#continuous-vs.-discrete-features">Continuous vs.&nbsp;Discrete Features</a></li>
+  <li><a href="#data-type-and-bit-depth" id="toc-data-type-and-bit-depth" class="nav-link" data-scroll-target="#data-type-and-bit-depth">Data Type and Bit Depth</a></li>
+  <li><a href="#bit-basics" id="toc-bit-basics" class="nav-link" data-scroll-target="#bit-basics">Bit Basics</a></li>
+  <li><a href="#signed-and-unsigned-values" id="toc-signed-and-unsigned-values" class="nav-link" data-scroll-target="#signed-and-unsigned-values">Signed and Unsigned Values</a></li>
+  <li><a href="#floating-point-values" id="toc-floating-point-values" class="nav-link" data-scroll-target="#floating-point-values">Floating Point Values</a></li>
+  <li><a href="#no-data-values" id="toc-no-data-values" class="nav-link" data-scroll-target="#no-data-values">No Data Values</a></li>
+  <li><a href="#converting-between-bits" id="toc-converting-between-bits" class="nav-link" data-scroll-target="#converting-between-bits">Converting Between Bits</a></li>
   </ul></li>
+  <li><a href="#encoding-and-conversion-effects" id="toc-encoding-and-conversion-effects" class="nav-link" data-scroll-target="#encoding-and-conversion-effects">Encoding and Conversion Effects</a>
+  <ul class="collapse">
+  <li><a href="#presence-absence-coding-method" id="toc-presence-absence-coding-method" class="nav-link" data-scroll-target="#presence-absence-coding-method">Presence / Absence Coding Method</a></li>
+  <li><a href="#any-cell-vs.-near-cell-rules" id="toc-any-cell-vs.-near-cell-rules" class="nav-link" data-scroll-target="#any-cell-vs.-near-cell-rules">Any Cell vs.&nbsp;Near Cell Rules</a></li>
+  <li><a href="#vector-lines-to-raster" id="toc-vector-lines-to-raster" class="nav-link" data-scroll-target="#vector-lines-to-raster">Vector Lines to Raster</a></li>
+  <li><a href="#vector-polygons-to-raster" id="toc-vector-polygons-to-raster" class="nav-link" data-scroll-target="#vector-polygons-to-raster">Vector Polygons to Raster</a></li>
+  <li><a href="#attribute-tables" id="toc-attribute-tables" class="nav-link" data-scroll-target="#attribute-tables">Attribute Tables</a>
+  <ul class="collapse">
+  <li><a href="#attribute-tables-for-discrete-vs.-continuous" id="toc-attribute-tables-for-discrete-vs.-continuous" class="nav-link" data-scroll-target="#attribute-tables-for-discrete-vs.-continuous">Attribute Tables for Discrete vs.&nbsp;Continuous</a></li>
+  </ul></li>
+  <li><a href="#vector-point-values-to-raster" id="toc-vector-point-values-to-raster" class="nav-link" data-scroll-target="#vector-point-values-to-raster">Vector Point Values to Raster</a></li>
+  <li><a href="#raster-to-vector" id="toc-raster-to-vector" class="nav-link" data-scroll-target="#raster-to-vector">Raster to Vector</a></li>
+  </ul></li>
+  <li><a href="#raster-processing" id="toc-raster-processing" class="nav-link" data-scroll-target="#raster-processing">Raster Processing</a>
+  <ul class="collapse">
+  <li><a href="#resampling---nearest-neighbors" id="toc-resampling---nearest-neighbors" class="nav-link" data-scroll-target="#resampling---nearest-neighbors">Resampling - Nearest Neighbors</a></li>
+  <li><a href="#resampling---bilinear-interpolation" id="toc-resampling---bilinear-interpolation" class="nav-link" data-scroll-target="#resampling---bilinear-interpolation">Resampling - Bilinear Interpolation</a></li>
+  <li><a href="#resampling---majority-rule" id="toc-resampling---majority-rule" class="nav-link" data-scroll-target="#resampling---majority-rule">Resampling - Majority Rule</a></li>
+  <li><a href="#resampling-implications" id="toc-resampling-implications" class="nav-link" data-scroll-target="#resampling-implications">Resampling Implications</a></li>
+  </ul></li>
+  <li><a href="#data-compression" id="toc-data-compression" class="nav-link" data-scroll-target="#data-compression">Data Compression</a>
+  <ul class="collapse">
+  <li><a href="#run-length-encoding" id="toc-run-length-encoding" class="nav-link" data-scroll-target="#run-length-encoding">Run Length Encoding</a></li>
+  <li><a href="#value-point-encoding" id="toc-value-point-encoding" class="nav-link" data-scroll-target="#value-point-encoding">Value Point Encoding</a></li>
+  <li><a href="#quadtree-encoding" id="toc-quadtree-encoding" class="nav-link" data-scroll-target="#quadtree-encoding">Quadtree Encoding</a></li>
+  </ul></li>
+  <li><a href="#raster-analysis" id="toc-raster-analysis" class="nav-link" data-scroll-target="#raster-analysis">Raster Analysis</a>
+  <ul class="collapse">
+  <li><a href="#map-algebra" id="toc-map-algebra" class="nav-link" data-scroll-target="#map-algebra">Map Algebra</a></li>
+  <li><a href="#function-types-in-map-algebra" id="toc-function-types-in-map-algebra" class="nav-link" data-scroll-target="#function-types-in-map-algebra">Function Types in Map Algebra</a></li>
+  <li><a href="#moving-windows" id="toc-moving-windows" class="nav-link" data-scroll-target="#moving-windows">Moving Windows</a></li>
+  <li><a href="#margin-erosion" id="toc-margin-erosion" class="nav-link" data-scroll-target="#margin-erosion">Margin Erosion</a></li>
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications">Applications</a></li>
+  <li><a href="#zonal-and-block-function-information" id="toc-zonal-and-block-function-information" class="nav-link" data-scroll-target="#zonal-and-block-function-information">Zonal and Block Function Information</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -201,7 +232,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">GPS / GNSS</h1>
+<h1 class="title">Raster Data</h1>
 </div>
 
 
@@ -218,178 +249,251 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The well known GPS, or Global Positioning System, is actually a specific version under the more general GNSS, or Global Navigation Satellite System. These systems use satellites for navigation, tracking, and measuring positional information.</p>
-<p>There are four main GPS / GNSS systems:</p>
+<p>This section deals with raster data and its operations.</p>
+<section id="raster-data-introduction" class="level1">
+<h1>Raster Data Introduction</h1>
+<p>Raster data is composed of squares, called grid cells. These are analogous to to pixels in remote sensing images and computer graphics.</p>
+<section id="resolution" class="level2">
+<h2 class="anchored" data-anchor-id="resolution">Resolution</h2>
+<p>The distance that one side of a grid cell represents on the ground.</p>
+<blockquote class="blockquote">
+<p>Fine vs.&nbsp;Coarse &lt;-&gt; High vs.&nbsp;Low: finer resolution data have smaller grid cells and high precision with greater cost in data storage than coarser data.</p>
+</blockquote>
+</section>
+<section id="the-mixed-pixel-problem-and-storage-resolution-tradeoff" class="level2">
+<h2 class="anchored" data-anchor-id="the-mixed-pixel-problem-and-storage-resolution-tradeoff">The Mixed Pixel Problem and Storage / Resolution Tradeoff</h2>
 <ul>
-<li>US DoD NAVSTAR
-<ul>
-<li>this is the GPS we know</li>
-<li>~32 satellites in 6 orbits</li>
-</ul></li>
-<li>Russian GLONASS GNSS</li>
-<li>EU’s Galileo Project
-<ul>
-<li>22 / 26 satllites usable</li>
-<li>better coverage in high northern latitudes than NAVSTAR</li>
-</ul></li>
-<li>China’s BeiDou (formerly known as COMPASS)
-<ul>
-<li>28+ satellites</li>
-</ul></li>
-<li>Japan and India have GNSS’s in place as well</li>
-</ul>
-<section id="gps-segments" class="level1">
-<h1>GPS Segments</h1>
-<ul>
-<li>User Segment: receiver to record transmitted satellite data and processes 3D coordinates</li>
-<li>Control Segment: facilities for tracking, communication, gather, analysis, etc.</li>
-<li><em>coming from a constellation of orbiting satellites</em></li>
+<li>Want the smallest detectable feature (i.e.&nbsp;phenomenon of interest) to be twice as large as the resolution in areal units.</li>
+<li>Finer resolution requires more data storage: decreasing the cell size by one half quadruples the resolution, thus directly quadruples the storage space required.</li>
 </ul>
 </section>
-<section id="gps" class="level1">
-<h1>GPS</h1>
-<p>With 21+ satellites, in 6 orbital planes, and 12 hour return interval for each satellite, this provides unobstructed worldwide coverage.</p>
-<section id="specificiations" class="level2">
-<h2 class="anchored" data-anchor-id="specificiations">Specificiations</h2>
+<section id="continuous-vs.-discrete-features" class="level2">
+<h2 class="anchored" data-anchor-id="continuous-vs.-discrete-features">Continuous vs.&nbsp;Discrete Features</h2>
 <ul>
-<li>Satellites circle the Earth twice daily</li>
-<li>Four to eight satellites should be visible from any unobstructed location</li>
-<li>Each satellite continuously broadcasts signals on two carrier frequencies
-<ul>
-<li>L1 and L2 (carrier signals)</li>
-</ul></li>
-<li>Modulated to produce <strong>coded signals</strong> for easier and quicker posiitioning
-<ul>
-<li>C/A (course acquisition) code (L1) for quicker processing</li>
-<li>P (precision; military signal on L1 and L2)</li>
-</ul></li>
+<li>Continuous Features: numerical study value in each cell</li>
+<li>Discrete Features: single number representation in each cell</li>
 </ul>
 </section>
-<section id="how-it-works" class="level2">
-<h2 class="anchored" data-anchor-id="how-it-works">How it Works</h2>
-<section id="range-by-speed-of-light" class="level3">
-<h3 class="anchored" data-anchor-id="range-by-speed-of-light">Range by Speed of Light</h3>
+<section id="data-type-and-bit-depth" class="level2">
+<h2 class="anchored" data-anchor-id="data-type-and-bit-depth">Data Type and Bit Depth</h2>
+<p>Integers, floating points, binary, etc. require different storage. The values are then assigned to each grid cell.</p>
+</section>
+<section id="bit-basics" class="level2">
+<h2 class="anchored" data-anchor-id="bit-basics">Bit Basics</h2>
 <ul>
-<li>Position is estimated based on range distances and travel time
-<ul>
-<li>travel time: difference between transmission time and reception time</li>
-<li>range: speed of light * travel time (<span class="math inline">\(range=c(t_1 - t_0)\)</span>)</li>
-</ul></li>
+<li>1 bit: 2 values: [0: 1]: <span class="math inline">\(2^1\)</span></li>
+<li>2 bit: 4 values: [0: 3]: <span class="math inline">\(2^2\)</span></li>
+<li>4 bit: 16 values: [0: 15]: <span class="math inline">\(2^4\)</span></li>
+<li>n bit: <span class="math inline">\(2^n\)</span> values</li>
 </ul>
 </section>
-<section id="trilateration" class="level3">
-<h3 class="anchored" data-anchor-id="trilateration">Trilateration</h3>
-<p><strong>2-Dimensions</strong></p>
+<section id="signed-and-unsigned-values" class="level2">
+<h2 class="anchored" data-anchor-id="signed-and-unsigned-values">Signed and Unsigned Values</h2>
 <ul>
-<li>Given three pinged satellites, circles are drawn with center radii from the satellites</li>
-<li>The intersection of the circles is the coordinate position</li>
+<li>Unsigned 8-bit: [0, 255]</li>
+<li>Signed 8-bit: [-128, 127]</li>
 </ul>
-<p><strong>3-Dimensions</strong></p>
+</section>
+<section id="floating-point-values" class="level2">
+<h2 class="anchored" data-anchor-id="floating-point-values">Floating Point Values</h2>
+<p>Uses large number values ranges!</p>
+</section>
+<section id="no-data-values" class="level2">
+<h2 class="anchored" data-anchor-id="no-data-values">No Data Values</h2>
+<p>2-bits aren’t exactly used in GIS, as the NO DATA type has a reserved value, usually a large number.</p>
+</section>
+<section id="converting-between-bits" class="level2">
+<h2 class="anchored" data-anchor-id="converting-between-bits">Converting Between Bits</h2>
+<p>Converting between bit-types doesn’t have a direct estimate like the storage / resolution tradeoff does.</p>
+</section>
+</section>
+<section id="encoding-and-conversion-effects" class="level1">
+<h1>Encoding and Conversion Effects</h1>
+<p>Encoding real world entities in a raster data model has implications. And converting between vector to raster and vice-versa does as well.</p>
+<section id="presence-absence-coding-method" class="level2">
+<h2 class="anchored" data-anchor-id="presence-absence-coding-method">Presence / Absence Coding Method</h2>
 <ul>
-<li>Given four pinged satellites, spheres are drawn with center radii from hte satellites</li>
-<li>The intersection of the spheres is the coordinate position</li>
+<li>1: object is present</li>
+<li>0: object is not present</li>
+<li>Uses the <strong>anywhere</strong> rule, which has an implication of the mixed pixel problem</li>
 </ul>
-<p><em>Note that given three satellites in three-dimensions, there will be two points of intersection, which can be decent for stationary objects.</em></p>
 </section>
-<section id="relativity" class="level3">
-<h3 class="anchored" data-anchor-id="relativity">Relativity</h3>
+<section id="any-cell-vs.-near-cell-rules" class="level2">
+<h2 class="anchored" data-anchor-id="any-cell-vs.-near-cell-rules">Any Cell vs.&nbsp;Near Cell Rules</h2>
 <ul>
-<li><strong>Special Relativity</strong>: an observer on the ground sees satellites in motion relative to them, special relativity predicts we should see their clocks ticking more slowly (7 ms)</li>
-<li><strong>General Relativity</strong>: clocks closer to a massive object will seem to tick more slowly than those located further away, thus when viewed from the surface of the Earth, clocks on the satellites appear to be ticking faster (45 ms)</li>
+<li>Generalization and approximation with implications of thickness and connectivity.</li>
 </ul>
-<p><strong>Clocks need to be adjusted by <span class="math inline">\(45-7=38\)</span> ms per day. This is built into the satellites’ clocks.</strong></p>
 </section>
-<section id="uncertainty" class="level3">
-<h3 class="anchored" data-anchor-id="uncertainty">Uncertainty</h3>
-<p>Errors in range measurements and satellite location (ephermeris) introduces uncertainty, which can be a range for the GPS receiver position.</p>
-<p><em>Mitigation using postion fixes for stationary receiver is possible, but does not work for moving receivers.</em></p>
-<p>Some Sources of Error:</p>
+<section id="vector-lines-to-raster" class="level2">
+<h2 class="anchored" data-anchor-id="vector-lines-to-raster">Vector Lines to Raster</h2>
 <ul>
-<li>Satellite Clock Error</li>
-<li>Satellite Position Error - Positional Dilution of Precision (PDOP)</li>
-<li>Receiver Error</li>
-<li>Atmospheric / Ionospheric Effects</li>
-<li>Multipath Error: additional potential error due to reflectance (i.e.&nbsp;obstructions)</li>
+<li>Should be done in different layers (i.e.&nbsp;different road types)</li>
 </ul>
-<p><strong>Errors are dependent on quality of equipment and environmental conditions.</strong></p>
-<section id="reflectance-error" class="level4">
-<h4 class="anchored" data-anchor-id="reflectance-error">Reflectance Error</h4>
-<p><img src="images/reflectance_error_1.png" class="img-fluid"></p>
 </section>
-<section id="pdop-uncertainty" class="level4">
-<h4 class="anchored" data-anchor-id="pdop-uncertainty">PDOP Uncertainty</h4>
-<p><strong>General Idea of PDOP Range Uncertainty:</strong></p>
-<p><img src="images/pdop_uncertainty_1.png" class="img-fluid"></p>
-<p><strong>Positional Dilution of Precision (high versus low PDOP depends on satellite spacing):</strong></p>
-<p><img src="images/pdop_uncertainty_2.png" class="img-fluid"></p>
-<p><em>Lower PDOP results in a lower volume of a tetrahedron, thus lower uncertainty from PDOP.</em></p>
-</section>
-</section>
-<section id="differential-correction" class="level3">
-<h3 class="anchored" data-anchor-id="differential-correction">Differential Correction</h3>
-<p>By using a base station, accuracy is increased by reducing range errors via estimating timing errors.</p>
-<p><strong>General Idea:</strong></p>
-<p><img src="images/differential_correction_1.png" class="img-fluid"></p>
-<p><strong>Range Error versus Range Correction:</strong></p>
-<p><img src="images/differential_correction_2.png" class="img-fluid"></p>
-</section>
-<section id="types-of-differential-gps" class="level3">
-<h3 class="anchored" data-anchor-id="types-of-differential-gps">Types of Differential GPS</h3>
+<section id="vector-polygons-to-raster" class="level2">
+<h2 class="anchored" data-anchor-id="vector-polygons-to-raster">Vector Polygons to Raster</h2>
 <ul>
-<li>Post Processed
-<ul>
-<li>Higher accuracy</li>
-<li>However, done a posteriori</li>
-</ul></li>
-<li>Real-time
-<ul>
-<li>Lower accuracy</li>
-<li>Better navigation</li>
-<li>requires a transmitting base station</li>
-<li>requires common link (FM radio or internet/cell phone)</li>
-</ul></li>
+<li>Boundaries: can lose precision</li>
+<li>Efficiency: can have inefficient data storage</li>
 </ul>
-<p><img src="images/differential_correction_3.png" class="img-fluid"></p>
-<section id="wide-area-augmentation-system-waas" class="level4">
-<h4 class="anchored" data-anchor-id="wide-area-augmentation-system-waas">Wide Area Augmentation System (WAAS)</h4>
-<p>Real-time differential GPS developed for aircraft navigation. Based on a network of ground reference stations. Accuracy improves from ~13km to under 2m.</p>
+</section>
+<section id="attribute-tables" class="level2">
+<h2 class="anchored" data-anchor-id="attribute-tables">Attribute Tables</h2>
+<ul>
+<li>each cell will have a count / frequency</li>
+<li>“carefully” produce estimates, <em>such as area</em>, due to the implications!</li>
+</ul>
+<section id="attribute-tables-for-discrete-vs.-continuous" class="level3">
+<h3 class="anchored" data-anchor-id="attribute-tables-for-discrete-vs.-continuous">Attribute Tables for Discrete vs.&nbsp;Continuous</h3>
+<ul>
+<li>Discrete: example is landcover where a cell value has a direct analogy</li>
+<li>Continuous: example is elevation layer, where each value has a direct analogy, <strong>WHICH DOESN’T MAKE SENSE!</strong></li>
+</ul>
 </section>
 </section>
-<section id="other-applications-of-gps" class="level3">
-<h3 class="anchored" data-anchor-id="other-applications-of-gps">Other Applications of GPS</h3>
+<section id="vector-point-values-to-raster" class="level2">
+<h2 class="anchored" data-anchor-id="vector-point-values-to-raster">Vector Point Values to Raster</h2>
 <ul>
-<li>Tracking</li>
-<li>Navigation</li>
-<li>Field Digitizing
+<li>Interpolation: measured points of continuous phenomenon to make estimates at non-measured location through interpolation.</li>
+</ul>
+</section>
+<section id="raster-to-vector" class="level2">
+<h2 class="anchored" data-anchor-id="raster-to-vector">Raster to Vector</h2>
 <ul>
-<li>GPS receiver</li>
-<li>range pole</li>
-<li>laser rangefinder</li>
-<li>electronic compass</li>
-</ul></li>
-<li>Human Mobility</li>
-<li>Autonomous Vehicles</li>
-<li>Indoor Mapping
+<li>Essentially does cell-center point and apply smoothing and connectivity rules</li>
+<li>Have to consider precision and shape implications.</li>
+</ul>
+</section>
+</section>
+<section id="raster-processing" class="level1">
+<h1>Raster Processing</h1>
+<p>Registration, snapping, and resampling are considered in this subsection.</p>
 <ul>
-<li>Bluetooth</li>
-<li>Radio Frequency (RFID)</li>
+<li>Geo-registration and co-registration is problematic when pixels don’t line up, thus the data structure needs to be changed when comparing raster layers through resampling.</li>
+</ul>
+<section id="resampling---nearest-neighbors" class="level2">
+<h2 class="anchored" data-anchor-id="resampling---nearest-neighbors">Resampling - Nearest Neighbors</h2>
+<p>Takes the cell value of the nearest neighbor.</p>
+</section>
+<section id="resampling---bilinear-interpolation" class="level2">
+<h2 class="anchored" data-anchor-id="resampling---bilinear-interpolation">Resampling - Bilinear Interpolation</h2>
+<ul>
+<li>Distance weighted averaging</li>
+<li>Two-directional</li>
+<li>Simplest way to estimate heights</li>
+</ul>
+</section>
+<section id="resampling---majority-rule" class="level2">
+<h2 class="anchored" data-anchor-id="resampling---majority-rule">Resampling - Majority Rule</h2>
+<ul>
+<li>gives majority of label cells as the new aggregation</li>
+</ul>
+</section>
+<section id="resampling-implications" class="level2">
+<h2 class="anchored" data-anchor-id="resampling-implications">Resampling Implications</h2>
+<ul>
+<li>larger jumps should use careful consideration</li>
+<li>think about generalization (over-generalization) during the process</li>
+<li>DISCRETE VS CONTINUOUS:
+<ul>
+<li>bilinear resampling is better for continuous data</li>
+<li>don’t use bilinear resampling for discrete / categorical data</li>
+<li>will just create classes that don’t exist</li>
 </ul></li>
 </ul>
 </section>
-<section id="other-methods-for-positioning" class="level3">
-<h3 class="anchored" data-anchor-id="other-methods-for-positioning">Other Methods for Positioning</h3>
+</section>
+<section id="data-compression" class="level1">
+<h1>Data Compression</h1>
+<p>The goal of data compression to reduce storage size on disk with <strong>lossless</strong> methods. Efficient for homogenous data, i.e.&nbsp;discrete or categorical. Will actually increase storage size on disk if used on continuous data.</p>
+<section id="run-length-encoding" class="level2">
+<h2 class="anchored" data-anchor-id="run-length-encoding">Run Length Encoding</h2>
 <ul>
-<li>Sound Range</li>
-<li>Cellular Positioning</li>
-<li>GPS Alternatives:
+<li>dictionary type encoding which produces {value: count} combinations for each row</li>
+</ul>
+</section>
+<section id="value-point-encoding" class="level2">
+<h2 class="anchored" data-anchor-id="value-point-encoding">Value Point Encoding</h2>
 <ul>
-<li>Ground Based GPS</li>
-<li>Starlink (prevents navigation jamming)</li>
-</ul></li>
+<li>Initial Table: Scans rows for number of values</li>
+<li>Secondary Table: Sums the total number of values for each unique discrete value</li>
+</ul>
+</section>
+<section id="quadtree-encoding" class="level2">
+<h2 class="anchored" data-anchor-id="quadtree-encoding">Quadtree Encoding</h2>
+<ul>
+<li>Partitioning of heterogeneous space into quarter sections that are homogeneous, repeated until homogeneity of a quarter is reached.</li>
+<li>Decent for zooming properties</li>
+<li>Complex, not efficient for higher heteorogenous data</li>
+</ul>
+</section>
+</section>
+<section id="raster-analysis" class="level1">
+<h1>Raster Analysis</h1>
+<section id="map-algebra" class="level2">
+<h2 class="anchored" data-anchor-id="map-algebra">Map Algebra</h2>
+<ul>
+<li>Cell-by-cell combination of raster data (i.e.&nbsp;addition, subtraction, multiplication, and logical operators)</li>
+<li>Normally, resolutions are aligned before applying functions</li>
+<li>Objects: datasets, layers, values</li>
+<li>Actions: performed on objects (operators and functions)</li>
+<li>Qualifiers: parameters determining the conduction of a function</li>
+<li><em>Mimics functions from vector operations</em></li>
+</ul>
+</section>
+<section id="function-types-in-map-algebra" class="level2">
+<h2 class="anchored" data-anchor-id="function-types-in-map-algebra">Function Types in Map Algebra</h2>
+<ul>
+<li>Local: cell-by-cell</li>
+<li>Neighborhood (focal): neighborhood analysis</li>
+<li>Block: whole block of cells</li>
+<li>Zonal: within homogeneous areas, uses zonal analysis/statistics</li>
+<li>Global: incorporation of the full dataset</li>
+<li>Creates uniform definition of entitites in raster data</li>
+</ul>
+</section>
+<section id="moving-windows" class="level2">
+<h2 class="anchored" data-anchor-id="moving-windows">Moving Windows</h2>
+<ul>
+<li>Positioned over input raster</li>
+<li>Defines the input for an operation to be applied</li>
+<li>Result associated with center and written to the output</li>
+<li>Focal: overlapping</li>
+<li>Block: jumping</li>
+<li>Kernel: constraints for a window size, shape, and function</li>
+</ul>
+<blockquote class="blockquote">
+<p>Slope is a focal function because it is inherently a difference function (requires difference between two cell values).</p>
+</blockquote>
+</section>
+<section id="margin-erosion" class="level2">
+<h2 class="anchored" data-anchor-id="margin-erosion">Margin Erosion</h2>
+<ul>
+<li>Loss of margins in the original raster dataset (width of cells from the center cell away)</li>
+<li>Solutions are to enlarge the study area or use kernel modifications at the corners.</li>
+</ul>
+</section>
+<section id="applications" class="level2">
+<h2 class="anchored" data-anchor-id="applications">Applications</h2>
+<ul>
+<li>Edge Detection (i.e.&nbsp;concentration changes, discover contrasts and differences)</li>
+<li>Noise Filtering (smoothing): can remove spikes or outliers</li>
+</ul>
+<blockquote class="blockquote">
+<p>Careful with smoothing! This removes variations, creating highly autocorrelated data.</p>
+</blockquote>
+</section>
+<section id="zonal-and-block-function-information" class="level2">
+<h2 class="anchored" data-anchor-id="zonal-and-block-function-information">Zonal and Block Function Information</h2>
+<ul>
+<li>stats retained for every cell within the region dependent on stat used</li>
+<li>concept of homogeneity</li>
+<li>Still creates a new raster layer!</li>
+<li>always creating a rectangle with raster data and applying no data case</li>
+<li>Size of cell is retained, as compared to resampling!</li>
 </ul>
 
 
-</section>
 </section>
 </section>
 

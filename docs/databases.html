@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Spatial Analytics - GPS / GNSS</title>
+<title>Spatial Analytics - Database Management</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,8 +67,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -107,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Projections</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./gps_gnss.html" aria-current="page"> 
+    <a class="nav-link" href="./gps_gnss.html"> 
 <span class="menu-text">GPS / GNSS</span></a>
   </li>  
   <li class="nav-item">
@@ -123,7 +121,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Spatial Models</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./databases.html"> 
+    <a class="nav-link active" href="./databases.html" aria-current="page"> 
 <span class="menu-text">Database Management</span></a>
   </li>  
   <li class="nav-item">
@@ -177,21 +175,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#gps-segments" id="toc-gps-segments" class="nav-link active" data-scroll-target="#gps-segments">GPS Segments</a></li>
-  <li><a href="#gps" id="toc-gps" class="nav-link" data-scroll-target="#gps">GPS</a>
+  <li><a href="#basic-terminology" id="toc-basic-terminology" class="nav-link active" data-scroll-target="#basic-terminology">Basic Terminology</a></li>
+  <li><a href="#dbms-in-gis" id="toc-dbms-in-gis" class="nav-link" data-scroll-target="#dbms-in-gis">DBMS in GIS</a></li>
+  <li><a href="#logical-vs.-physical-structures" id="toc-logical-vs.-physical-structures" class="nav-link" data-scroll-target="#logical-vs.-physical-structures">Logical vs.&nbsp;Physical Structures</a>
   <ul class="collapse">
-  <li><a href="#specificiations" id="toc-specificiations" class="nav-link" data-scroll-target="#specificiations">Specificiations</a></li>
-  <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link" data-scroll-target="#how-it-works">How it Works</a>
+  <li><a href="#logical-structure" id="toc-logical-structure" class="nav-link" data-scroll-target="#logical-structure">Logical Structure</a>
   <ul class="collapse">
-  <li><a href="#range-by-speed-of-light" id="toc-range-by-speed-of-light" class="nav-link" data-scroll-target="#range-by-speed-of-light">Range by Speed of Light</a></li>
-  <li><a href="#trilateration" id="toc-trilateration" class="nav-link" data-scroll-target="#trilateration">Trilateration</a></li>
-  <li><a href="#relativity" id="toc-relativity" class="nav-link" data-scroll-target="#relativity">Relativity</a></li>
-  <li><a href="#uncertainty" id="toc-uncertainty" class="nav-link" data-scroll-target="#uncertainty">Uncertainty</a></li>
-  <li><a href="#differential-correction" id="toc-differential-correction" class="nav-link" data-scroll-target="#differential-correction">Differential Correction</a></li>
-  <li><a href="#types-of-differential-gps" id="toc-types-of-differential-gps" class="nav-link" data-scroll-target="#types-of-differential-gps">Types of Differential GPS</a></li>
-  <li><a href="#other-applications-of-gps" id="toc-other-applications-of-gps" class="nav-link" data-scroll-target="#other-applications-of-gps">Other Applications of GPS</a></li>
-  <li><a href="#other-methods-for-positioning" id="toc-other-methods-for-positioning" class="nav-link" data-scroll-target="#other-methods-for-positioning">Other Methods for Positioning</a></li>
+  <li><a href="#example-bolstads-forest-trails-database" id="toc-example-bolstads-forest-trails-database" class="nav-link" data-scroll-target="#example-bolstads-forest-trails-database">Example: Bolstad’s Forest Trails Database</a></li>
   </ul></li>
+  <li><a href="#physical-structure" id="toc-physical-structure" class="nav-link" data-scroll-target="#physical-structure">Physical Structure</a>
+  <ul class="collapse">
+  <li><a href="#examples-of-physical-strucutres-in-database-models" id="toc-examples-of-physical-strucutres-in-database-models" class="nav-link" data-scroll-target="#examples-of-physical-strucutres-in-database-models">Examples of Physical Strucutres in Database Models</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#relational-model" id="toc-relational-model" class="nav-link" data-scroll-target="#relational-model">Relational Model</a>
+  <ul class="collapse">
+  <li><a href="#terminology" id="toc-terminology" class="nav-link" data-scroll-target="#terminology">Terminology</a></li>
+  <li><a href="#important-considerations" id="toc-important-considerations" class="nav-link" data-scroll-target="#important-considerations">Important Considerations</a></li>
+  <li><a href="#relational-keys" id="toc-relational-keys" class="nav-link" data-scroll-target="#relational-keys">Relational Keys</a></li>
+  <li><a href="#constraints" id="toc-constraints" class="nav-link" data-scroll-target="#constraints">Constraints</a></li>
+  <li><a href="#operations-relational-algebra" id="toc-operations-relational-algebra" class="nav-link" data-scroll-target="#operations-relational-algebra">Operations (Relational Algebra)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -201,7 +204,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">GPS / GNSS</h1>
+<h1 class="title">Database Management</h1>
 </div>
 
 
@@ -218,178 +221,165 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The well known GPS, or Global Positioning System, is actually a specific version under the more general GNSS, or Global Navigation Satellite System. These systems use satellites for navigation, tracking, and measuring positional information.</p>
-<p>There are four main GPS / GNSS systems:</p>
+<p>This section deals with database management.</p>
+<section id="basic-terminology" class="level1">
+<h1>Basic Terminology</h1>
+<p>A database is a collection of data files that is structured, i.e.&nbsp;organized.</p>
+<p>A database management system (DBMS) is a specicalized computer program used to organize and manipulate the database with operations such as storing, editing, and retrieving.</p>
+<p>Some common DBMS examples are:</p>
 <ul>
-<li>US DoD NAVSTAR
-<ul>
-<li>this is the GPS we know</li>
-<li>~32 satellites in 6 orbits</li>
-</ul></li>
-<li>Russian GLONASS GNSS</li>
-<li>EU’s Galileo Project
-<ul>
-<li>22 / 26 satllites usable</li>
-<li>better coverage in high northern latitudes than NAVSTAR</li>
-</ul></li>
-<li>China’s BeiDou (formerly known as COMPASS)
-<ul>
-<li>28+ satellites</li>
-</ul></li>
-<li>Japan and India have GNSS’s in place as well</li>
-</ul>
-<section id="gps-segments" class="level1">
-<h1>GPS Segments</h1>
-<ul>
-<li>User Segment: receiver to record transmitted satellite data and processes 3D coordinates</li>
-<li>Control Segment: facilities for tracking, communication, gather, analysis, etc.</li>
-<li><em>coming from a constellation of orbiting satellites</em></li>
+<li>Oracle</li>
+<li>Accesss</li>
+<li>Postgres</li>
 </ul>
 </section>
-<section id="gps" class="level1">
-<h1>GPS</h1>
-<p>With 21+ satellites, in 6 orbital planes, and 12 hour return interval for each satellite, this provides unobstructed worldwide coverage.</p>
-<section id="specificiations" class="level2">
-<h2 class="anchored" data-anchor-id="specificiations">Specificiations</h2>
+<section id="dbms-in-gis" class="level1">
+<h1>DBMS in GIS</h1>
+<p>Databases in GIS often uses <strong>large</strong> tables and contain geodatabases, which are a more complex data type.</p>
+<p>Like most DBMS, they require maintenance to manage properties and relationships:</p>
 <ul>
-<li>Satellites circle the Earth twice daily</li>
-<li>Four to eight satellites should be visible from any unobstructed location</li>
-<li>Each satellite continuously broadcasts signals on two carrier frequencies
+<li>Change</li>
+<li>Add</li>
+<li>Delete</li>
+<li>Must be able to serve different applications with querying</li>
+<li>Management includes protections from corruption and accidental deletion</li>
+</ul>
+</section>
+<section id="logical-vs.-physical-structures" class="level1">
+<h1>Logical vs.&nbsp;Physical Structures</h1>
+<section id="logical-structure" class="level2">
+<h2 class="anchored" data-anchor-id="logical-structure">Logical Structure</h2>
+<p>Logical structure refers to the database design, or <strong>schema</strong>. This is the:</p>
 <ul>
-<li>L1 and L2 (carrier signals)</li>
+<li>Logical specification of attributes and relationships</li>
+<li>Conceptual model of items, mapping, cardinality</li>
+<li>Entity-relation diagram / notation (a unified modeling language)</li>
+</ul>
+<section id="example-bolstads-forest-trails-database" class="level3">
+<h3 class="anchored" data-anchor-id="example-bolstads-forest-trails-database">Example: Bolstad’s Forest Trails Database</h3>
+<ul>
+<li>Entity sets hold attributes</li>
+<li>Relationships hold mappings (used for joining tables)</li>
+<li>Cardinality is specified, which defines the nature and direction of the relationships
+<ul>
+<li>1-N</li>
+<li>M-N</li>
 </ul></li>
-<li>Modulated to produce <strong>coded signals</strong> for easier and quicker posiitioning
+<li>Entity set holds features too</li>
+<li>Important Concepts:
 <ul>
-<li>C/A (course acquisition) code (L1) for quicker processing</li>
-<li>P (precision; military signal on L1 and L2)</li>
+<li>Cardinality</li>
+<li>Relations</li>
+<li>Joins</li>
 </ul></li>
+<li>Attribute table is connected to shape files</li>
+</ul>
+<blockquote class="blockquote">
+<p>Always pay attentin to shcema and keys with cardinality matches. Easy way to check if join worked properly, sort and search for duplicates. In a GIS application of a database, slivers could result from bad joins where attributes will be duplicated for all slivers. Be thoughtful on fixing the errors, to be careful on just deleting the polygon slivers.</p>
+</blockquote>
+<p><img src="images/dbms_1.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="physical-structure" class="level2">
+<h2 class="anchored" data-anchor-id="physical-structure">Physical Structure</h2>
+<p>Physical structure refers to the actual database implementation, and depends on the intended use of the database requirements:</p>
+<ul>
+<li>Speed access, frequent updates</li>
+<li>Flexible relationships</li>
+<li>Protecting data security</li>
+</ul>
+<section id="examples-of-physical-strucutres-in-database-models" class="level3">
+<h3 class="anchored" data-anchor-id="examples-of-physical-strucutres-in-database-models">Examples of Physical Strucutres in Database Models</h3>
+<ul>
+<li>Flat Files: text files</li>
+<li>Hierarchical: parent-child</li>
+<li>Network: nodes and links</li>
+<li>Relational: tables related via keys</li>
+<li>Hybrid: object-oriented</li>
+</ul>
+<p><em>Hierarchical and network database models have generally been replaced by the relational data model.</em></p>
+</section>
+</section>
+</section>
+<section id="relational-model" class="level1">
+<h1>Relational Model</h1>
+<p>Common, flexible, but need to be optimized (or normalized) with:</p>
+<ul>
+<li>Fewer columns</li>
+<li>Fewer joins</li>
+<li>Use relationship classes instead of joins</li>
+</ul>
+<section id="terminology" class="level2">
+<h2 class="anchored" data-anchor-id="terminology">Terminology</h2>
+<ul>
+<li>Table: data orginzed in rows and columns</li>
+<li>Record (rows / tuples): a set of tuples represents logical entities (i.e.&nbsp;road, lake, land use polygon)</li>
+<li>Field (column / item): attribute (property) of the logical entity</li>
+<li>Index / Key: Attribute(s) need to identify, organize, or order records in a database (needed for relational algebra or joins)</li>
 </ul>
 </section>
-<section id="how-it-works" class="level2">
-<h2 class="anchored" data-anchor-id="how-it-works">How it Works</h2>
-<section id="range-by-speed-of-light" class="level3">
-<h3 class="anchored" data-anchor-id="range-by-speed-of-light">Range by Speed of Light</h3>
+<section id="important-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="important-considerations">Important Considerations</h2>
 <ul>
-<li>Position is estimated based on range distances and travel time
-<ul>
-<li>travel time: difference between transmission time and reception time</li>
-<li>range: speed of light * travel time (<span class="math inline">\(range=c(t_1 - t_0)\)</span>)</li>
-</ul></li>
+<li>Field types and domains should be specified as much as possible</li>
+<li>Advantages: minimum structure, easy programming, flexible</li>
+<li>Disadvantages: can be slow due to lack of structure</li>
 </ul>
 </section>
-<section id="trilateration" class="level3">
-<h3 class="anchored" data-anchor-id="trilateration">Trilateration</h3>
-<p><strong>2-Dimensions</strong></p>
+<section id="relational-keys" class="level2">
+<h2 class="anchored" data-anchor-id="relational-keys">Relational Keys</h2>
+<p>Any unique field can be a key, which can span multiple columns.</p>
 <ul>
-<li>Given three pinged satellites, circles are drawn with center radii from the satellites</li>
-<li>The intersection of the circles is the coordinate position</li>
+<li>Primary Keys: index to a table</li>
+<li>Foreign Keys: index contained in the table that is possibly non-unique, but is a primary key in another table and is used for joins.</li>
 </ul>
-<p><strong>3-Dimensions</strong></p>
+<p>With the combination of primary and foreign keys, tables can be joined together.</p>
 <ul>
-<li>Given four pinged satellites, spheres are drawn with center radii from hte satellites</li>
-<li>The intersection of the spheres is the coordinate position</li>
+<li>Rule: each row holds a unique combination of values, before and after join.</li>
+<li>Ideally, isolate key in as few fields (i.e.&nbsp;columns) as possible.</li>
 </ul>
-<p><em>Note that given three satellites in three-dimensions, there will be two points of intersection, which can be decent for stationary objects.</em></p>
 </section>
-<section id="relativity" class="level3">
-<h3 class="anchored" data-anchor-id="relativity">Relativity</h3>
+<section id="constraints" class="level2">
+<h2 class="anchored" data-anchor-id="constraints">Constraints</h2>
 <ul>
-<li><strong>Special Relativity</strong>: an observer on the ground sees satellites in motion relative to them, special relativity predicts we should see their clocks ticking more slowly (7 ms)</li>
-<li><strong>General Relativity</strong>: clocks closer to a massive object will seem to tick more slowly than those located further away, thus when viewed from the surface of the Earth, clocks on the satellites appear to be ticking faster (45 ms)</li>
-</ul>
-<p><strong>Clocks need to be adjusted by <span class="math inline">\(45-7=38\)</span> ms per day. This is built into the satellites’ clocks.</strong></p>
-</section>
-<section id="uncertainty" class="level3">
-<h3 class="anchored" data-anchor-id="uncertainty">Uncertainty</h3>
-<p>Errors in range measurements and satellite location (ephermeris) introduces uncertainty, which can be a range for the GPS receiver position.</p>
-<p><em>Mitigation using postion fixes for stationary receiver is possible, but does not work for moving receivers.</em></p>
-<p>Some Sources of Error:</p>
+<li>Rules for implementing tables appear to be fast and loose.</li>
+<li>There are two constraints which allow flexibility yet preserve logic:
 <ul>
-<li>Satellite Clock Error</li>
-<li>Satellite Position Error - Positional Dilution of Precision (PDOP)</li>
-<li>Receiver Error</li>
-<li>Atmospheric / Ionospheric Effects</li>
-<li>Multipath Error: additional potential error due to reflectance (i.e.&nbsp;obstructions)</li>
-</ul>
-<p><strong>Errors are dependent on quality of equipment and environmental conditions.</strong></p>
-<section id="reflectance-error" class="level4">
-<h4 class="anchored" data-anchor-id="reflectance-error">Reflectance Error</h4>
-<p><img src="images/reflectance_error_1.png" class="img-fluid"></p>
-</section>
-<section id="pdop-uncertainty" class="level4">
-<h4 class="anchored" data-anchor-id="pdop-uncertainty">PDOP Uncertainty</h4>
-<p><strong>General Idea of PDOP Range Uncertainty:</strong></p>
-<p><img src="images/pdop_uncertainty_1.png" class="img-fluid"></p>
-<p><strong>Positional Dilution of Precision (high versus low PDOP depends on satellite spacing):</strong></p>
-<p><img src="images/pdop_uncertainty_2.png" class="img-fluid"></p>
-<p><em>Lower PDOP results in a lower volume of a tetrahedron, thus lower uncertainty from PDOP.</em></p>
-</section>
-</section>
-<section id="differential-correction" class="level3">
-<h3 class="anchored" data-anchor-id="differential-correction">Differential Correction</h3>
-<p>By using a base station, accuracy is increased by reducing range errors via estimating timing errors.</p>
-<p><strong>General Idea:</strong></p>
-<p><img src="images/differential_correction_1.png" class="img-fluid"></p>
-<p><strong>Range Error versus Range Correction:</strong></p>
-<p><img src="images/differential_correction_2.png" class="img-fluid"></p>
-</section>
-<section id="types-of-differential-gps" class="level3">
-<h3 class="anchored" data-anchor-id="types-of-differential-gps">Types of Differential GPS</h3>
-<ul>
-<li>Post Processed
-<ul>
-<li>Higher accuracy</li>
-<li>However, done a posteriori</li>
-</ul></li>
-<li>Real-time
-<ul>
-<li>Lower accuracy</li>
-<li>Better navigation</li>
-<li>requires a transmitting base station</li>
-<li>requires common link (FM radio or internet/cell phone)</li>
-</ul></li>
-</ul>
-<p><img src="images/differential_correction_3.png" class="img-fluid"></p>
-<section id="wide-area-augmentation-system-waas" class="level4">
-<h4 class="anchored" data-anchor-id="wide-area-augmentation-system-waas">Wide Area Augmentation System (WAAS)</h4>
-<p>Real-time differential GPS developed for aircraft navigation. Based on a network of ground reference stations. Accuracy improves from ~13km to under 2m.</p>
-</section>
-</section>
-<section id="other-applications-of-gps" class="level3">
-<h3 class="anchored" data-anchor-id="other-applications-of-gps">Other Applications of GPS</h3>
-<ul>
-<li>Tracking</li>
-<li>Navigation</li>
-<li>Field Digitizing
-<ul>
-<li>GPS receiver</li>
-<li>range pole</li>
-<li>laser rangefinder</li>
-<li>electronic compass</li>
-</ul></li>
-<li>Human Mobility</li>
-<li>Autonomous Vehicles</li>
-<li>Indoor Mapping
-<ul>
-<li>Bluetooth</li>
-<li>Radio Frequency (RFID)</li>
+<li>limit the number of legal operations on relational tables (i.e.&nbsp;relational algebra)</li>
+<li>balance the amount of redundancy (normal forms)</li>
 </ul></li>
 </ul>
 </section>
-<section id="other-methods-for-positioning" class="level3">
-<h3 class="anchored" data-anchor-id="other-methods-for-positioning">Other Methods for Positioning</h3>
+<section id="operations-relational-algebra" class="level2">
+<h2 class="anchored" data-anchor-id="operations-relational-algebra">Operations (Relational Algebra)</h2>
+<p>Relational algebra can be summarized in 8 operations which are used to:</p>
 <ul>
-<li>Sound Range</li>
-<li>Cellular Positioning</li>
-<li>GPS Alternatives:
+<li>Combine or split tables</li>
+<li>Select rows or columns</li>
+<li>Expand tables (add rows or columns)</li>
+</ul>
+<p>The 8 Operators:</p>
 <ul>
-<li>Ground Based GPS</li>
-<li>Starlink (prevents navigation jamming)</li>
+<li>Restrict: select row(s) by attribute
+<ul>
+<li>can be simple or compound</li>
+<li>utilizes logical operators (AND, OR, NOT)</li>
 </ul></li>
+<li>Project: select specific column(s)</li>
+<li>Product: combine all possible unique rows from two separate tables (cross tabulating)</li>
+<li>Divide: often used in queries with “All” based on a condition
+<ul>
+<li>takes two unique tuples as input, one with the <em>key</em> and one with the <em>conditions</em></li>
+<li>take another input as the table to perform the <em>per basis</em></li>
+<li>returns the list of the <em>key(s)</em></li>
+</ul></li>
+<li>Union: combine tables and return records found in one or both</li>
+<li>Intersect: combine table to return records found in both</li>
+<li>Difference: return rows in first but not second table - ORDER MATTERS (similar to erase)</li>
+<li>Join: match candidate keys to expand attributes</li>
 </ul>
 
 
-</section>
 </section>
 </section>
 

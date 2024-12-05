@@ -126,6 +126,433 @@
     "text": "Thematic Layers\n\nseparate layers for each view\nsame spatial locations but represent different thematic entities\ncombining information from different spatial datasets\nmultiple objects from one entity (or several ones)\n\n\nMultiple Objects from a Single Entity\n\nTypically store different object types (even from the same entity) in different layers OR differentiated through attributes\nLake Example:\n\nmunicipal water source\nrecreation area\nflood control sink\nwildlife habitat"
   },
   {
+    "objectID": "raster_data.html",
+    "href": "raster_data.html",
+    "title": "Raster Data",
+    "section": "",
+    "text": "This section deals with raster data and its operations."
+  },
+  {
+    "objectID": "raster_data.html#resolution",
+    "href": "raster_data.html#resolution",
+    "title": "Raster Data",
+    "section": "Resolution",
+    "text": "Resolution\nThe distance that one side of a grid cell represents on the ground.\n\nFine vs. Coarse &lt;-&gt; High vs. Low: finer resolution data have smaller grid cells and high precision with greater cost in data storage than coarser data."
+  },
+  {
+    "objectID": "raster_data.html#the-mixed-pixel-problem-and-storage-resolution-tradeoff",
+    "href": "raster_data.html#the-mixed-pixel-problem-and-storage-resolution-tradeoff",
+    "title": "Raster Data",
+    "section": "The Mixed Pixel Problem and Storage / Resolution Tradeoff",
+    "text": "The Mixed Pixel Problem and Storage / Resolution Tradeoff\n\nWant the smallest detectable feature (i.e. phenomenon of interest) to be twice as large as the resolution in areal units.\nFiner resolution requires more data storage: decreasing the cell size by one half quadruples the resolution, thus directly quadruples the storage space required."
+  },
+  {
+    "objectID": "raster_data.html#continuous-vs.-discrete-features",
+    "href": "raster_data.html#continuous-vs.-discrete-features",
+    "title": "Raster Data",
+    "section": "Continuous vs. Discrete Features",
+    "text": "Continuous vs. Discrete Features\n\nContinuous Features: numerical study value in each cell\nDiscrete Features: single number representation in each cell"
+  },
+  {
+    "objectID": "raster_data.html#data-type-and-bit-depth",
+    "href": "raster_data.html#data-type-and-bit-depth",
+    "title": "Raster Data",
+    "section": "Data Type and Bit Depth",
+    "text": "Data Type and Bit Depth\nIntegers, floating points, binary, etc. require different storage. The values are then assigned to each grid cell."
+  },
+  {
+    "objectID": "raster_data.html#bit-basics",
+    "href": "raster_data.html#bit-basics",
+    "title": "Raster Data",
+    "section": "Bit Basics",
+    "text": "Bit Basics\n\n1 bit: 2 values: [0: 1]: \\(2^1\\)\n2 bit: 4 values: [0: 3]: \\(2^2\\)\n4 bit: 16 values: [0: 15]: \\(2^4\\)\nn bit: \\(2^n\\) values"
+  },
+  {
+    "objectID": "raster_data.html#signed-and-unsigned-values",
+    "href": "raster_data.html#signed-and-unsigned-values",
+    "title": "Raster Data",
+    "section": "Signed and Unsigned Values",
+    "text": "Signed and Unsigned Values\n\nUnsigned 8-bit: [0, 255]\nSigned 8-bit: [-128, 127]"
+  },
+  {
+    "objectID": "raster_data.html#floating-point-values",
+    "href": "raster_data.html#floating-point-values",
+    "title": "Raster Data",
+    "section": "Floating Point Values",
+    "text": "Floating Point Values\nUses large number values ranges!"
+  },
+  {
+    "objectID": "raster_data.html#no-data-values",
+    "href": "raster_data.html#no-data-values",
+    "title": "Raster Data",
+    "section": "No Data Values",
+    "text": "No Data Values\n2-bits aren’t exactly used in GIS, as the NO DATA type has a reserved value, usually a large number."
+  },
+  {
+    "objectID": "raster_data.html#converting-between-bits",
+    "href": "raster_data.html#converting-between-bits",
+    "title": "Raster Data",
+    "section": "Converting Between Bits",
+    "text": "Converting Between Bits\nConverting between bit-types doesn’t have a direct estimate like the storage / resolution tradeoff does."
+  },
+  {
+    "objectID": "raster_data.html#presence-absence-coding-method",
+    "href": "raster_data.html#presence-absence-coding-method",
+    "title": "Raster Data",
+    "section": "Presence / Absence Coding Method",
+    "text": "Presence / Absence Coding Method\n\n1: object is present\n0: object is not present\nUses the anywhere rule, which has an implication of the mixed pixel problem"
+  },
+  {
+    "objectID": "raster_data.html#any-cell-vs.-near-cell-rules",
+    "href": "raster_data.html#any-cell-vs.-near-cell-rules",
+    "title": "Raster Data",
+    "section": "Any Cell vs. Near Cell Rules",
+    "text": "Any Cell vs. Near Cell Rules\n\nGeneralization and approximation with implications of thickness and connectivity."
+  },
+  {
+    "objectID": "raster_data.html#vector-lines-to-raster",
+    "href": "raster_data.html#vector-lines-to-raster",
+    "title": "Raster Data",
+    "section": "Vector Lines to Raster",
+    "text": "Vector Lines to Raster\n\nShould be done in different layers (i.e. different road types)"
+  },
+  {
+    "objectID": "raster_data.html#vector-polygons-to-raster",
+    "href": "raster_data.html#vector-polygons-to-raster",
+    "title": "Raster Data",
+    "section": "Vector Polygons to Raster",
+    "text": "Vector Polygons to Raster\n\nBoundaries: can lose precision\nEfficiency: can have inefficient data storage"
+  },
+  {
+    "objectID": "raster_data.html#attribute-tables",
+    "href": "raster_data.html#attribute-tables",
+    "title": "Raster Data",
+    "section": "Attribute Tables",
+    "text": "Attribute Tables\n\neach cell will have a count / frequency\n“carefully” produce estimates, such as area, due to the implications!\n\n\nAttribute Tables for Discrete vs. Continuous\n\nDiscrete: example is landcover where a cell value has a direct analogy\nContinuous: example is elevation layer, where each value has a direct analogy, WHICH DOESN’T MAKE SENSE!"
+  },
+  {
+    "objectID": "raster_data.html#vector-point-values-to-raster",
+    "href": "raster_data.html#vector-point-values-to-raster",
+    "title": "Raster Data",
+    "section": "Vector Point Values to Raster",
+    "text": "Vector Point Values to Raster\n\nInterpolation: measured points of continuous phenomenon to make estimates at non-measured location through interpolation."
+  },
+  {
+    "objectID": "raster_data.html#raster-to-vector",
+    "href": "raster_data.html#raster-to-vector",
+    "title": "Raster Data",
+    "section": "Raster to Vector",
+    "text": "Raster to Vector\n\nEssentially does cell-center point and apply smoothing and connectivity rules\nHave to consider precision and shape implications."
+  },
+  {
+    "objectID": "raster_data.html#resampling---nearest-neighbors",
+    "href": "raster_data.html#resampling---nearest-neighbors",
+    "title": "Raster Data",
+    "section": "Resampling - Nearest Neighbors",
+    "text": "Resampling - Nearest Neighbors\nTakes the cell value of the nearest neighbor."
+  },
+  {
+    "objectID": "raster_data.html#resampling---bilinear-interpolation",
+    "href": "raster_data.html#resampling---bilinear-interpolation",
+    "title": "Raster Data",
+    "section": "Resampling - Bilinear Interpolation",
+    "text": "Resampling - Bilinear Interpolation\n\nDistance weighted averaging\nTwo-directional\nSimplest way to estimate heights"
+  },
+  {
+    "objectID": "raster_data.html#resampling---majority-rule",
+    "href": "raster_data.html#resampling---majority-rule",
+    "title": "Raster Data",
+    "section": "Resampling - Majority Rule",
+    "text": "Resampling - Majority Rule\n\ngives majority of label cells as the new aggregation"
+  },
+  {
+    "objectID": "raster_data.html#resampling-implications",
+    "href": "raster_data.html#resampling-implications",
+    "title": "Raster Data",
+    "section": "Resampling Implications",
+    "text": "Resampling Implications\n\nlarger jumps should use careful consideration\nthink about generalization (over-generalization) during the process\nDISCRETE VS CONTINUOUS:\n\nbilinear resampling is better for continuous data\ndon’t use bilinear resampling for discrete / categorical data\nwill just create classes that don’t exist"
+  },
+  {
+    "objectID": "raster_data.html#run-length-encoding",
+    "href": "raster_data.html#run-length-encoding",
+    "title": "Raster Data",
+    "section": "Run Length Encoding",
+    "text": "Run Length Encoding\n\ndictionary type encoding which produces {value: count} combinations for each row"
+  },
+  {
+    "objectID": "raster_data.html#value-point-encoding",
+    "href": "raster_data.html#value-point-encoding",
+    "title": "Raster Data",
+    "section": "Value Point Encoding",
+    "text": "Value Point Encoding\n\nInitial Table: Scans rows for number of values\nSecondary Table: Sums the total number of values for each unique discrete value"
+  },
+  {
+    "objectID": "raster_data.html#quadtree-encoding",
+    "href": "raster_data.html#quadtree-encoding",
+    "title": "Raster Data",
+    "section": "Quadtree Encoding",
+    "text": "Quadtree Encoding\n\nPartitioning of heterogeneous space into quarter sections that are homogeneous, repeated until homogeneity of a quarter is reached.\nDecent for zooming properties\nComplex, not efficient for higher heteorogenous data"
+  },
+  {
+    "objectID": "raster_data.html#map-algebra",
+    "href": "raster_data.html#map-algebra",
+    "title": "Raster Data",
+    "section": "Map Algebra",
+    "text": "Map Algebra\n\nCell-by-cell combination of raster data (i.e. addition, subtraction, multiplication, and logical operators)\nNormally, resolutions are aligned before applying functions\nObjects: datasets, layers, values\nActions: performed on objects (operators and functions)\nQualifiers: parameters determining the conduction of a function\nMimics functions from vector operations"
+  },
+  {
+    "objectID": "raster_data.html#function-types-in-map-algebra",
+    "href": "raster_data.html#function-types-in-map-algebra",
+    "title": "Raster Data",
+    "section": "Function Types in Map Algebra",
+    "text": "Function Types in Map Algebra\n\nLocal: cell-by-cell\nNeighborhood (focal): neighborhood analysis\nBlock: whole block of cells\nZonal: within homogeneous areas, uses zonal analysis/statistics\nGlobal: incorporation of the full dataset\nCreates uniform definition of entitites in raster data"
+  },
+  {
+    "objectID": "raster_data.html#moving-windows",
+    "href": "raster_data.html#moving-windows",
+    "title": "Raster Data",
+    "section": "Moving Windows",
+    "text": "Moving Windows\n\nPositioned over input raster\nDefines the input for an operation to be applied\nResult associated with center and written to the output\nFocal: overlapping\nBlock: jumping\nKernel: constraints for a window size, shape, and function\n\n\nSlope is a focal function because it is inherently a difference function (requires difference between two cell values)."
+  },
+  {
+    "objectID": "raster_data.html#margin-erosion",
+    "href": "raster_data.html#margin-erosion",
+    "title": "Raster Data",
+    "section": "Margin Erosion",
+    "text": "Margin Erosion\n\nLoss of margins in the original raster dataset (width of cells from the center cell away)\nSolutions are to enlarge the study area or use kernel modifications at the corners."
+  },
+  {
+    "objectID": "raster_data.html#applications",
+    "href": "raster_data.html#applications",
+    "title": "Raster Data",
+    "section": "Applications",
+    "text": "Applications\n\nEdge Detection (i.e. concentration changes, discover contrasts and differences)\nNoise Filtering (smoothing): can remove spikes or outliers\n\n\nCareful with smoothing! This removes variations, creating highly autocorrelated data."
+  },
+  {
+    "objectID": "raster_data.html#zonal-and-block-function-information",
+    "href": "raster_data.html#zonal-and-block-function-information",
+    "title": "Raster Data",
+    "section": "Zonal and Block Function Information",
+    "text": "Zonal and Block Function Information\n\nstats retained for every cell within the region dependent on stat used\nconcept of homogeneity\nStill creates a new raster layer!\nalways creating a rectangle with raster data and applying no data case\nSize of cell is retained, as compared to resampling!"
+  },
+  {
+    "objectID": "lab_work.html",
+    "href": "lab_work.html",
+    "title": "Lab Work",
+    "section": "",
+    "text": "Concepts and conclusions from the labs."
+  },
+  {
+    "objectID": "lab_work.html#conformal-projection-question",
+    "href": "lab_work.html#conformal-projection-question",
+    "title": "Lab Work",
+    "section": "Conformal Projection Question",
+    "text": "Conformal Projection Question\n\nConformal projections preserve local shape, and map scales the same everywhere and in any direction, thus if ellipse sizes vary in size as well as shape, the properties of the projection are likely to be conformal."
+  },
+  {
+    "objectID": "lab_work.html#asia-south-albers-equal-area-conic",
+    "href": "lab_work.html#asia-south-albers-equal-area-conic",
+    "title": "Lab Work",
+    "section": "Asia South Albers Equal Area Conic",
+    "text": "Asia South Albers Equal Area Conic\n\n\nlatitude lines: curved\nlongitude lines: straight"
+  },
+  {
+    "objectID": "lab_work.html#north-pole-azimuthal-equidistant",
+    "href": "lab_work.html#north-pole-azimuthal-equidistant",
+    "title": "Lab Work",
+    "section": "North Pole Azimuthal Equidistant",
+    "text": "North Pole Azimuthal Equidistant\n\n\nlatitude: curved\nlongitude: straight"
+  },
+  {
+    "objectID": "lab_work.html#mercator",
+    "href": "lab_work.html#mercator",
+    "title": "Lab Work",
+    "section": "Mercator",
+    "text": "Mercator"
+  },
+  {
+    "objectID": "lab_work.html#robinson",
+    "href": "lab_work.html#robinson",
+    "title": "Lab Work",
+    "section": "Robinson",
+    "text": "Robinson\nKnown as a compromise projection (nearly equal area and nearly conformal)."
+  },
+  {
+    "objectID": "gps_gnss.html",
+    "href": "gps_gnss.html",
+    "title": "GPS / GNSS",
+    "section": "",
+    "text": "The well known GPS, or Global Positioning System, is actually a specific version under the more general GNSS, or Global Navigation Satellite System. These systems use satellites for navigation, tracking, and measuring positional information.\nThere are four main GPS / GNSS systems:"
+  },
+  {
+    "objectID": "gps_gnss.html#specificiations",
+    "href": "gps_gnss.html#specificiations",
+    "title": "GPS / GNSS",
+    "section": "Specificiations",
+    "text": "Specificiations\n\nSatellites circle the Earth twice daily\nFour to eight satellites should be visible from any unobstructed location\nEach satellite continuously broadcasts signals on two carrier frequencies\n\nL1 and L2 (carrier signals)\n\nModulated to produce coded signals for easier and quicker posiitioning\n\nC/A (course acquisition) code (L1) for quicker processing\nP (precision; military signal on L1 and L2)"
+  },
+  {
+    "objectID": "gps_gnss.html#how-it-works",
+    "href": "gps_gnss.html#how-it-works",
+    "title": "GPS / GNSS",
+    "section": "How it Works",
+    "text": "How it Works\n\nRange by Speed of Light\n\nPosition is estimated based on range distances and travel time\n\ntravel time: difference between transmission time and reception time\nrange: speed of light * travel time (\\(range=c(t_1 - t_0)\\))\n\n\n\n\nTrilateration\n2-Dimensions\n\nGiven three pinged satellites, circles are drawn with center radii from the satellites\nThe intersection of the circles is the coordinate position\n\n3-Dimensions\n\nGiven four pinged satellites, spheres are drawn with center radii from hte satellites\nThe intersection of the spheres is the coordinate position\n\nNote that given three satellites in three-dimensions, there will be two points of intersection, which can be decent for stationary objects.\n\n\nRelativity\n\nSpecial Relativity: an observer on the ground sees satellites in motion relative to them, special relativity predicts we should see their clocks ticking more slowly (7 ms)\nGeneral Relativity: clocks closer to a massive object will seem to tick more slowly than those located further away, thus when viewed from the surface of the Earth, clocks on the satellites appear to be ticking faster (45 ms)\n\nClocks need to be adjusted by \\(45-7=38\\) ms per day. This is built into the satellites’ clocks.\n\n\nUncertainty\nErrors in range measurements and satellite location (ephermeris) introduces uncertainty, which can be a range for the GPS receiver position.\nMitigation using postion fixes for stationary receiver is possible, but does not work for moving receivers.\nSome Sources of Error:\n\nSatellite Clock Error\nSatellite Position Error - Positional Dilution of Precision (PDOP)\nReceiver Error\nAtmospheric / Ionospheric Effects\nMultipath Error: additional potential error due to reflectance (i.e. obstructions)\n\nErrors are dependent on quality of equipment and environmental conditions.\n\nReflectance Error\n\n\n\nPDOP Uncertainty\nGeneral Idea of PDOP Range Uncertainty:\n\nPositional Dilution of Precision (high versus low PDOP depends on satellite spacing):\n\nLower PDOP results in a lower volume of a tetrahedron, thus lower uncertainty from PDOP.\n\n\n\nDifferential Correction\nBy using a base station, accuracy is increased by reducing range errors via estimating timing errors.\nGeneral Idea:\n\nRange Error versus Range Correction:\n\n\n\nTypes of Differential GPS\n\nPost Processed\n\nHigher accuracy\nHowever, done a posteriori\n\nReal-time\n\nLower accuracy\nBetter navigation\nrequires a transmitting base station\nrequires common link (FM radio or internet/cell phone)\n\n\n\n\nWide Area Augmentation System (WAAS)\nReal-time differential GPS developed for aircraft navigation. Based on a network of ground reference stations. Accuracy improves from ~13km to under 2m.\n\n\n\nOther Applications of GPS\n\nTracking\nNavigation\nField Digitizing\n\nGPS receiver\nrange pole\nlaser rangefinder\nelectronic compass\n\nHuman Mobility\nAutonomous Vehicles\nIndoor Mapping\n\nBluetooth\nRadio Frequency (RFID)\n\n\n\n\nOther Methods for Positioning\n\nSound Range\nCellular Positioning\nGPS Alternatives:\n\nGround Based GPS\nStarlink (prevents navigation jamming)"
+  },
+  {
+    "objectID": "databases.html",
+    "href": "databases.html",
+    "title": "Database Management",
+    "section": "",
+    "text": "This section deals with database management."
+  },
+  {
+    "objectID": "databases.html#logical-structure",
+    "href": "databases.html#logical-structure",
+    "title": "Database Management",
+    "section": "Logical Structure",
+    "text": "Logical Structure\nLogical structure refers to the database design, or schema. This is the:\n\nLogical specification of attributes and relationships\nConceptual model of items, mapping, cardinality\nEntity-relation diagram / notation (a unified modeling language)\n\n\nExample: Bolstad’s Forest Trails Database\n\nEntity sets hold attributes\nRelationships hold mappings (used for joining tables)\nCardinality is specified, which defines the nature and direction of the relationships\n\n1-N\nM-N\n\nEntity set holds features too\nImportant Concepts:\n\nCardinality\nRelations\nJoins\n\nAttribute table is connected to shape files\n\n\nAlways pay attentin to shcema and keys with cardinality matches. Easy way to check if join worked properly, sort and search for duplicates. In a GIS application of a database, slivers could result from bad joins where attributes will be duplicated for all slivers. Be thoughtful on fixing the errors, to be careful on just deleting the polygon slivers."
+  },
+  {
+    "objectID": "databases.html#physical-structure",
+    "href": "databases.html#physical-structure",
+    "title": "Database Management",
+    "section": "Physical Structure",
+    "text": "Physical Structure\nPhysical structure refers to the actual database implementation, and depends on the intended use of the database requirements:\n\nSpeed access, frequent updates\nFlexible relationships\nProtecting data security\n\n\nExamples of Physical Strucutres in Database Models\n\nFlat Files: text files\nHierarchical: parent-child\nNetwork: nodes and links\nRelational: tables related via keys\nHybrid: object-oriented\n\nHierarchical and network database models have generally been replaced by the relational data model."
+  },
+  {
+    "objectID": "databases.html#terminology",
+    "href": "databases.html#terminology",
+    "title": "Database Management",
+    "section": "Terminology",
+    "text": "Terminology\n\nTable: data orginzed in rows and columns\nRecord (rows / tuples): a set of tuples represents logical entities (i.e. road, lake, land use polygon)\nField (column / item): attribute (property) of the logical entity\nIndex / Key: Attribute(s) need to identify, organize, or order records in a database (needed for relational algebra or joins)"
+  },
+  {
+    "objectID": "databases.html#important-considerations",
+    "href": "databases.html#important-considerations",
+    "title": "Database Management",
+    "section": "Important Considerations",
+    "text": "Important Considerations\n\nField types and domains should be specified as much as possible\nAdvantages: minimum structure, easy programming, flexible\nDisadvantages: can be slow due to lack of structure"
+  },
+  {
+    "objectID": "databases.html#relational-keys",
+    "href": "databases.html#relational-keys",
+    "title": "Database Management",
+    "section": "Relational Keys",
+    "text": "Relational Keys\nAny unique field can be a key, which can span multiple columns.\n\nPrimary Keys: index to a table\nForeign Keys: index contained in the table that is possibly non-unique, but is a primary key in another table and is used for joins.\n\nWith the combination of primary and foreign keys, tables can be joined together.\n\nRule: each row holds a unique combination of values, before and after join.\nIdeally, isolate key in as few fields (i.e. columns) as possible."
+  },
+  {
+    "objectID": "databases.html#constraints",
+    "href": "databases.html#constraints",
+    "title": "Database Management",
+    "section": "Constraints",
+    "text": "Constraints\n\nRules for implementing tables appear to be fast and loose.\nThere are two constraints which allow flexibility yet preserve logic:\n\nlimit the number of legal operations on relational tables (i.e. relational algebra)\nbalance the amount of redundancy (normal forms)"
+  },
+  {
+    "objectID": "databases.html#operations-relational-algebra",
+    "href": "databases.html#operations-relational-algebra",
+    "title": "Database Management",
+    "section": "Operations (Relational Algebra)",
+    "text": "Operations (Relational Algebra)\nRelational algebra can be summarized in 8 operations which are used to:\n\nCombine or split tables\nSelect rows or columns\nExpand tables (add rows or columns)\n\nThe 8 Operators:\n\nRestrict: select row(s) by attribute\n\ncan be simple or compound\nutilizes logical operators (AND, OR, NOT)\n\nProject: select specific column(s)\nProduct: combine all possible unique rows from two separate tables (cross tabulating)\nDivide: often used in queries with “All” based on a condition\n\ntakes two unique tuples as input, one with the key and one with the conditions\ntake another input as the table to perform the per basis\nreturns the list of the key(s)\n\nUnion: combine tables and return records found in one or both\nIntersect: combine table to return records found in both\nDifference: return rows in first but not second table - ORDER MATTERS (similar to erase)\nJoin: match candidate keys to expand attributes"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\nCode1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "concepts_scale_resolution.html",
+    "href": "concepts_scale_resolution.html",
+    "title": "Concepts of Scale and Resolution",
+    "section": "",
+    "text": "Essential concepts for scale and resolution."
+  },
+  {
+    "objectID": "concepts_scale_resolution.html#scale-sizes-large-vs.-small",
+    "href": "concepts_scale_resolution.html#scale-sizes-large-vs.-small",
+    "title": "Concepts of Scale and Resolution",
+    "section": "Scale Sizes (Large vs. Small)",
+    "text": "Scale Sizes (Large vs. Small)\nLarge Scale vs. Small Scale\n\nLarge Scale Maps\n\nlarger features\nmore detail\nless area\ntending towards less geometric error\n\nSmall Scale Maps\n\nsmaller features\nless detail\nmore area\ntending towards more geometric error\n\nExplanation\nComparing Scales:\nMap A Scale: \\(1/a\\)\nMap B Scale: \\(1/b\\)\nLarger the Denominator \\(\\rightarrow\\) Smaller the Scale\nSmaller the Denominator \\(\\rightarrow\\) Larger the Scale\nSo, provided \\(a &gt; b \\rightarrow 1/a &lt; 1/b\\), thus\nMap A has a smaller scale than Map B\nMap B has a larger scale than Map A\nExample: Map A could cover Washington state whereas Map B could cover a city in Washington state\nFurther Explanation: The smaller the relative scale, the closer the map to reality"
+  },
+  {
+    "objectID": "concepts_scale_resolution.html#raster---the-mixed-pixel-problem-effect",
+    "href": "concepts_scale_resolution.html#raster---the-mixed-pixel-problem-effect",
+    "title": "Concepts of Scale and Resolution",
+    "section": "Raster - The Mixed Pixel Problem / Effect",
+    "text": "Raster - The Mixed Pixel Problem / Effect\nHow do we define/classify a cell (i.e. land vs. water)?\nRule of Thumb: the smallest detectable feature is about twice as large as the resolution, or stated in another manner, detection requires resolution at least twice as fine as detectable features.\nSo if we were going to detect a defined bodies of water, the bodies of water we wish to detect were around size \\(x\\), the resolution must be at most \\(x/2\\). This ensures that the features of interest are adequately captured and distinguished from surrounding features."
+  },
+  {
+    "objectID": "concepts_scale_resolution.html#tradeoff-between-storage-and-resolution",
+    "href": "concepts_scale_resolution.html#tradeoff-between-storage-and-resolution",
+    "title": "Concepts of Scale and Resolution",
+    "section": "Tradeoff Between Storage and Resolution",
+    "text": "Tradeoff Between Storage and Resolution\nAs the saying goes, easier said than done. Images with finer resolution require more storage and are usually more expensive (technology / equipment).\nIn fact, decreasing the cell size by one half quadruples the resolution, thus storage space is quadrupled.\n\nNote that in the case of vector data, finer resolution vector data has more points and points closer together. In other words, more vertices!"
+  },
+  {
+    "objectID": "concepts_scale_resolution.html#digital-data-and-scale",
+    "href": "concepts_scale_resolution.html#digital-data-and-scale",
+    "title": "Concepts of Scale and Resolution",
+    "section": "Digital Data and Scale",
+    "text": "Digital Data and Scale\nDIGITAL DATA HAS A SCALE! HOWEVER, CAUTION IS REQUIRED.\nThe input map / data layer had a scale (source scale), but many data today does not come from maps. This allows us to slide through a range of scales on the screen. Think about the increasing detail level while zooming in on Google Maps.\nThis gives us the Display Scale, the ratio between ground and on-screen scale."
+  },
+  {
+    "objectID": "generalization_maup.html",
+    "href": "generalization_maup.html",
+    "title": "Generalization and the MAUP",
+    "section": "",
+    "text": "Essential concepts for generalization and the MAUP. This section builds from Concepts of Scale and Resolution."
+  },
+  {
+    "objectID": "generalization_maup.html#scale-and-map-generalization",
+    "href": "generalization_maup.html#scale-and-map-generalization",
+    "title": "Generalization and the MAUP",
+    "section": "Scale and Map Generalization",
+    "text": "Scale and Map Generalization\nThere are different levels of feature generalization in maps of different scales. This introduces the idea of geometry elimination and geometry smoothing at changing scales. In both cases, we still want to preserve information.\n\nPrincipals of Generalization\n\nSmaller Scales \\(\\rightarrow\\) More Generalized \\(\\rightarrow\\) Shorter Lines\nMachine learning can be used to preserve features during generalization\nSmaller Scales \\(\\rightarrow\\) More Generalized \\(\\rightarrow\\) Less Perimeter\n\n\n\n\n\nForms of Feature Generalization\n\nTruth: entity in reality (example group of islands \\(\\rightarrow\\) multiple polygons with many vertices)\nFused: multiple high resolution polygons into single polygon\nSimplified: multiple polygons with less vertices\nDisplaced: features like roads or streams with a greater null buffer from group of polygons\nOmitted: smaller features (small islands) removed\nExaggerated: features like roads or streams with a greater actual buffer from group of polygons\nPatches: essentially a fuse with the individual entities still present (group of islands called an archipelago while not mentioning the individual islands)\n\n\n\n\n\nCoastline Examples\nThe Florida coastline can be measured at different scales. The larger the scale, the longer the perimeter."
+  },
+  {
+    "objectID": "generalization_maup.html#analytical-scale",
+    "href": "generalization_maup.html#analytical-scale",
+    "title": "Generalization and the MAUP",
+    "section": "Analytical Scale",
+    "text": "Analytical Scale\nWhat is the correct size of analytical scale?\n\nThere are multiple proposed solutions to finding this solution, including sensitivity testing, which checks for robustness or variation at different scales. Spatial auto-correlation is ant"
+  },
+  {
+    "objectID": "generalization_maup.html#scale-effect",
+    "href": "generalization_maup.html#scale-effect",
+    "title": "Generalization and the MAUP",
+    "section": "Scale Effect",
+    "text": "Scale Effect\n\nDifferent analytical results at levels of aggregation: as we increase or decrease resolution, the statistical characteristics change."
+  },
+  {
+    "objectID": "generalization_maup.html#zoning-effect",
+    "href": "generalization_maup.html#zoning-effect",
+    "title": "Generalization and the MAUP",
+    "section": "Zoning Effect",
+    "text": "Zoning Effect\n\nDifferent groupings by various artificial boundaries, each boundary variation yields major analytical differences\nExamples:\n\nhealth spatial statistics to determine spatial factors realted to given disease\ndemography\nlandscape ecology\ngerrymandering"
+  },
+  {
+    "objectID": "generalization_maup.html#solutions",
+    "href": "generalization_maup.html#solutions",
+    "title": "Generalization and the MAUP",
+    "section": "Solutions",
+    "text": "Solutions\nEssentially, a population suffers from MAUP due to the population not being uniformly distributed by density over locations.\n\nspatial autocorrelation (no random distribution)\nacross different scales: check for robustness or variation\nif results are significantly different, reevaluate to find more consistent results\n\nacross-scale relationship evaluation between variables; simulations and spatial models\navoid erroneous conclusions\nprovide guidance to select appropriate aggregation scales"
+  },
+  {
+    "objectID": "generalization_maup.html#further-examples",
+    "href": "generalization_maup.html#further-examples",
+    "title": "Generalization and the MAUP",
+    "section": "Further Examples",
+    "text": "Further Examples\n\nScale and Zoning Effect Together\n\n\n\nGerrymandering"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Spatial Analytics",
+    "section": "",
+    "text": "This is a guide to for the essential concepts of Spatial Analytics.\n\nTopics\n\nSpatial Data Representations\nConcepts of Scale and Resolution\nGeneralization and the MAUP\nProjections\nGPS / GNSS\nVector Data Models\n\n\n\nOverview\nHumans spatial reasoning can be motivated by concepts such as preferences and priorities. Why do humans take the paths they do? Can these mobility patterns be quantified? What implications do paths and representations of real world entities have?\nTechnical definitions can change by industry or task. While representing real world entities and patterns, biases can be created both purposefully and accidentally. Across any science or field, implied causality can be dangerous. Understanding the tools and concepts is important for properly presenting information and not misusing the tools to imply incorrect phenomenon.\n\nDefining a GIS\n\nSpatial Thinking: a collection of cognitive skills\n\nconcepts of space\ntools of representation\nprocesses of reasoning\n\n\nSpatial Knowledge is important for orientation and navigation, map production, measuring the world, and understanding relationships between objects and the implication of such.\nA GIS is something that helps understand spatial knowledge by quantifying locations. They are computer-based information systems which aid in the collection, maintenance, storage, analysis, output, and distribution of spatial data. They require trained personnel, supporting institutions, have protocols for use, and can be web based.\nA simplified function-based definition:\n\ndata input\ndata management (storage/organization/retrieval)\ndata manipulation/analysis\ndata output\n\n\n\nComputational Tools for Spatial Knowledge\nSome examples of GIS, spatial analysis, and mapping tools:\n\nQGIS (open source)\nArcGIS (commercial)\nGeoDa (open, specialized)\nGoogle Maps (web)\nGoogle Earth (web)\nVGI (OSM)\n\n\n\nUnderstanding the Components of a GIS\nThere are several components each GIS have:\n\ndatabase: registered map layers\nanalytic base:\n\nsoftware and algorithms\ncartometric analysis\nstatistical analysis\n\nmanagement base:\n\nmaintenance and update\naccess and data sharing\ndocumentation\n\n\n\nDatabases\n\nLinking Content:\n\nspatial registration (align all layers)\nGeoreferencing (at least one layer)\n\nEstablishing Geospatial Relations:\n\ndistance and direction\nproximity\nconnectivity\nassociation\ncontainment\n\nSupporting Geospatial Analysis\n\n\n\nAnalytical Base\n\nManipulating and Analyzing Data:\n\nexplore spatial relations\nelicit spatial patterns\nrun GIS analysis\n\nStatistical Elements:\n\n(spatial) statistics\nclassification\ndescriptive\n\nCartometric Elements\n\nspatial association\nspatial arrangement\nspatial patterns\n\nCartometric Elements and Geoprocessing: distance and direction measures (primitatives) ot build up higher order patterns\n\nspatial presence: location (x, y, z, t)\nspatial order: size and shape\nspatial arrangement:\n\ndensity\ndispersion\ndiffusion\nconnectivity\n\nspatial association (correspondence)\n\naddress matching\nbuffering\noverlay\nmodeling\n\n\n\n\n\nManagement Base\n\nHandles data collection and storage\n\ndata maintenance and update\ndocumentation, tutorials, online help\n\nProvides access and security\n\nmultiple analysts working concurrently\nprotects against db corruption\nsecures proprietary information\n\nCreates and supports metadata\nMetadata:\n\ndata that describes geospatial data\n\nwho produced the data, when, and how\nwhat is the quality (truth in advertising)\nother measures and information\n\n\n\n\n\n\nGIS in an Instutional and Societal Context\n\nmanaging and assessing environmental problems, resource allocation, mapping, etc.\nlinking spatial information with attribute data to better understand lower and higher patterns of spatial distribution\nfrom an institutional perspective, trained analysts, decisions and protocols for collection and analylsis are incorporated"
+  },
+  {
     "objectID": "projections.html",
     "href": "projections.html",
     "title": "Projections",
@@ -187,167 +614,6 @@
     "title": "Projections",
     "section": "Miscellaneous Features and Details of Projections",
     "text": "Miscellaneous Features and Details of Projections"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Spatial Analytics",
-    "section": "",
-    "text": "This is a guide to for the essential concepts of Spatial Analytics.\n\nTopics\n\nSpatial Data Representations\nConcepts of Scale and Resolution\nGeneralization and the MAUP\nProjections\nGPS / GNSS\nVector Data Models\n\n\n\nOverview\nHumans spatial reasoning can be motivated by concepts such as preferences and priorities. Why do humans take the paths they do? Can these mobility patterns be quantified? What implications do paths and representations of real world entities have?\nTechnical definitions can change by industry or task. While representing real world entities and patterns, biases can be created both purposefully and accidentally. Across any science or field, implied causality can be dangerous. Understanding the tools and concepts is important for properly presenting information and not misusing the tools to imply incorrect phenomenon.\n\nDefining a GIS\n\nSpatial Thinking: a collection of cognitive skills\n\nconcepts of space\ntools of representation\nprocesses of reasoning\n\n\nSpatial Knowledge is important for orientation and navigation, map production, measuring the world, and understanding relationships between objects and the implication of such.\nA GIS is something that helps understand spatial knowledge by quantifying locations. They are computer-based information systems which aid in the collection, maintenance, storage, analysis, output, and distribution of spatial data. They require trained personnel, supporting institutions, have protocols for use, and can be web based.\nA simplified function-based definition:\n\ndata input\ndata management (storage/organization/retrieval)\ndata manipulation/analysis\ndata output\n\n\n\nComputational Tools for Spatial Knowledge\nSome examples of GIS, spatial analysis, and mapping tools:\n\nQGIS (open source)\nArcGIS (commercial)\nGeoDa (open, specialized)\nGoogle Maps (web)\nGoogle Earth (web)\nVGI (OSM)\n\n\n\nUnderstanding the Components of a GIS\nThere are several components each GIS have:\n\ndatabase: registered map layers\nanalytic base:\n\nsoftware and algorithms\ncartometric analysis\nstatistical analysis\n\nmanagement base:\n\nmaintenance and update\naccess and data sharing\ndocumentation\n\n\n\nDatabases\n\nLinking Content:\n\nspatial registration (align all layers)\nGeoreferencing (at least one layer)\n\nEstablishing Geospatial Relations:\n\ndistance and direction\nproximity\nconnectivity\nassociation\ncontainment\n\nSupporting Geospatial Analysis\n\n\n\nAnalytical Base\n\nManipulating and Analyzing Data:\n\nexplore spatial relations\nelicit spatial patterns\nrun GIS analysis\n\nStatistical Elements:\n\n(spatial) statistics\nclassification\ndescriptive\n\nCartometric Elements\n\nspatial association\nspatial arrangement\nspatial patterns\n\nCartometric Elements and Geoprocessing: distance and direction measures (primitatives) ot build up higher order patterns\n\nspatial presence: location (x, y, z, t)\nspatial order: size and shape\nspatial arrangement:\n\ndensity\ndispersion\ndiffusion\nconnectivity\n\nspatial association (correspondence)\n\naddress matching\nbuffering\noverlay\nmodeling\n\n\n\n\n\nManagement Base\n\nHandles data collection and storage\n\ndata maintenance and update\ndocumentation, tutorials, online help\n\nProvides access and security\n\nmultiple analysts working concurrently\nprotects against db corruption\nsecures proprietary information\n\nCreates and supports metadata\nMetadata:\n\ndata that describes geospatial data\n\nwho produced the data, when, and how\nwhat is the quality (truth in advertising)\nother measures and information\n\n\n\n\n\n\nGIS in an Instutional and Societal Context\n\nmanaging and assessing environmental problems, resource allocation, mapping, etc.\nlinking spatial information with attribute data to better understand lower and higher patterns of spatial distribution\nfrom an institutional perspective, trained analysts, decisions and protocols for collection and analylsis are incorporated"
-  },
-  {
-    "objectID": "generalization_maup.html",
-    "href": "generalization_maup.html",
-    "title": "Generalization and the MAUP",
-    "section": "",
-    "text": "Essential concepts for generalization and the MAUP. This section builds from Concepts of Scale and Resolution."
-  },
-  {
-    "objectID": "generalization_maup.html#scale-and-map-generalization",
-    "href": "generalization_maup.html#scale-and-map-generalization",
-    "title": "Generalization and the MAUP",
-    "section": "Scale and Map Generalization",
-    "text": "Scale and Map Generalization\nThere are different levels of feature generalization in maps of different scales. This introduces the idea of geometry elimination and geometry smoothing at changing scales. In both cases, we still want to preserve information.\n\nPrincipals of Generalization\n\nSmaller Scales \\(\\rightarrow\\) More Generalized \\(\\rightarrow\\) Shorter Lines\nMachine learning can be used to preserve features during generalization\nSmaller Scales \\(\\rightarrow\\) More Generalized \\(\\rightarrow\\) Less Perimeter\n\n\n\n\n\nForms of Feature Generalization\n\nTruth: entity in reality (example group of islands \\(\\rightarrow\\) multiple polygons with many vertices)\nFused: multiple high resolution polygons into single polygon\nSimplified: multiple polygons with less vertices\nDisplaced: features like roads or streams with a greater null buffer from group of polygons\nOmitted: smaller features (small islands) removed\nExaggerated: features like roads or streams with a greater actual buffer from group of polygons\nPatches: essentially a fuse with the individual entities still present (group of islands called an archipelago while not mentioning the individual islands)\n\n\n\n\n\nCoastline Examples\nThe Florida coastline can be measured at different scales. The larger the scale, the longer the perimeter."
-  },
-  {
-    "objectID": "generalization_maup.html#analytical-scale",
-    "href": "generalization_maup.html#analytical-scale",
-    "title": "Generalization and the MAUP",
-    "section": "Analytical Scale",
-    "text": "Analytical Scale\nWhat is the correct size of analytical scale?\n\nThere are multiple proposed solutions to finding this solution, including sensitivity testing, which checks for robustness or variation at different scales. Spatial auto-correlation is ant"
-  },
-  {
-    "objectID": "generalization_maup.html#scale-effect",
-    "href": "generalization_maup.html#scale-effect",
-    "title": "Generalization and the MAUP",
-    "section": "Scale Effect",
-    "text": "Scale Effect\n\nDifferent analytical results at levels of aggregation: as we increase or decrease resolution, the statistical characteristics change."
-  },
-  {
-    "objectID": "generalization_maup.html#zoning-effect",
-    "href": "generalization_maup.html#zoning-effect",
-    "title": "Generalization and the MAUP",
-    "section": "Zoning Effect",
-    "text": "Zoning Effect\n\nDifferent groupings by various artificial boundaries, each boundary variation yields major analytical differences\nExamples:\n\nhealth spatial statistics to determine spatial factors realted to given disease\ndemography\nlandscape ecology\ngerrymandering"
-  },
-  {
-    "objectID": "generalization_maup.html#solutions",
-    "href": "generalization_maup.html#solutions",
-    "title": "Generalization and the MAUP",
-    "section": "Solutions",
-    "text": "Solutions\nEssentially, a population suffers from MAUP due to the population not being uniformly distributed by density over locations.\n\nspatial autocorrelation (no random distribution)\nacross different scales: check for robustness or variation\nif results are significantly different, reevaluate to find more consistent results\n\nacross-scale relationship evaluation between variables; simulations and spatial models\navoid erroneous conclusions\nprovide guidance to select appropriate aggregation scales"
-  },
-  {
-    "objectID": "generalization_maup.html#further-examples",
-    "href": "generalization_maup.html#further-examples",
-    "title": "Generalization and the MAUP",
-    "section": "Further Examples",
-    "text": "Further Examples\n\nScale and Zoning Effect Together\n\n\n\nGerrymandering"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\nCode1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "concepts_scale_resolution.html",
-    "href": "concepts_scale_resolution.html",
-    "title": "Concepts of Scale and Resolution",
-    "section": "",
-    "text": "Essential concepts for scale and resolution."
-  },
-  {
-    "objectID": "concepts_scale_resolution.html#scale-sizes-large-vs.-small",
-    "href": "concepts_scale_resolution.html#scale-sizes-large-vs.-small",
-    "title": "Concepts of Scale and Resolution",
-    "section": "Scale Sizes (Large vs. Small)",
-    "text": "Scale Sizes (Large vs. Small)\nLarge Scale vs. Small Scale\n\nLarge Scale Maps\n\nlarger features\nmore detail\nless area\ntending towards less geometric error\n\nSmall Scale Maps\n\nsmaller features\nless detail\nmore area\ntending towards more geometric error\n\nExplanation\nComparing Scales:\nMap A Scale: \\(1/a\\)\nMap B Scale: \\(1/b\\)\nLarger the Denominator \\(\\rightarrow\\) Smaller the Scale\nSmaller the Denominator \\(\\rightarrow\\) Larger the Scale\nSo, provided \\(a &gt; b \\rightarrow 1/a &lt; 1/b\\), thus\nMap A has a smaller scale than Map B\nMap B has a larger scale than Map A\nExample: Map A could cover Washington state whereas Map B could cover a city in Washington state\nFurther Explanation: The smaller the relative scale, the closer the map to reality"
-  },
-  {
-    "objectID": "concepts_scale_resolution.html#raster---the-mixed-pixel-problem-effect",
-    "href": "concepts_scale_resolution.html#raster---the-mixed-pixel-problem-effect",
-    "title": "Concepts of Scale and Resolution",
-    "section": "Raster - The Mixed Pixel Problem / Effect",
-    "text": "Raster - The Mixed Pixel Problem / Effect\nHow do we define/classify a cell (i.e. land vs. water)?\nRule of Thumb: the smallest detectable feature is about twice as large as the resolution, or stated in another manner, detection requires resolution at least twice as fine as detectable features.\nSo if we were going to detect a defined bodies of water, the bodies of water we wish to detect were around size \\(x\\), the resolution must be at most \\(x/2\\). This ensures that the features of interest are adequately captured and distinguished from surrounding features."
-  },
-  {
-    "objectID": "concepts_scale_resolution.html#tradeoff-between-storage-and-resolution",
-    "href": "concepts_scale_resolution.html#tradeoff-between-storage-and-resolution",
-    "title": "Concepts of Scale and Resolution",
-    "section": "Tradeoff Between Storage and Resolution",
-    "text": "Tradeoff Between Storage and Resolution\nAs the saying goes, easier said than done. Images with finer resolution require more storage and are usually more expensive (technology / equipment).\nIn fact, decreasing the cell size by one half quadruples the resolution, thus storage space is quadrupled.\n\nNote that in the case of vector data, finer resolution vector data has more points and points closer together. In other words, more vertices!"
-  },
-  {
-    "objectID": "concepts_scale_resolution.html#digital-data-and-scale",
-    "href": "concepts_scale_resolution.html#digital-data-and-scale",
-    "title": "Concepts of Scale and Resolution",
-    "section": "Digital Data and Scale",
-    "text": "Digital Data and Scale\nDIGITAL DATA HAS A SCALE! HOWEVER, CAUTION IS REQUIRED.\nThe input map / data layer had a scale (source scale), but many data today does not come from maps. This allows us to slide through a range of scales on the screen. Think about the increasing detail level while zooming in on Google Maps.\nThis gives us the Display Scale, the ratio between ground and on-screen scale."
-  },
-  {
-    "objectID": "gps_gnss.html",
-    "href": "gps_gnss.html",
-    "title": "GPS / GNSS",
-    "section": "",
-    "text": "The well known GPS, or Global Positioning System, is actually a specific version under the more general GNSS, or Global Navigation Satellite System. These systems use satellites for navigation, tracking, and measuring positional information.\nThere are four main GPS / GNSS systems:"
-  },
-  {
-    "objectID": "gps_gnss.html#specificiations",
-    "href": "gps_gnss.html#specificiations",
-    "title": "GPS / GNSS",
-    "section": "Specificiations",
-    "text": "Specificiations\n\nSatellites circle the Earth twice daily\nFour to eight satellites should be visible from any unobstructed location\nEach satellite continuously broadcasts signals on two carrier frequencies\n\nL1 and L2 (carrier signals)\n\nModulated to produce coded signals for easier and quicker posiitioning\n\nC/A (course acquisition) code (L1) for quicker processing\nP (precision; military signal on L1 and L2)"
-  },
-  {
-    "objectID": "gps_gnss.html#how-it-works",
-    "href": "gps_gnss.html#how-it-works",
-    "title": "GPS / GNSS",
-    "section": "How it Works",
-    "text": "How it Works\n\nRange by Speed of Light\n\nPosition is estimated based on range distances and travel time\n\ntravel time: difference between transmission time and reception time\nrange: speed of light * travel time (\\(range=c(t_1 - t_0)\\))\n\n\n\n\nTrilateration\n2-Dimensions\n\nGiven three pinged satellites, circles are drawn with center radii from the satellites\nThe intersection of the circles is the coordinate position\n\n3-Dimensions\n\nGiven four pinged satellites, spheres are drawn with center radii from hte satellites\nThe intersection of the spheres is the coordinate position\n\nNote that given three satellites in three-dimensions, there will be two points of intersection, which can be decent for stationary objects.\n\n\nRelativity\n\nSpecial Relativity: an observer on the ground sees satellites in motion relative to them, special relativity predicts we should see their clocks ticking more slowly (7 ms)\nGeneral Relativity: clocks closer to a massive object will seem to tick more slowly than those located further away, thus when viewed from the surface of the Earth, clocks on the satellites appear to be ticking faster (45 ms)\n\nClocks need to be adjusted by \\(45-7=38\\) ms per day. This is built into the satellites’ clocks.\n\n\nUncertainty\nErrors in range measurements and satellite location (ephermeris) introduces uncertainty, which can be a range for the GPS receiver position.\nMitigation using postion fixes for stationary receiver is possible, but does not work for moving receivers.\nSome Sources of Error:\n\nSatellite Clock Error\nSatellite Position Error - Positional Dilution of Precision (PDOP)\nReceiver Error\nAtmospheric / Ionospheric Effects\nMultipath Error: additional potential error due to reflectance (i.e. obstructions)\n\nErrors are dependent on quality of equipment and environmental conditions.\n\nReflectance Error\n\n\n\nPDOP Uncertainty\nGeneral Idea of PDOP Range Uncertainty:\n\nPositional Dilution of Precision (high versus low PDOP depends on satellite spacing):\n\nLower PDOP results in a lower volume of a tetrahedron, thus lower uncertainty from PDOP.\n\n\n\nDifferential Correction\nBy using a base station, accuracy is increased by reducing range errors via estimating timing errors.\nGeneral Idea:\n\nRange Error versus Range Correction:\n\n\n\nTypes of Differential GPS\n\nPost Processed\n\nHigher accuracy\nHowever, done a posteriori\n\nReal-time\n\nLower accuracy\nBetter navigation\nrequires a transmitting base station\nrequires common link (FM radio or internet/cell phone)\n\n\n\n\nWide Area Augmentation System (WAAS)\nReal-time differential GPS developed for aircraft navigation. Based on a network of ground reference stations. Accuracy improves from ~13km to under 2m.\n\n\n\nOther Applications of GPS\n\nTracking\nNavigation\nField Digitizing\n\nGPS receiver\nrange pole\nlaser rangefinder\nelectronic compass\n\nHuman Mobility\nAutonomous Vehicles\nIndoor Mapping\n\nBluetooth\nRadio Frequency (RFID)\n\n\n\n\nOther Methods for Positioning\n\nSound Range\nCellular Positioning\nGPS Alternatives:\n\nGround Based GPS\nStarlink (prevents navigation jamming)"
-  },
-  {
-    "objectID": "lab_work.html",
-    "href": "lab_work.html",
-    "title": "Lab Work",
-    "section": "",
-    "text": "Concepts and conclusions from the labs."
-  },
-  {
-    "objectID": "lab_work.html#conformal-projection-question",
-    "href": "lab_work.html#conformal-projection-question",
-    "title": "Lab Work",
-    "section": "Conformal Projection Question",
-    "text": "Conformal Projection Question\n\nConformal projections preserve local shape, and map scales the same everywhere and in any direction, thus if ellipse sizes vary in size as well as shape, the properties of the projection are likely to be conformal."
-  },
-  {
-    "objectID": "lab_work.html#asia-south-albers-equal-area-conic",
-    "href": "lab_work.html#asia-south-albers-equal-area-conic",
-    "title": "Lab Work",
-    "section": "Asia South Albers Equal Area Conic",
-    "text": "Asia South Albers Equal Area Conic\n\n\nlatitude lines: curved\nlongitude lines: straight"
-  },
-  {
-    "objectID": "lab_work.html#north-pole-azimuthal-equidistant",
-    "href": "lab_work.html#north-pole-azimuthal-equidistant",
-    "title": "Lab Work",
-    "section": "North Pole Azimuthal Equidistant",
-    "text": "North Pole Azimuthal Equidistant\n\n\nlatitude: curved\nlongitude: straight"
-  },
-  {
-    "objectID": "lab_work.html#mercator",
-    "href": "lab_work.html#mercator",
-    "title": "Lab Work",
-    "section": "Mercator",
-    "text": "Mercator"
-  },
-  {
-    "objectID": "lab_work.html#robinson",
-    "href": "lab_work.html#robinson",
-    "title": "Lab Work",
-    "section": "Robinson",
-    "text": "Robinson\nKnown as a compromise projection (nearly equal area and nearly conformal)."
   },
   {
     "objectID": "research_notes.html",

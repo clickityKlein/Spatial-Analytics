@@ -27,6 +27,10 @@ website:
         text: "Vector Operations"
       - href: spatial_models.qmd
         text: "Spatial Models"
+      - href: databases.qmd
+        text: "Database Management"
+      - href: raster_data.qmd
+        text: "Raster Data"
       - href: research_notes.qmd 
         text: "Research Notes"
       - href: textbook_notes.qmd
